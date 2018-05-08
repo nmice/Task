@@ -4,7 +4,7 @@ The displayed number must be preceded by the message "You entered a number." */
 
 import java.io.*;
 
-public class Main {
+public class Task01_003 {
 
 public static void main(String[] args) throws Exception {
    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
