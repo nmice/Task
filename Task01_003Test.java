@@ -5,7 +5,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
- * Created by Mike Neginsky on 13.01.2016.
+ * Created by Mike Neginsky on 13.05.2018.
  */
 public class Task01_003Test {
 
