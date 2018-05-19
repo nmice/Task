@@ -1,6 +1,7 @@
-package com.task;
-/* Task01_017 - Write 18 mathematical expressions
-in accordance with the rules of the programming language */
+/**
+ * Task01_017 - Write 18 mathematical expressions
+ * in accordance with the rules of the programming language
+ */
 
 public class Task01_017 {
 

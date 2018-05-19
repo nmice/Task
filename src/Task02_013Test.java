@@ -1,24 +1,42 @@
-package com.task;
-
-import org.junit.*;
-
-import static org.junit.Assert.*;
-
 /**
- * Created by Mike Neginsky on 13.05.2018.
+ * Created by Mike Neginsky on 18.05.2018.
  */
+
+import java.io.PrintStream;
+
 public class Task02_013Test {
 
-    private Task02_013 task
+    public static void main(String[] args) {
+/*        PrintStream initialOut = System.out;
+        PrintStreamAdapter printStreamAdapter = new PrintStreamAdapter(initialOut);
 
-    @Before
-    public void init() { task = new Task02_013(); }
+        System.setOut(printStreamAdapter);
+        Task02_013.printn2(545);
 
-    @After
-    public void tearDown() { task = null; }
+        String result = printStreamAdapter.getOutputString();
+        System.out.println("You entered a number 545".equals(result) ? "OK" : "FAIL");
+    }
 
-    @org.junit.Test
-    public void main() {
-        assertTrue(main(213) == "312");
+    private static class PrintStreamAdapter extends PrintStream {
+        private String outputString;
+
+        public String getOutputString() {
+            return outputString;
+        }
+
+        public void setOutputString(String outputString) {
+            this.outputString = outputString;
+        }
+
+        @Override
+        public void println(String x) {
+            outputString = x;
+            super.println(x);
+        }
+
+        public PrintStreamAdapter(PrintStream initialOut) {
+            super(initialOut);
+        }
+        */
     }
 }

@@ -1,10 +1,9 @@
-package com.task;
-
-import java.io.PrintStream;
-
 /**
  * Created by Mike Neginsky on 13.05.2018.
  */
+
+import java.io.PrintStream;
+
 public class Task01_003Test {
 
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class Task01_003Test {
         Task01_003.printn2(545);
 
         String result = printStreamAdapter.getOutputString();
-        System.out.println("You entered a number 545".equals(result)?"OK":"FAIL");
+        System.out.println("You entered a number 545".equals(result) ? "OK" : "FAIL");
     }
 
     private static class PrintStreamAdapter extends PrintStream {
