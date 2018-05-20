@@ -13,8 +13,9 @@ public class Task02_039 {
         if (position > 43200) position = position - 43200;
         System.out.println("position=" + position);
         double degrees = position / 120;
-        if (degrees > 180)
+        if (degrees > 180) {
             degrees = 180 - (degrees - 180);
+        }
         System.out.println("degrees=" + degrees);
     }
 }
