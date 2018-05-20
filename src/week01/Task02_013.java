@@ -1,4 +1,7 @@
 package week01;
+
+import java.util.Scanner;
+
 /**
  * Task02_013 - Given a three-digit number.
  * Find the number obtained by reading its digits from right to left.
@@ -6,10 +9,10 @@ package week01;
 
 public class Task02_013 {
 
-    public static void main(String[] args) throws Exception {
-        int i = 213;
+    public static void main(String[] args){
+        int i = new Scanner(System.in).nextInt();
         //int n=(invert(i));
-        printresult(invert(i)); // call method "printresult" - printing value "i" after method "invert":
+        System.out.println(invert(i)); // call method "printResult" - printing value "i" after method "invert":
     }
 
     public static int invert(int p) {
@@ -19,11 +22,4 @@ public class Task02_013 {
         int iinvert = digit * 100 + ten * 10 + hundred;
         return iinvert; //in this string of code i changed return "i" to return invert value of "i"
     }
-
-    public static void printresult(int iinvertion) {
-        System.out.println(iinvertion); //print value "i" after method "invert"
-
-    }
-
-
 }

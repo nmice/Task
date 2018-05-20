@@ -8,10 +8,15 @@ package week01;
 import java.io.*;
 
 public class Task02_031 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("Input n - a three-digit number:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(reader.readLine());
+        int n = 0;
+        try {
+            n = Integer.parseInt(reader.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         int hundred = n / 100;
         int ten = (n - hundred * 100) / 10;
         int digit = n - hundred * 100 - ten * 10;
