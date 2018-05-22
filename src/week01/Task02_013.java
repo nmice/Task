@@ -1,15 +1,14 @@
 package week01;
-
-import java.util.Scanner;
-
 /**
  * Task02_013 - Given a three-digit number.
  * Find the number obtained by reading its digits from right to left.
  */
 
+import java.util.Scanner;
+
 public class Task02_013 {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int i = new Scanner(System.in).nextInt();
         //int n=(invert(i));
         System.out.println(invert(i)); // call method "printResult" - printing value "i" after method "invert":

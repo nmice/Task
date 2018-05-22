@@ -1,12 +1,11 @@
 package week01;
-
-import java.util.Scanner;
-
 /**
  * Task02_039 - Given integers h, m, s (0 <h ≤ 23, 0 ≤ m ≤ 59, 0 ≤ s ≤ 59), indicating the time:
  * "h hours, m minutes, s seconds". Determine the angle (in degrees) between the clockwise position
  * at the beginning of the day and at the specified time.
  */
+
+import java.util.Scanner;
 
 public class Task02_039 {
     public static void main(String[] args) {

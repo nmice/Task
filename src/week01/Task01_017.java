@@ -1,4 +1,8 @@
 package week01;
+/**
+ * Task01_017 - Write 18 mathematical expressions
+ * in accordance with the rules of the programming language
+ */
 
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
@@ -6,12 +10,6 @@ import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.PI;
 import static java.lang.Math.abs;
-
-/**
- * Task01_017 - Write 18 mathematical expressions
- * in accordance with the rules of the programming language
- */
-
 
 public class Task01_017 {
 

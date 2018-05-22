@@ -6,7 +6,6 @@ package week01;
 import util.PrintStreamAdapter;
 
 import java.io.ByteArrayInputStream;
-import java.io.PrintStream;
 
 public class Task02_013Test {
 

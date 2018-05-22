@@ -8,7 +8,7 @@ import java.io.*;
 
 public class Task01_003 {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int n = 0;
         try {
