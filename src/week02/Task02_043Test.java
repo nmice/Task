@@ -1,5 +1,4 @@
 package week02;
-
 /**
  * Created by Mike Neginsky on 22.05.2018.
  */

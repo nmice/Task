@@ -1,5 +1,4 @@
 package week02;
-
 /**
  * Two integers a and b are given. If a is divisible by b or b is divisible by a,
  * then output 1, otherwise any other number. Conditional Operators and loop operators do not use.
