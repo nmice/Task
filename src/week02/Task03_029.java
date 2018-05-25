@@ -75,6 +75,4 @@ public class Task03_029 {
             System.out.println("at least one of the numbers X, Y, Z is greater than 100 - NOT");
         }
     }
-
-
 }
