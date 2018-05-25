@@ -1,5 +1,4 @@
 package week02;
-
 /**
  * Write a condition that is true when:
  * a) each of the numbers X and Y is odd;
