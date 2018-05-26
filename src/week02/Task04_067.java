@@ -9,7 +9,7 @@ import static java.lang.Math.random;
 public class Task04_067 {
 
     public static void main(String[] args) {
-        int day = 15;//(int) (random() * 365);
+        int day = (int) (random() * 365);
         System.out.println("Day of Year - " + day + ". Is " + printDayOfWeek(day));
     }
 
