@@ -6,10 +6,12 @@ package week02;
  * Determine the signal of what color is lit for pedestrians at this moment.
  */
 
+import static java.lang.Math.*;
+
 public class Task04_036 {
 
     public static void main(String[] args) {
-        int t = (int) (Math.random() * 100);
+        int t = (int) (random() * 100);
         System.out.println("t = " + t + "; Traffic light is " + printcolor(t));
     }
 
