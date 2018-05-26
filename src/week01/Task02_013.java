@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Task02_013 {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         int i = new Scanner(System.in).nextInt();
         //int n=(invert(i));
         System.out.println(invert(i)); // call method "printResult" - printing value "i" after method "invert":

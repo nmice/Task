@@ -23,6 +23,7 @@ public class PrintStreamAdapter extends PrintStream {
     @Override
     public void println(int x) {
         outputInt = x;
+        outputString = String.valueOf(x);
         super.println(x);
     }
 
