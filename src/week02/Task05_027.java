@@ -16,10 +16,10 @@ public class Task05_027 {
         Scanner scanner = new Scanner(System.in);
         int a = scanner.nextInt();
         int b = scanner.nextInt();
-        System.out.println(getResult(100, 500));//exerciseA
-        System.out.println(getResult(a, 500));//exerciseB
-        System.out.println(getResult(-10, b));//exerciseC
-        System.out.println(getResult(a, b));//exerciseD
+        System.out.println(getResult(100, 500) + " ");//exerciseA
+        System.out.println(getResult(a, 500) + " ");//exerciseB
+        System.out.println(getResult(-10, b) + " ");//exerciseC
+        System.out.println(getResult(a, b) + " ");//exerciseD
     }
 
     public static int getResult(int a, int b) {
