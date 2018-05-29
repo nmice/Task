@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class Task04_115 {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please input year: ");
         int n = scan.nextInt();

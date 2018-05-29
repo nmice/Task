@@ -4,22 +4,21 @@ package week02;
  * weekends (Saturday and Sunday) or workers, if January 1 - Monday.
  */
 
+import java.util.Scanner;
+
 import static java.lang.Math.random;
 
 public class Task04_067 {
 
-    public static void main(String[] args) {
-        int day = (int) (random() * 365);
-        System.out.println("Day of Year - " + day + ". Is " + printDayOfWeek(day));
+    public static void main(String... args) {
+        Scanner scanner = new Scanner(System.in);
+        int day = scanner.nextInt(); // input the day of the year number
+        //int day = (int) (random() * 365);
+        System.out.println("Day of Year - " + day + ". Is " + calcDayOfWeek(day));
     }
 
-    public static String printDayOfWeek(int t) {
-        String dayofweek;
-        if (t % 7 > 0 && t % 7 <= 5) {
-            dayofweek = "Workers";
-        } else {
-            dayofweek = "Weekends";
-        }
-        return dayofweek;
+    public static String calcDayOfWeek(int t) {
+        String dayOfWeek = (t % 7 > 0 && t % 7 <= 5) ? "Workers" : "Weekends";
+        return dayOfWeek;
     }
 }

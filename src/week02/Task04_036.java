@@ -6,22 +6,21 @@ package week02;
  * Determine the signal of what color is lit for pedestrians at this moment.
  */
 
+import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Task04_036 {
 
-    public static void main(String[] args) {
-        int t = (int) (random() * 100);
-        System.out.println("t = " + t + "; Traffic light is " + printcolor(t));
+    public static void main(String... args) {
+        Scanner scanner = new Scanner(System.in);
+        int t= scanner.nextInt(); // input of traffic light time in minutes
+        //int t = (int) (random() * 100);
+        //System.out.println("t = " + t + "; Traffic light is " + timeToColor(t));
+        System.out.println("t = " + t + "; Traffic light is " + (t % 5 < 3 ? "Green" : "Red"));
     }
 
-    public static String printcolor(int t) {
+    /*public static String timeToColor(int t) {
         String color;
-        if (t % 5 < 3) {
-            color = "Green";
-        } else {
-            color = "Red";
-        }
-        return color;
-    }
+        return color = t % 5 < 3 ? "Green" : "Red";
+    }*/
 }

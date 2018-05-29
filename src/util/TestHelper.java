@@ -8,6 +8,7 @@ public class TestHelper {
         System.setOut(printStreamAdapter);
         System.setIn(new ByteArrayInputStream(mockedInput.getBytes()));
         task.run();//runs a task
+
         String result = printStreamAdapter.getOutputString();
         if (expectedOutput.equals(result)) {
             System.out.println("OK");

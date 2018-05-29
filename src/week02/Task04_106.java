@@ -8,24 +8,26 @@ import java.util.Scanner;
 
 public class Task04_106 {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please input number of month (1-12): ");
-        int n = scan.nextInt();
-        chekMonth(n);
+        int monthNumber = scan.nextInt();
+        while (monthNumber > 12 || monthNumber < 1) {
+            System.out.println("Incorrect number, try again!");
+            monthNumber = scan.nextInt();
+        }
+        System.out.println(monthNumberToMonth(monthNumber));
     }
 
-    public static void chekMonth(int n) {
+    public static String monthNumberToMonth(int n) {
+        String month;
         if (n < 3 || n == 12) {
-            System.out.println("Winter");
+            month = "Winter";
         } else if (n < 6) {
-            System.out.println("Spring");
-        } else if (n < 9) {
-            System.out.println("Summer");
-        } else if (n < 12) {
-            System.out.println("Autumn");
+            month = ("Spring");
         } else {
-            System.out.println("Incorrect month-number!");
+            month = n < 9 ? "Summer" : "Autumn";
         }
+        return month;
     }
 }

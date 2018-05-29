@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Task05_010 {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Scanner scan = new Scanner(System.in).useLocale(Locale.US);
         System.out.println("Please enter today's course of dollar:");
         double course = scan.nextDouble();

@@ -11,27 +11,22 @@ import java.util.Calendar;
 
 public class Task04_015 {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your month of birth: ");
         int month = scanner.nextInt();
         System.out.println("Please enter your year of birth: ");
         int year = scanner.nextInt();
-        calcAge(month, year);
+        System.out.println("You are " + calcAge(month, year) + " years old");
     }
 
-    public static void calcAge(int month, int year) {
+    public static int calcAge(int month, int year) {
         Calendar calendar = Calendar.getInstance();
         //int Date = calendar.get(Calendar.DAY_OF_MONTH);
         int Month = calendar.get(Calendar.MONTH);
         int Year = calendar.get(Calendar.YEAR);
         System.out.println("Now is " + Month + "." + Year);
-        int age;
-        if (Month >= month) {
-            age = Year - year;
-        } else {
-            age = Year - year - 1;
-        }
-        System.out.println("You are " + age + " years old");
+        int age = Month >= month ? Year - year : Year - year - 1;
+        return age;
     }
 }
