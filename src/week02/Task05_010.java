@@ -4,6 +4,8 @@ package week02;
  * current rate (the value of the course is entered from the keyboard).
  */
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -18,9 +20,11 @@ public class Task05_010 {
 
     public static void tableOfCourse(double course) {
         double value;
-        for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 21; i++) {
             value = course * i;
-            System.out.print(i + "$ = " + value + " ");
+            BigDecimal bdvalue = new BigDecimal(value);
+            bdvalue = bdvalue.setScale(2,RoundingMode.HALF_UP);
+            System.out.print(i + "$ = " + bdvalue + " ");
             if (i % 5 == 0) {
                 System.out.println();
             }
