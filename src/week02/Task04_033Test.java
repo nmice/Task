@@ -7,7 +7,7 @@ import util.TestHelper;
 
 public class Task04_033Test {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         TestHelper.checkLastString(Task04_033::main, "26", "even");
         TestHelper.checkLastString(Task04_033::main, "87", "odd");
     }

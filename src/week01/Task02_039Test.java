@@ -8,7 +8,7 @@ import util.PrintStreamAdapter;
 import java.io.ByteArrayInputStream;
 
 public class Task02_039Test {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         PrintStreamAdapter printStreamAdapter = new PrintStreamAdapter(System.out);
         System.setOut(printStreamAdapter);
         String data = 21 + " " + 0 + " " + 0 + " ";

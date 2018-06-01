@@ -16,4 +16,8 @@ public class TestHelper {
             System.err.println("FAILED, expected: " + expectedOutput + "| actual: " + result);
         }
     }
+
+    public static void checkAllStrings(Runnable task, String mockedInput, String... expectedOutput) {
+        //todo: implement Viktor Bugaenko
+    }
 }

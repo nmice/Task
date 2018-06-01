@@ -10,13 +10,13 @@ import java.util.Scanner;
 public class Task05_064 {
 
     public static void main(String... args) {
-        Scanner scan = new Scanner(System.in).useLocale(Locale.US);
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         double peoples = 0, areas = 0;
         for (int i = 1; i <= 12; i++) {
             System.out.println("Inhabitants in " + i + " district (in thousands): ");
-            double inhabitants = scan.nextDouble();
+            double inhabitants = scanner.nextDouble();
             System.out.println("Area of " + i + " district (in km2): ");
-            double areaDistrict = scan.nextDouble();
+            double areaDistrict = scanner.nextDouble();
             peoples += inhabitants;
             areas += areaDistrict;
         }

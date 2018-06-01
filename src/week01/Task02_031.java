@@ -8,7 +8,7 @@ package week01;
 import java.io.*;
 
 public class Task02_031 {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         System.out.println("Input n - a three-digit number:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int n = 0;

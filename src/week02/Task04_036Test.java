@@ -7,7 +7,7 @@ import util.TestHelper;
 
 public class Task04_036Test {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         TestHelper.checkLastString(Task04_036::main, "6", "t = 6; Traffic light is Green");
         TestHelper.checkLastString(Task04_036::main, "9", "t = 9; Traffic light is Red");
     }
