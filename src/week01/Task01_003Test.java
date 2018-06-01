@@ -12,7 +12,7 @@ import java.io.ByteArrayInputStream;
 public class Task01_003Test {
 
     public static void main(String... args) {
-        TestHelper.checkLastString(Task01_003::main, "525", "You entered a number 525");
+        TestHelper.checkLastString(Task01_003::main, "525", "   You entered a number 525  ");
 //        PrintStreamAdapter printStreamAdapter = new PrintStreamAdapter(System.out);
 //        System.setOut(printStreamAdapter);
 //        int randomDigit = (int) (Math.random() * 100);

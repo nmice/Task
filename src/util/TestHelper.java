@@ -10,7 +10,7 @@ public class TestHelper {
         task.run();//runs a task
 
         String result = printStreamAdapter.getOutputString();
-        if (expectedOutput.equals(result)) {
+        if (expectedOutput.trim().equals(result.trim())) {
             System.out.println("OK");
         } else {
             System.err.println("FAILED, expected: " + expectedOutput + "| actual: " + result);
