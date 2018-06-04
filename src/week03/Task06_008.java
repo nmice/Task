@@ -12,8 +12,8 @@ public class Task06_008 {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        //printSquareSequence(num);
-        printSquareBeforeNum(num);
+        //printSquareSequence(num);//1 solution
+        printSquareBeforeNum(num);//2 solution
     }
 
     /*public static void printSquareSequence(int num) {

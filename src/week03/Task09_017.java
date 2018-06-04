@@ -11,7 +11,7 @@ public class Task09_017 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Word: ");
         String word = scanner.nextLine();
-        System.out.print("The word begins and ends with the same letter? ");
+        System.out.println("The word begins and ends with the same letter? ");
         System.out.println(getMatchLetters(word));
     }
 

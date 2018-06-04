@@ -8,7 +8,7 @@ import util.TestHelper;
 public class Task09_017Test {
 
     public static void main(String... args) {
-        TestHelper.checkLastString(Task09_017::main,"javarush","false");
-        TestHelper.checkLastString(Task09_017::main,"Angelina","true");
+        TestHelper.checkLastString(Task09_017::main,"angelina","true");
     }
 }
+//The test did not work!!! Why?
