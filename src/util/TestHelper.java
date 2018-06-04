@@ -18,6 +18,7 @@ public class TestHelper {
     }
 
     public static void checkAllStrings(Runnable task, String mockedInput, String... expectedOutput) {
+
         //todo: implement Viktor Bugaenko
     }
 }
