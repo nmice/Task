@@ -11,11 +11,19 @@ public class Task09_022 {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         String word = scanner.nextLine();
-        int halfLength = word.length() / 2;
+        System.out.println(getHalfWord(word));
+    }
 
-        String s = "This is a demo of the getChars m9060462352
-        char buf[] = new char[halfLength];
+    /*public static char[] getHalfWord(String word) {
+        int halfLength = word.length() / 2;
+        char result[] = new char[halfLength];
         word.getChars(0, halfLength, buf, 0);
-        System.out.println(buf);
+        return result;
+    }*/
+    public static String getHalfWord(String word) {
+        String result = word.substring(0, word.length()/2);
+        return result;
     }
 }
+
+

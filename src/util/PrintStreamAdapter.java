@@ -25,7 +25,13 @@ public class PrintStreamAdapter extends PrintStream {
         super.println(x);
     }
 
-    @Override //construct 4 dollar-Task
+    @Override
+    public void print(String x) { //constructor 4 print(String) (Task06_008Test)
+        outputString = x;
+        super.print(x);
+    }
+
+    @Override //constructor 4 dollar-Task
     public void println(double x) {
         outputDouble = x;
         outputString = String.valueOf(x);
@@ -37,6 +43,13 @@ public class PrintStreamAdapter extends PrintStream {
         outputInt = x;
         outputString = String.valueOf(x);
         super.println(x);
+    }
+
+    @Override
+    public void print(int x) { //constructor 4 print(int) (Task06_008Test)
+        outputInt = x;
+        outputString = String.valueOf(x);
+        super.print(x);
     }
 
     public PrintStreamAdapter(PrintStream initialOut) {

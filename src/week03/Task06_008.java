@@ -11,12 +11,13 @@ public class Task06_008 {
 
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number:");
         int num = scanner.nextInt();
-        //printSquareSequence(num);//1 solution
-        printSquareBeforeNum(num);//2 solution
+        printSquareSequence(num);//solution ONE
+        //printSquareBeforeNum(num);//solution TWO
     }
 
-    /*public static void printSquareSequence(int num) {
+    public static void printSquareSequence(int num) { // solution ONE
         int[] squareSequence = new int[1000];
         int i = 1, j = 1;
         for (int k = 0; k < 1000; k++) {
@@ -29,9 +30,9 @@ public class Task06_008 {
                 return;
             }
         }
-    }*/
+    }
 
-    public static void printSquareBeforeNum(int num) {
+    /*public static void printSquareBeforeNum(int num) { // solution ONE
         int x = (int) Math.sqrt(num);
         int[] squareArray = new int[x];
         for (int i = 0, j = 1, k = 0; i < x; i++, j += 2) {
@@ -39,5 +40,5 @@ public class Task06_008 {
             k = squareArray[i];
         }
         System.out.println(Arrays.toString(squareArray));
-    }
+    }*/
 }

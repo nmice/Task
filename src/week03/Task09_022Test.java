@@ -5,10 +5,9 @@ package week03;
 
 import util.TestHelper;
 
-public class Task09_015Test {
-
+public class Task09_022Test {
 
     public static void main(String... args) {
-        TestHelper.checkLastString(Task09_015::main, "java 3","v"); }
+        TestHelper.checkLastString(Task09_022::main,"Javacoder!", "Javac");
+    }
 }
-//The test did not work!!!
