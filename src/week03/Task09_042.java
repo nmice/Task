@@ -10,8 +10,9 @@ public class Task09_042 {
 
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the word: ");
         String word = scanner.nextLine();
-        System.out.println(getDwor(word));
+        System.out.println("The word after the last letter is substituted for the beginning: " + getDwor(word));
     }
 
     public static String getDwor(String word) {

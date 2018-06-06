@@ -8,6 +8,7 @@ import util.TestHelper;
 public class Task09_042Test {
 
     public static void main(String... args) {
-        TestHelper.checkLastString(Task09_042::main,"javacode", "ejavacod");
+        TestHelper.checkLastString(Task09_042::main,"javacode",
+                "The word after the last letter is substituted for the beginning: ejavacod");
     }
 }
