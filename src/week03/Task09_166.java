@@ -16,11 +16,13 @@ public class Task09_166 {
 
     public static String swapWords(String sentence) {
         String newSentence = sentence.trim(); //remove " "
-        String[] wordsArray = newSentence.split(" ");
+        String[] wordsArray = newSentence.split("\\s");
 
 
-        char[] chars = new char[newSentence.length()];// new char massive wo " "
-        newSentence.getChars(0, 5, chars, 0);
+        String[] words = newSentence.split("\\s"); //
+
+        //char[] chars = new char[newSentence.length()];// new char massive wo " "
+        //newSentence.getChars(0, 5, chars, 0);
 
         return newSentence;
     }
