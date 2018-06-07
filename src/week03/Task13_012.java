@@ -129,51 +129,50 @@ public class Task13_012 {
                 System.out.println(employe5.name);
             }
             if (CalcExperience.calcExp(employe6.data) >= 3) {
-                System.out.println(employe1.name);
+                System.out.println(employe6.name);
             }
             if (CalcExperience.calcExp(employe7.data) >= 3) {
-                System.out.println(employe2.name);
+                System.out.println(employe7.name);
             }
             if (CalcExperience.calcExp(employe8.data) >= 3) {
-                System.out.println(employe3.name);
+                System.out.println(employe8.name);
             }
             if (CalcExperience.calcExp(employe9.data) >= 3) {
-                System.out.println(employe4.name);
+                System.out.println(employe9.name);
             }
             if (CalcExperience.calcExp(employe10.data) >= 3) {
-                System.out.println(employe5.name);
+                System.out.println(employe10.name);
             }
             if (CalcExperience.calcExp(employe11.data) >= 3) {
-                System.out.println(employe1.name);
+                System.out.println(employe11.name);
             }
             if (CalcExperience.calcExp(employe12.data) >= 3) {
-                System.out.println(employe2.name);
+                System.out.println(employe12.name);
             }
             if (CalcExperience.calcExp(employe13.data) >= 3) {
-                System.out.println(employe3.name);
+                System.out.println(employe13.name);
             }
             if (CalcExperience.calcExp(employe14.data) >= 3) {
-                System.out.println(employe4.name);
+                System.out.println(employe14.name);
             }
             if (CalcExperience.calcExp(employe15.data) >= 3) {
-                System.out.println(employe5.name);
+                System.out.println(employe15.name);
             }
             if (CalcExperience.calcExp(employe16.data) >= 3) {
-                System.out.println(employe1.name);
+                System.out.println(employe16.name);
             }
             if (CalcExperience.calcExp(employe17.data) >= 3) {
-                System.out.println(employe2.name);
+                System.out.println(employe17.name);
             }
             if (CalcExperience.calcExp(employe18.data) >= 3) {
-                System.out.println(employe3.name);
+                System.out.println(employe18.name);
             }
             if (CalcExperience.calcExp(employe19.data) >= 3) {
-                System.out.println(employe4.name);
+                System.out.println(employe19.name);
             }
             if (CalcExperience.calcExp(employe20.data) >= 3) {
-                System.out.println(employe5.name);
+                System.out.println(employe20.name);
             }
-
         }
     }
 }
