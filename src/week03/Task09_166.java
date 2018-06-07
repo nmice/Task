@@ -15,15 +15,14 @@ public class Task09_166 {
     }
 
     public static String swapWords(String sentence) {
-        String newSentence = sentence.trim(); //remove " "
-        String[] wordsArray = newSentence.split("\\s");
-
-
-        String[] words = newSentence.split("\\s"); //
-
-        //char[] chars = new char[newSentence.length()];// new char massive wo " "
-        //newSentence.getChars(0, 5, chars, 0);
-
-        return newSentence;
+        String newSentence = sentence.trim(); // remove " ".
+        String[] wordsArray = newSentence.split("\\s");// create massive of words wo " ".
+        int arrSize = wordsArray.length;// calc length of massive wordsArray
+        String firstWord = wordsArray[0];// first word in String
+        String lastWord = wordsArray[arrSize - 1]; // last word in String
+        wordsArray[0] = lastWord; // first element of massive is last word
+        wordsArray[arrSize - 1] = firstWord; // last element of massive is first word
+        newSentence = String.join(" ", wordsArray); // transform massive to words with " "
+        return newSentence;// return string
     }
 }
