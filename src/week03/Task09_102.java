@@ -24,12 +24,17 @@ public class Task09_102 {
         System.out.println("Turn the word from \"k\" to \"s\": " + invertLetters(word, k, s));
     }
 
+    /*public static String invertLetters(String str, int k, int s) {
+        return str.substring(0, k) + new StringBuilder(str.substring(k,
+                s)).reverse() + str.substring(s, str.length());*/
+
     public static String invertLetters(String word, int k, int s) {
         String movedSymbol, invertedString = "", result;
         for (int i = s; i - k >= 0; i--) {
             movedSymbol = word.substring(i - 1, i);
             invertedString = invertedString + movedSymbol;
         }
+
         if (k == 1) {
             result = invertedString + word.substring(s, word.length());
         } else if (s == 15) {

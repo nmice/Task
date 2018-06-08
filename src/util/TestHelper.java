@@ -17,9 +17,8 @@ public class TestHelper {
         }
     }
 
-    /*public static void checkAllStrings(Runnable task, String mockedInput, String... expectedOutput) {
-        //todo: implement Viktor Bugaenko
-        PrintStreamAdapter printStreamAdapter = new PrintStreamAdapter(System.out);
+    public static void checkAllStrings(Runnable task, String mockedInput, String... expectedOutput) {
+        /*PrintStreamAdapter printStreamAdapter = new PrintStreamAdapter(System.out);
         System.setOut(printStreamAdapter);
         System.setIn(new ByteArrayInputStream(mockedInput.getBytes()));
         task.run();//runs a task
@@ -29,6 +28,6 @@ public class TestHelper {
             System.out.println("OK");
         } else {
             System.err.println("FAILED, expected: " + expectedOutput + "| actual: " + result);
-        }
-}   */
+        }*/
+    }
 }
