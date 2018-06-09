@@ -8,7 +8,7 @@ import util.TestHelper;
 public class Task12_023Test {
 
     public static void main(String... args) {
-        TestHelper.checkAllStrings(Task11_158::main, "",
+        TestHelper.checkAllStrings(Task12_023::main, "",
                 "1 0 0 0 0 0 1",
                 "0 1 0 0 0 1 0",
                 "0 0 1 0 1 0 0",

@@ -10,46 +10,33 @@ import java.util.Scanner;
 public class Task11_158 {
 
     public static void main(String... args) {
-        int[] array = new int[10];
         Scanner scanner = new Scanner(System.in);
-        int s;
-        for (int i = 0; i <= array.length - 1; i++) {
-            array[i] = scanner.nextInt();
-        }
-        System.out.println("Your Array: " + Arrays.toString(array));
-        System.out.println("Remove Duplicate: " + Arrays.toString(deleteDuplex(array)));
-    }
-
-    private static int[] deleteDuplex(int[] array) {
-        int[] resultArray;
-        int[] tempArray = new int[array.length];
-        int i = 0, ind = 1, k = 0;
-        boolean isDuplex = false;
-
-        while (i < array.length) {
-            isDuplex = false;
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[i] == array[j]) {
-                    ind = j;
-                    tempArray[k] = array[j];
-                    isDuplex = true;
-                }
-            }
-            if (!isDuplex)
-                tempArray[k] = array[i];
-            else {
-                i = ind;
-                isDuplex = false;
-            }
+        System.out.println("Enter a value of massive elements:");
+        int massiveLength = scanner.nextInt();
+        int[] mas = new int[massiveLength];
+        System.out.println("Enter " + massiveLength + " numbers - elements of massive:");
+        int i = 0;
+        while (i < massiveLength) {
+            mas[i] = scanner.nextInt();
             i++;
-            k++;
         }
+        System.out.println("Your Array: " + "\r\n" + Arrays.toString(mas));
+        invertMas(mas);
 
-        resultArray = new int[k];
-
-        for (int l = 0; l < k; l++)
-            resultArray[l] = tempArray[l];
-
-        return resultArray;
+        public static int[] invertMas (int... mas){
+            String movedSymbol, invertedString = "", result;
+            for (int i = s; i - k >= 0; i--) {
+                movedSymbol = word.substring(i - 1, i);
+                invertedString = invertedString + movedSymbol;
+            }
+            if (k == 1) {
+                result = invertedString + word.substring(s, word.length());
+            } else if (s == 15) {
+                result = word.substring(0, k - 1) + invertedString;
+            } else {
+                result = word.substring(0, k - 1) + invertedString + word.substring(s, word.length());
+            }
+            return result;
+        }
     }
 }
