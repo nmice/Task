@@ -38,7 +38,7 @@ public class Task13_012 {
         employees.add(new Employee(NAME20, ADDRESS20, DATE20));
 
         for (Employee employee : employees) {
-            if (employee.getExperience() >= 5) {// CalcExperience.calcExp(employee1.data) >= 3) {
+            if (employee.getExperience() >= 5) {// CalcExperience.calcExp(employee1.data) >= 5) {
                 System.out.println(employee);
             }
         }

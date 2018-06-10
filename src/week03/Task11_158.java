@@ -41,14 +41,14 @@ public class Task11_158 {
             }
             if (noDuplicate) {
                 reverseArrayWoDuplicate[newJ] = array[k];
-                System.out.println(array[k] + " - " + k + "-th element of mas is " + reverseArrayWoDuplicate[newJ] + " - " + newJ + "-th element of masWoDuplicate");
+                System.out.println(array[k] + " - " + k + "-th element of array is " + reverseArrayWoDuplicate[newJ] + " - " + newJ + "-th element of reverseArrayWoDuplicate");
                 newJ++;
             }
             k--;
             noDuplicate = true;
         }
         reverseArrayWoDuplicate[newJ] = array[0];
-        System.out.println(array[0] + " - 0-th element of mas is " + reverseArrayWoDuplicate[newJ] + " - " + newJ + "-th element of masWoDuplicate");
+        System.out.println(array[0] + " - 0-th element of array is " + reverseArrayWoDuplicate[newJ] + " - " + newJ + "-th element of reverseArrayWoDuplicate");
 
         //create new Massive wo duplicate true value of elements
         int[] newMas = new int[newJ + 1];
