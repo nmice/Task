@@ -13,9 +13,7 @@ public class PrintStreamAdapter extends PrintStream {
     //begin: array of expectedOutput
     private ArrayList<String> outputArrayList = new ArrayList<>();
 
-    public ArrayList getOutputArrayList() {
-        String x;
-        outputArrayList.add(x);
+    public ArrayList<String> getOutputArrayList() {
         return outputArrayList;
     }
     //end: array of expectedOutput
@@ -35,6 +33,7 @@ public class PrintStreamAdapter extends PrintStream {
     @Override
     public void println(String x) {
         outputString = x;
+        outputArrayList.add(x);
         //ArrayList list = new ArrayList();
         //list.add(x);
         //for (String x : (List<String>) list) {
@@ -46,6 +45,7 @@ public class PrintStreamAdapter extends PrintStream {
     public void println(int x) {
         outputInt = x;
         outputString = String.valueOf(x);
+        outputArrayList.add(String.valueOf(x));
         super.println(x);
     }
 
@@ -53,14 +53,8 @@ public class PrintStreamAdapter extends PrintStream {
     public void println(double x) { //constructor 4 dollar-Task
         outputDouble = x;
         outputString = String.valueOf(x);
-        super.print(x);
-    }
-
-    @Override
-    public void print(int x) { //constructor 4 print(int) (Task06_008Test)
-        outputInt = x;
-        outputString = String.valueOf(x);
-        super.print(x);
+        outputArrayList.add(String.valueOf(x));
+        super.println(x);
     }
 
     public PrintStreamAdapter(PrintStream initialOut) {

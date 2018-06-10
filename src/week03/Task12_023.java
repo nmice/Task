@@ -1,5 +1,7 @@
 package week03;
 
+import java.util.Scanner;
+
 /**
  * Fill a two-dimensional array with a size of 7 x 7 as shown in the figure.
  */
@@ -7,6 +9,8 @@ package week03;
 public class Task12_023 {
 
     public static void main(String... args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
         int[][] array = new int[7][7];
         int k,i,j;
 

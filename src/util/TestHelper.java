@@ -1,6 +1,7 @@
 package util;
 
 import java.io.ByteArrayInputStream;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class TestHelper {
@@ -24,11 +25,17 @@ public class TestHelper {
         System.setIn(new ByteArrayInputStream(mockedInput.getBytes()));
         task.run();//runs a task
 
-        ArrayList result = printStreamAdapter.getOutputArrayList();
-        if (expectedOutput.equals(result)) {
-            System.out.println("OK");
-        } else {
-            System.err.println("FAILED, expected: " + expectedOutput + "| actual: " + result);
+        ArrayList<String> result = printStreamAdapter.getOutputArrayList();
+
+        String[] resultArray = result.toArray(new String[0]);
+        for (int i = 0; i < resultArray.length; i++) {
+            if (expectedOutput[i].equals(resultArray[i])) {
+                System.out.println("OK FOR STRING");
+            } else {
+                System.err.println("FAILED, expected: " + expectedOutput[i] + "| actual: " + resultArray[i]);
+                return;
+            }
+            System.out.println("OK FOR TASK");
         }
     }
 }
