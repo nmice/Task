@@ -1,5 +1,8 @@
 package week03.task13_012;
 
+
+import java.time.LocalDate;
+
 public interface EmployeeConstants {
 
     static final String NAME1 = "John Den Malcovich";
@@ -44,24 +47,24 @@ public interface EmployeeConstants {
     static final String ADDRESS19 = "Minsk, Belarus";
     static final String ADDRESS20 = "Moscow, Russia";
 
-    static final int[] DATE1 = new int[]{5, 2015};
-    static final int[] DATE2 = new int[]{2, 2018};
-    static final int[] DATE3 = new int[]{1, 2010};
-    static final int[] DATE4 = new int[]{5, 2015};
-    static final int[] DATE5 = new int[]{2, 2018};
-    static final int[] DATE6 = new int[]{1, 2010};
-    static final int[] DATE7 = new int[]{5, 2015};
-    static final int[] DATE8 = new int[]{2, 2018};
-    static final int[] DATE9 = new int[]{1, 2010};
-    static final int[] DATE10 = new int[]{5, 2015};
-    static final int[] DATE11 = new int[]{2, 2018};
-    static final int[] DATE12 = new int[]{1, 2010};
-    static final int[] DATE13 = new int[]{5, 2015};
-    static final int[] DATE14 = new int[]{2, 2018};
-    static final int[] DATE15 = new int[]{1, 2010};
-    static final int[] DATE16 = new int[]{5, 2015};
-    static final int[] DATE17 = new int[]{2, 2018};
-    static final int[] DATE18 = new int[]{1, 2010};
-    static final int[] DATE19 = new int[]{5, 2015};
-    static final int[] DATE20 = new int[]{2, 2018};
+    static final LocalDate DATE1 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE2 = LocalDate.of(2018, 2, 1);
+    static final LocalDate DATE3 = LocalDate.of(2010, 2, 1);
+    static final LocalDate DATE4 = LocalDate.of(2015, 12, 1);
+    static final LocalDate DATE5 = LocalDate.of(2018, 2, 1);
+    static final LocalDate DATE6 = LocalDate.of(2010, 1, 1);
+    static final LocalDate DATE7 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE8 = LocalDate.of(2018, 10, 1);
+    static final LocalDate DATE9 = LocalDate.of(2010, 3, 1);
+    static final LocalDate DATE10 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE11 = LocalDate.of(2018, 2, 1);
+    static final LocalDate DATE12 = LocalDate.of(2010, 4, 1);
+    static final LocalDate DATE13 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE14 = LocalDate.of(2018, 2, 1);
+    static final LocalDate DATE15 = LocalDate.of(2010, 7, 1);
+    static final LocalDate DATE16 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE17 = LocalDate.of(2018, 2, 1);
+    static final LocalDate DATE18 = LocalDate.of(2010, 10, 1);
+    static final LocalDate DATE19 = LocalDate.of(2015, 5, 1);
+    static final LocalDate DATE20 = LocalDate.of(2018, 2, 1);
 }
