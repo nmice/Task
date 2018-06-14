@@ -17,7 +17,7 @@ public class TaskG01_01_factorial {
         System.out.println(getFactorial(num));
         //2nd solution:
         BigInteger factorial = new BigInteger("1");
-        getFactorial1(factorial, num);
+        printFactorial(factorial, num);
 
     }
 
@@ -30,14 +30,14 @@ public class TaskG01_01_factorial {
         return factorial;
     }
 
-    public static void getFactorial1(BigInteger factorial , int num) {
-        if (num==0) {
+    public static void printFactorial(BigInteger factorial, int num) {
+        if (num == 0) {
             System.out.println(factorial);
         } else {
             BigInteger numBig = new BigInteger(String.valueOf(num));
             factorial = factorial.multiply(numBig);
             num--;
-            getFactorial1(factorial, num);
+            printFactorial(factorial, num);
         }
     }
 }
