@@ -14,30 +14,27 @@ public class TaskG01_01_factorial {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
         //1st solution:
-        System.out.println(getFactorial(num));
+        System.out.println(getFactorialFromCycle(num));
         //2nd solution:
-        BigInteger factorial = new BigInteger("1");
-        printFactorial(factorial, num);
+        System.out.println(getFactorialFromRecursion(num));
 
     }
 
-    public static BigInteger getFactorial(int num) {
-        BigInteger factorial = new BigInteger("1");
+    public static BigInteger getFactorialFromCycle(int num) {
+        BigInteger factorial = BigInteger.valueOf(1);
         for (int i = 1; i <= num; i++) {
-            BigInteger iBig = new BigInteger(String.valueOf(i));
+            BigInteger iBig = BigInteger.valueOf(i);
             factorial = factorial.multiply(iBig);
         }
         return factorial;
     }
 
-    public static void printFactorial(BigInteger factorial, int num) {
-        if (num == 0) {
-            System.out.println(factorial);
-        } else {
-            BigInteger numBig = new BigInteger(String.valueOf(num));
-            factorial = factorial.multiply(numBig);
-            num--;
-            printFactorial(factorial, num);
+    public static BigInteger getFactorialFromRecursion(int num) {
+        if (num == 1) {
+            return BigInteger.valueOf(num);
         }
+        BigInteger numBig = new BigInteger(String.valueOf(num));
+        BigInteger factorial = getFactorialFromRecursion(num - 1).multiply(numBig);
+        return factorial;
     }
 }
