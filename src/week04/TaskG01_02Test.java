@@ -4,11 +4,10 @@ package week04;
  */
 
 import util.TestHelper;
-import week03.Task12_023;
 
-public class TaskG01_01Test {
+public class TaskG01_02Test {
 
     public static void main(String... args) {
-        TestHelper.checkAllStrings(TaskG01_01_factorial::main, "10","3628800", "3628800");
+        TestHelper.checkAllStrings(TaskG01_02_fibonacci::main, "16","610", "610");
     }
 }

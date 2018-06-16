@@ -14,13 +14,13 @@ public class TaskG01_01_factorial {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
         //1st solution:
-        System.out.println(getFactorialFromCycle(num));
+        System.out.println(getFactorialFromLoop(num));
         //2nd solution:
         System.out.println(getFactorialFromRecursion(num));
 
     }
 
-    public static BigInteger getFactorialFromCycle(int num) {
+    public static BigInteger getFactorialFromLoop(int num) {
         BigInteger factorial = BigInteger.valueOf(1);
         for (int i = 1; i <= num; i++) {
             BigInteger iBig = BigInteger.valueOf(i);

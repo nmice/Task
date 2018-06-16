@@ -30,7 +30,7 @@ public class TestHelper {
         String[] resultArray = result.toArray(new String[0]);
         for (int i = 0; i < resultArray.length; i++) {
             if (expectedOutput[i].equals(resultArray[i])) {
-                //System.out.println("OK FOR STRING " + (i+1);
+                //System.out.println("OK FOR STRING " + (i+1));
                 System.out.print("");
             } else {
                 System.err.println("FAILED, expected: " + expectedOutput[i] + "| actual: " + resultArray[i]);
