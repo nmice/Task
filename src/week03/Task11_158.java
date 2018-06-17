@@ -11,10 +11,10 @@ public class Task11_158 {
 
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a value of massive elements:");
+        System.out.println("Enter a size of array:");
         int arrayLength = scanner.nextInt();
         int[] array = new int[arrayLength];
-        System.out.println("Enter " + arrayLength + " numbers - elements of massive:");
+        System.out.println("Enter " + arrayLength + " numbers - elements of array");
         int i = 0;
         while (i < arrayLength) {
             array[i] = scanner.nextInt();

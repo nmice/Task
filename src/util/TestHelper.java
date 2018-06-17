@@ -28,6 +28,7 @@ public class TestHelper {
         ArrayList<String> result = printStreamAdapter.getOutputArrayList();
 
         String[] resultArray = result.toArray(new String[0]);
+
         for (int i = 0; i < resultArray.length; i++) {
             if (expectedOutput[i].equals(resultArray[i])) {
                 //System.out.println("OK FOR STRING " + (i+1));

@@ -1,6 +1,6 @@
 package week04;
 /**
- * Created by Mike Neginsky on 15.06.2018.
+ * Created by Mike Neginsky on 16.06.2018.
  */
 
 import util.TestHelper;
