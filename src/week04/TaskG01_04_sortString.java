@@ -13,8 +13,6 @@ public class TaskG01_04_sortString {
         String words = scanner.nextLine();
         Comparable[] array = words.split(" ");
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
-        System.out.println("Method Sorted Array: " + "\r\n" + Arrays.toString(sortingBySortArrays(array)));
-        array = words.split(" ");
         System.out.println("Select Sorted Array: " + "\r\n" + Arrays.toString(sortArrayBySelection(array)));
         array = words.split(" ");
         System.out.println("Bubble Sorted Array: " + "\r\n" + Arrays.toString(sortArrayByBubble(array)));
@@ -39,7 +37,7 @@ public class TaskG01_04_sortString {
         return array;
     }//end of method
 
-    public static Comparable[] sortArrayBySelection(Comparable[] array) {//TODO!!!
+    public static Comparable[] sortArrayBySelection(Comparable[] array) {
         for (int j = 0; j < array.length-1; j++) {
             for (int i = j + 1; i < array.length; i++) {
                 Comparable a = array[j];
