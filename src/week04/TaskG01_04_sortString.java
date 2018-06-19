@@ -13,9 +13,11 @@ public class TaskG01_04_sortString {
         String words = scanner.nextLine();
         String[] array = words.split(" ");
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
-        System.out.println("Sorted Array: " + "\r\n" + sortingBySortArrays(array));
-        System.out.println("Sorted Array: " + "\r\n" + bubbleSortArrays(array));
-        System.out.println("Sorted Array: " + "\r\n" + selectSortArrays(array));
+        System.out.println("Method Sorted Array: " + "\r\n" + sortingBySortArrays(array));
+        array = words.split(" ");
+        System.out.println("Select Sorted Array: " + "\r\n" + selectSortArrays(array));
+        array = words.split(" ");
+        System.out.println("Bubble Sorted Array: " + "\r\n" + bubbleSortArrays(array));
     }
 
     public static String convertArrayToWords(String[] array) {
@@ -37,28 +39,34 @@ public class TaskG01_04_sortString {
         return convertArrayToWords(array);
     }
 
-    public static String bubbleSortArrays(String[] array) {
+    public static Comparable[] bubbleSortArrays(Comparable[] array) {
+//        int k = 1;
         for (int j = 0; j < array.length - 2; j++) {
             for (int i = 1; i < array.length - j; i++) {
-                String a = array[i - 1];
-                String b = array[i];
-                if (a.compareToIgnoreCase(b) > 0) {
+                Comparable a = array[i - 1];
+                Comparable b = array[i];
+                if (a.compareTo(b) > 0) {
                     array[i] = a;
                     array[i - 1] = b;
+//                    System.out.println("swapping...bubble " + k);
+//                    k++;
                 }// end if
             }// end for i
         }//end for j
-        return convertArrayToWords(array);
+        return array;
     }//end of method
 
     public static String selectSortArrays(String[] array) {//TODO!!!
-        for (int j = 0; j < array.length - 2; j++) {
-            for (int i = 1; i < array.length - j; i++) {
-                String a = array[i - 1];
+//        int k=1;
+        for (int j = 0; j < array.length-1; j++) {
+            for (int i = j + 1; i < array.length; i++) {
+                String a = array[j];
                 String b = array[i];
                 if (a.compareToIgnoreCase(b) > 0) {
                     array[i] = a;
-                    array[i - 1] = b;
+                    array[j] = b;
+//                    System.out.println("swapping...select " + k);
+//                    k++;
                 }// end if
             }// end for i
         }//end for j
