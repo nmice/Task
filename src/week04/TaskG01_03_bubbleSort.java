@@ -24,7 +24,7 @@ public class TaskG01_03_bubbleSort {
     }
 
     public static int[] sortingArrays(int[] array) {
-        for (int j = 0; j < array.length - 2; j++) {
+        for (int j = 0; j < array.length - 1; j++) {
             for (int i = 1; i < array.length - j; i++) {
                 int a = array[i - 1];
                 int b = array[i];
