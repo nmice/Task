@@ -14,10 +14,10 @@ public class TaskG01_04_sortString {
         System.out.println("Enter the word string:");
         String words = scanner.nextLine();
         Comparable[] array = words.split(" ");
+        Comparable[] array1 = array;
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
         System.out.println("Select Sorted Array: " + "\r\n" + Arrays.toString(sortArrayBySelection(array)));
-        array = words.split(" ");
-        System.out.println("Bubble Sorted Array: " + "\r\n" + Arrays.toString(sortArrayByBubble(array)));
+        System.out.println("Bubble Sorted Array: " + "\r\n" + Arrays.toString(sortArrayByBubble(array1)));
     }
 
     public static Comparable[] sortArrayByBubble(Comparable[] array) {

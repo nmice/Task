@@ -12,41 +12,55 @@ import java.util.Scanner;
 public class TaskG01_05_binarySearch {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the sorted word string:");
+        System.out.println("Enter a sorted sequence of words:");
         String words = scanner.nextLine();
         Comparable[] array = words.split(" ");
+        Comparable[] array1 = array;
+        System.out.println("Enter the search word:");
+        String searchWord = scanner.nextLine();
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
-        System.out.println("Select Sorted Array: " + "\r\n" + Arrays.toString(sortArrayBySelection(array)));
-        array = words.split(" ");
-        System.out.println("Bubble Sorted Array: " + "\r\n" + Arrays.toString(sortArrayByBubble(array)));
+        System.out.println(searchWord + " - is the " + linearSearch(array, searchWord) + " word in your Array");
+        System.out.println(searchWord + " - is the " + binarySearch(array, searchWord) + " word in your Array");
     }
 
-    public static Comparable[] sortArrayByBubble(Comparable[] array) {
-        for (int j = 0; j < array.length - 1; j++) {
-            for (int i = 1; i < array.length - j; i++) {
-                Comparable a = array[i - 1];
-                Comparable b = array[i];
-                if (a.compareTo(b) > 0) {
-                    array[i] = a;
-                    array[i - 1] = b;
-                }// end if
-            }// end for i
-        }//end for j
-        return array;
+    public static String linearSearch(Comparable[] array, String searchWord) {
+        int num = -1;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i].equals(searchWord)) {
+                num = i + 1;
+                break;
+            }// end if
+        }//end for i1
+        String numS = "" + num;
+        if (numS.equals("-1")) {
+            numS = "Not Found";
+        }
+        return numS;
     }//end of method
 
-    public static Comparable[] sortArrayBySelection(Comparable[] array) {
-        for (int j = 0; j < array.length-1; j++) {
-            for (int i = j + 1; i < array.length; i++) {
-                Comparable a = array[j];
-                Comparable b = array[i];
-                if (a.compareTo(b) > 0) {
-                    array[i] = a;
-                    array[j] = b;
-                }// end if
-            }// end for i
-        }//end for j
-        return array;
-    }//end of method
+    public static String binarySearch(Comparable[] array, String searchWord) {
+        int num = -1;
+
+        int a = array.length;
+
+        //for (int i = 0; i < array.length - 1; i++) {
+        if (array[a / 2].compareTo(searchWord) > 0) {
+            a = a / 2 - a / 4;
+        }// end if
+        if (array[a / 2].compareTo(searchWord) < 0) {
+            a = a / 2 + a / 4;
+        }// end if
+        if (array[a / 2].compareTo(searchWord) == 0) {
+            num = a;
+        }// end if
+
+    String numS = "" + num;
+        if(numS.equals("-1"))
+
+    {
+        numS = "Not Found";
+    }
+        return numS;
+}//end of method
 
 }
