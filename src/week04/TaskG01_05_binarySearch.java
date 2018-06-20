@@ -1,17 +1,18 @@
 package week04;
 /**
- * Your program should take several String values from keyboard and print them in sorted order.
- * All the values should be placed into Comparable[] array. You are expected to implement two
- * solutions here: bubble sorting algorithm, and selection sorting algorithm.
+ * Your program should take several String values from keyboard in sorted order, and (on the new line) take the
+ * value to search for. After this the program should print ordinal number of the word. Note: all the values should
+ * be placed into Comparable[] array. You are expected to implement two solutions here: linear search and binary search.
+ * Both should be covered with unit tests.
  */
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class TaskG01_04_sortString {
+public class TaskG01_05_binarySearch {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the word string:");
+        System.out.println("Enter the sorted word string:");
         String words = scanner.nextLine();
         Comparable[] array = words.split(" ");
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
