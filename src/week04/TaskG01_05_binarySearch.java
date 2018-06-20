@@ -24,9 +24,8 @@ public class TaskG01_05_binarySearch {
 
     public static String linearSearch(Comparable[] array, Comparable searchWord) {
         int num = -1;
-        for (int i = 0; i < array.length - 1; i++) {
-            System.out.println("check...linear");
-
+        for (int i = 0; i < array.length; i++) {
+//            System.out.println("check...linear");
             if (array[i].equals(searchWord)) {
                 num = i + 1;
                 break;
@@ -40,26 +39,20 @@ public class TaskG01_05_binarySearch {
     }//end of method
 
     public static String binarySearch(Comparable[] array, Comparable searchWord) {
-        int a = (array.length - 1) / 2;
-        int k = 2;
-
+        int a = (array.length - 1) / 2, k = 2;
         while (array[a].compareTo(searchWord) != 0) {
-            if (k > array.length * 2) {
-                String numS = "Not Found";
-                break;
-            }
-            if (array[a].compareTo(searchWord) > 0) {
-                a = a - a / k;
-                System.out.println("check...binary-");
-            }// end if
-            if (array[a].compareTo(searchWord) < 0) {
-                a = a + a / k;
-                System.out.println("check...binary+");
-            }// end if
+            if (k > array.length * 4) {
+                return "Not Found";
+            } else if (array[a].compareTo(searchWord) > 0) {
+                a = a - a / k - 1;
+//                System.out.println("check...binary-");
+            } else if (array[a].compareTo(searchWord) < 0) {
+                a = a + a / k + 1;
+//                System.out.println("check...binary+");
+            }// end if & else
             k *= 2;
         }// end of loop
-        String numS = "" + a + 1;
-        return numS;
+        return "" + (a + 1);
     }//end of method
 
 }
