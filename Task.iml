@@ -5,7 +5,8 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/week03/garbage" />
-      <excludeFolder url="file://$MODULE_DIR$/src/week04/garbage" />
+      <excludeFolder url="file://$MODULE_DIR$/src/week05/garbage" />
+      <excludeFolder url="file://$MODULE_DIR$/src/week05/garbage/TaskG01_06_CustomListImpl_part1" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
