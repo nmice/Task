@@ -9,7 +9,7 @@ public class CustomList implements CustomBeautyList{
         return 0;
     }
 
-    @Override
+    @8
     public void add(int i, Object o) {
 
     }
