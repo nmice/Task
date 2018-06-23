@@ -21,41 +21,29 @@ public class TaskG01_07_Merge_sorted_arrays {
         int array1Index = 0;
         int array2Index = 0;
         for (int resultIndex = 0; resultIndex < resultArray.length; resultIndex++) {
-
             if (array1Index == array1.length && array2Index < array2.length) {
-//                System.out.println("array1 is out of elements!");
                 resultArray[resultIndex] = array2[array2Index];
-//                System.out.println(resultIndex + "-th element is " + array2[array2Index] + " - " + array2Index + "-th element of array2");
                 array2Index++;
             }
-
             if (array1Index < array1.length && array2Index == array2.length) {
-//                System.out.println("array2 is out of elements!");
                 resultArray[resultIndex] = array1[array1Index];
-//                System.out.println(resultIndex + "-th element is " + array2[array2Index] + " - " + array2Index + "-th element of array2");
                 array1Index++;
             }
-
             if (array1Index < array1.length && array2Index < array2.length) {
                 if (array1[array1Index] < array2[array2Index]) {
                     resultArray[resultIndex] = array1[array1Index];
-//                    System.out.println(resultIndex + "-th element is " + array1[array1Index] + " - " + array1Index + "-th element of array1");
                     array1Index++;
                 } else if (array2[array2Index] < array1[array1Index]) {
                     resultArray[resultIndex] = array2[array2Index];
-//                    System.out.println(resultIndex + "-th element is " + array2[array2Index] + " - " + array2Index + "-th element of array2");
                     array2Index++;
                 } else if (array1[array1Index] == array2[array2Index]) {
                     resultArray[resultIndex] = array1[array1Index];
-//                    System.out.println(resultIndex + "-th element is " + array1[array1Index] + " - " + array1Index + "-th element of array1");
                     array1Index++;
                     resultIndex++;
                     resultArray[resultIndex] = array2[array2Index];
-//                    System.out.println(resultIndex + "-th element is " + array2[array2Index] + " - " + array2Index + "-th element of array2");
                     array2Index++;
                 }
             }
-
         }
         return resultArray;
     }
