@@ -12,7 +12,7 @@ public class TaskG01_07_Merge_sorted_arrays {
         System.out.println(Arrays.toString(mergeSortedArrays(new int[]{}, new int[]{1, 2, 3})));
         System.out.println(Arrays.toString(mergeSortedArrays(new int[]{1, 2, 3}, new int[]{100, 101, 102})));
         System.out.println(Arrays.toString(mergeSortedArrays(new int[]{100, 101, 102}, new int[]{1, 2, 3})));
-        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{7, 8, 8}, new int[]{9, 10, 11})));
+        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{7, 8, 8}, new int[]{8, 10, 11})));
     }
 
     public static int[] mergeSortedArrays(int array1[], int array2[]) {
@@ -36,10 +36,7 @@ public class TaskG01_07_Merge_sorted_arrays {
                 } else if (array2[array2Index] < array1[array1Index]) {
                     resultArray[resultIndex] = array2[array2Index];
                     array2Index++;
-                } else if (array1[array1Index] == array2[array2Index]) {
-                    resultArray[resultIndex] = array1[array1Index];
-                    array1Index++;
-                    resultIndex++;
+                } else {
                     resultArray[resultIndex] = array2[array2Index];
                     array2Index++;
                 }

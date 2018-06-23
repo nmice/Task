@@ -1,4 +1,4 @@
-package week04.TaskG01_06_CustomListImpl_part1;
+package week05.TaskG01_06_CustomListImpl_part1;
 
     public interface CustomBeautyList<E> {
         int add(E e);
@@ -11,4 +11,3 @@ package week04.TaskG01_06_CustomListImpl_part1;
         boolean contains(E e);
         void set(int i, E e);
     }
-
