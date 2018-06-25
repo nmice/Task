@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TaskG01_04_sortString {
+
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the word string:");
@@ -35,7 +36,7 @@ public class TaskG01_04_sortString {
     }//end of method
 
     public static Comparable[] sortArrayBySelection(Comparable[] array) {
-        for (int j = 0; j < array.length-1; j++) {
+        for (int j = 0; j < array.length - 1; j++) {
             for (int i = j + 1; i < array.length; i++) {
                 Comparable a = array[j];
                 Comparable b = array[i];

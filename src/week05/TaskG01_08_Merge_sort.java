@@ -1,19 +1,28 @@
 package week05;
+/**
+ * Your program should take several String values from keyboard and print them in sorted order.
+ * All the values should be placed into Comparable[] array. You are expected to implement two
+ * solutions here: bubble sorting algorithm, and selection sorting algorithm.
+ */
 
 import java.util.Arrays;
+import java.util.Scanner;
 
-public class TaskG01_07_Merge_sorted_arrays {
+public class TaskG01_08_Merge_sort {
 
     public static void main(String... args) {
-        int[] array1 = {1, 2, 3, 5, 7, 9, 12, 15};
-        int[] array2 = {4, 6, 7, 10, 11, 13, 15, 20};
-        System.out.println(Arrays.toString(mergeSortedArrays(array1, array2)));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{1, 2, 3}, new int[]{})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{}, new int[]{1, 2, 3})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{1, 2, 3}, new int[]{100, 101, 102})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{100, 101, 102}, new int[]{1, 2, 3})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{7, 8, 8}, new int[]{8, 10, 11})));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the word string:");
+        String words = scanner.nextLine();
+        Comparable[] array = words.split(" ");
+        System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
+        System.out.println("Merge Sort Array: " + "\r\n" + Arrays.toString(mergeSort(array)));
     }
+
+    public static Comparable[] mergeSort(Comparable[] array) {
+
+        return array;
+    }//end of method
 
     public static int[] mergeSortedArrays(int array1[], int array2[]) {
         int[] resultArray = new int[array1.length + array2.length];
@@ -37,4 +46,5 @@ public class TaskG01_07_Merge_sorted_arrays {
         }// end of for
         return resultArray;
     }// end of method
+
 }
