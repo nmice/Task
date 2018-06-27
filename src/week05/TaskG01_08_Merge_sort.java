@@ -20,7 +20,11 @@ public class TaskG01_08_Merge_sort {
     }
 
     public static Comparable[] mergeSort(Comparable[] array) {
+        // Поступил несортированный массив
+        // Рекурсия - поделили надвое
+        щ
 
+        // Объединили
         return array;
     }//end of method
 
