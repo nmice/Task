@@ -1,8 +1,6 @@
 package week05;
 /**
- * Your program should take several String values from keyboard and print them in sorted order.
- * All the values should be placed into Comparable[] array. You are expected to implement two
- * solutions here: bubble sorting algorithm, and selection sorting algorithm.
+ * Do the same as you did in TaskG01_04, but use Merge sorting algorithm instead.
  */
 
 import java.util.Arrays;
@@ -20,32 +18,32 @@ public class TaskG01_08_Merge_sort {
     }
 
     public static Comparable[] mergeSort(Comparable[] array) {
-        // Поступил несортированный массив
-        // Рекурсия - поделили надвое
-        щ
-
-        // Объединили
-        return array;
+        if (array.length < 2) {
+            return array;
+        } else {
+//            Comparable[] leftHalf = new Comparable[array.length / 2];
+//            Comparable[] rightHalf = new Comparable[array.length - array.length / 2];
+//            System.arraycopy(array, 0, leftHalf, 0, array.length / 2);
+//            System.arraycopy(array, array.length / 2, rightHalf, 0, array.length - array.length / 2);
+            Comparable[] leftHalf = Arrays.copyOfRange(array, 0, array.length / 2);
+            Comparable[] rightHalf = Arrays.copyOfRange(array, array.length / 2, array.length);
+            return mergeSortedArrays(mergeSort(leftHalf), mergeSort(rightHalf));
+        }//end of method
     }//end of method
 
-    public static int[] mergeSortedArrays(int array1[], int array2[]) {
-        int[] resultArray = new int[array1.length + array2.length];
-        System.out.println("New array is " + resultArray.length + " elements");
+    public static Comparable[] mergeSortedArrays(Comparable[] array1, Comparable[] array2) {
+        Comparable[] resultArray = new Comparable[array1.length + array2.length];
         int array1Index = 0;
         int array2Index = 0;
         for (int resultIndex = 0; resultIndex < resultArray.length; resultIndex++) {
             if (array1Index == array1.length && array2Index < array2.length) {
-                resultArray[resultIndex] = array2[array2Index];
-                array2Index++;
-            } else if (array1Index < array1.length && array2Index == array2.length) {
-                resultArray[resultIndex] = array1[array1Index];
-                array1Index++;
-            } else if (array1Index < array1.length && array2Index < array2.length && array1[array1Index] < array2[array2Index]) {
-                resultArray[resultIndex] = array1[array1Index];
-                array1Index++;
+                resultArray[resultIndex] = array2[array2Index++];
+            } else if (array2Index == array2.length && array1Index < array1.length) {
+                resultArray[resultIndex] = array1[array1Index++];
+            } else if (array1[array1Index].compareTo(array2[array2Index]) < 0) {
+                resultArray[resultIndex] = array1[array1Index++];
             } else {
-                resultArray[resultIndex] = array2[array2Index];
-                array2Index++;
+                resultArray[resultIndex] = array2[array2Index++];
             }
         }// end of for
         return resultArray;
