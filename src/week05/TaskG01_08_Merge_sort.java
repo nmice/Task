@@ -48,5 +48,4 @@ public class TaskG01_08_Merge_sort {
         }// end of for
         return resultArray;
     }// end of method
-
 }

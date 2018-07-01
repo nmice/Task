@@ -1,7 +1,7 @@
 package week05.TaskG01_06_CustomListImpl_part1;
 
     public interface CustomBeautyList<E> {
-        int add(E e);
+        boolean add(E e);
         void add(int i, E e);
         E get(int i);
         E remove(int i);

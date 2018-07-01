@@ -28,6 +28,5 @@ public class TaskG01_08Test {
                 "Enter the word string:",
                 "Your Array: \r\n[as, same, as, same, for, same, for, three, or, threes, or, tree]",
                 "Merge Sort Array: \r\n[as, as, for, for, or, or, same, same, same, three, threes, tree]");
-
     }
 }
