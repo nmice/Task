@@ -1,10 +1,9 @@
-package week05;
+package week05.merge;
 /**
  * Created by Mike Neginsky on 23.06.2018.
  */
 
 import util.TestHelper;
-import week04.TaskG01_01_factorial;
 
 public class TaskG01_07Test {
 

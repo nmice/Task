@@ -1,9 +1,8 @@
-package week05.tests;
+package week05.test;
 
 import org.junit.Test;
-import week05.TaskG01_07_Merge_sorted_arrays;
-import static org.junit.Assert.*;
-
+import week05.merge.TaskG01_07_Merge_sorted_arrays;
+import static junit.framework.TestCase.assertEquals;
 public class TaskG01_07_Merge_sorted_arraysTest {
 
     @Test
