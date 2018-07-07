@@ -1,4 +1,4 @@
-package week05.merge;
+package week05;
 /**
  * Merge 2 sorted arrays
  */

@@ -1,4 +1,4 @@
-package week05.merge;
+package week05;
 /**
  * Created by Mike Neginsky on 23.06.2018.
  */

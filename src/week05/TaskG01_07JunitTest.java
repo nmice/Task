@@ -1,9 +1,10 @@
-package week05.test;
+package week05;
 
 import org.junit.Test;
-import week05.merge.TaskG01_07_Merge_sorted_arrays;
+
 import static junit.framework.TestCase.assertEquals;
-public class TaskG01_07_Merge_sorted_arraysTest {
+
+public class TaskG01_07JunitTest {
 
     @Test
     public void mergeSortedArrays() {
