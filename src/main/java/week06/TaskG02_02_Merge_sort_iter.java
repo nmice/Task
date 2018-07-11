@@ -16,8 +16,8 @@ public class TaskG02_02_Merge_sort_iter {
         String words = scanner.nextLine();
         Comparable[] array = words.split(" ");
         System.out.println("Your Array: " + "\r\n" + Arrays.toString(array));
-        System.out.println("Merge Sort Array: " + "\r\n" + Arrays.toString(mergeSortRec(array)));
-        System.out.println("Merge Sort Array: " + "\r\n" + Arrays.toString(mergeSortIter(array)));
+        System.out.println("Merge Sort Rec: " + "\r\n" + Arrays.toString(mergeSortRec(array)));
+        System.out.println("Merge Sort Iter: " + "\r\n" + Arrays.toString(mergeSortIter(array)));
     }
 
     public static Comparable[] mergeSortRec(Comparable[] array) {
@@ -32,30 +32,32 @@ public class TaskG02_02_Merge_sort_iter {
 
 
     public static Comparable[] mergeSortIter(Comparable[] array) {
-        /*
-        Допустим есть массив из 9 элементов
-        Нужно делить его на части пока не останется 2 или 1 элемент,
-        а в смержином массиве не будет того же кол-ва элементов, что и в изначальном
-        1 итерация - создаем 2 новых массива:
-        левая часть - от 0-го до a.length.2/2 = 4   -  это элементы 0,1,2,3 массива
-        правая часть - от a.length.2/2 (4-го) до конечного элемента a.length-1 -  это элементы 4,5,6,7,8 массива
-        -Проверяем условие - если 1 элемент - оставляем,
-        -если 2 элемента - если 1>2-го то свапаем, если нет, оставляем
-        -Если больше элементов, то следующая итерация
-
-        Длины новых массивов - от 1 до a.length/2, каждый раз в 2 раза больше
-        Номера массивов - перебор от 0-го до последнего, с шагом номер эл-та+ 2х длина массива в проходке
-        Взяли первый массив(от номера эл-та в итерации до номер + длина массива в итерации)
-        Взяли второй массив(от номера эл-та в итерации + длина массива в итерации до номер + 2x длина массива в итерации)
-         */
-        for (int newArraysLength = 1; newArraysLength <= array.length / 2; newArraysLength *= 2) {
-            for (int newArrayIndex = 0; newArrayIndex < array.length; newArrayIndex += newArraysLength) {
-                Comparable[] leftHalf = Arrays.copyOfRange(array, newArrayIndex, newArrayIndex + newArraysLength);
-                Comparable[] rightHalf = Arrays.copyOfRange(array, newArrayIndex + newArraysLength, newArrayIndex + 2 * newArraysLength);
-                mergeSortedArrays(leftHalf, rightHalf);
+        int iter = 1;
+        for (int newHalvesLength = 1; newHalvesLength < array.length; newHalvesLength *= 2) {
+            for (int newArrayIndex = 0; newArrayIndex < array.length - 1; newArrayIndex += 2 * newHalvesLength) { // 8-й
+                if (newArrayIndex + newHalvesLength > array.length) {
+                    Comparable[] leftHalf = Arrays.copyOfRange(array, 0, newArrayIndex);
+                    Comparable[] tail = Arrays.copyOfRange(array, newArrayIndex, array.length);
+                    System.out.println(iter++ + Arrays.toString(mergeSortedArrays(leftHalf, tail)) + "resultTail");
+                    return mergeSortedArrays(leftHalf, tail);
+                } else {
+                    Comparable[] leftHalf = Arrays.copyOfRange(array, newArrayIndex, newArrayIndex + newHalvesLength);
+                    if (newArrayIndex + 2 * newHalvesLength > array.length) {
+                        Comparable[] tailHalf = Arrays.copyOfRange(array, newArrayIndex + newHalvesLength, array.length);
+                        Comparable[] tempArray = mergeSortedArrays(leftHalf, tailHalf);
+                        System.arraycopy(tempArray, 0, array, newArrayIndex, tempArray.length);
+                        System.out.println(iter++ + Arrays.toString(array) + "tailHalf");
+                    } else {
+                        Comparable[] rightHalf = Arrays.copyOfRange(array, newArrayIndex + newHalvesLength, newArrayIndex + 2 * newHalvesLength);
+                        Comparable[] tempArray = mergeSortedArrays(leftHalf, rightHalf);
+                        System.arraycopy(tempArray, 0, array, newArrayIndex, tempArray.length);
+                        System.out.println(iter++ + Arrays.toString(array) + "normal");
+//              or System.arraycopy(mergeSortedArrays(leftHalf, rightHalf), 0, array, newArrayIndex, leftHalf.length + rightHalf.length);
+                    }
+                }
             }
         }
-        return resultArray;
+        return array;
     }
 
 
