@@ -41,10 +41,25 @@ public class ArrayListOwn<T> implements Iterable {
         array[currentIndex++] = elem;
     }
 
-    public void removeElement(int index) {
-        for (int i = index; i < currentIndex; i++) {//TODO System.arraycopy
-            array[i] = array[i + 1];
+    public void add(int index, T elem) {
+        if (currentIndex == array.length - 1) {
+            Object[] newArray = new Object[array.length * 2];
+            System.arraycopy(array, 0, newArray, 0, currentIndex);
+            array = newArray;
         }
+        System.arraycopy(array, index, array, index + 1, currentIndex - index);
+//            for (int i = currentIndex; i >= index+1; i--) {   //TODO System.arraycopy
+//            array[i] = array[i - 1];
+//        }
+        array[index] = elem;
+        currentIndex++;
+    }
+
+    public void removeElement(int index) {
+        System.arraycopy(array, index + 1, array, index, currentIndex - index - 1);
+//        for (int i = index; i < currentIndex; i++) {//TODO System.arraycopy
+//            array[i] = array[i + 1];
+//        }
         array[currentIndex--] = null;
     }
 
@@ -56,6 +71,7 @@ public class ArrayListOwn<T> implements Iterable {
         for (int i = 0; i < currentIndex; i++) {
             array[i] = null;
         }
+        currentIndex = 0;
     }
 
     public T get(int index) {

@@ -22,18 +22,21 @@ public class ArrayListOwnTestDrive {
         Consumer consumer2 = o -> System.out.println(new StringBuilder(String.valueOf(o)).reverse());
         arrayListOwn.forEach(consumer1.andThen(consumer2));
 
-//        arrayListOwn.add("!");
-//        System.out.println(arrayListOwn);
-//
-//        arrayListOwn.add("!");
-//        System.out.println(arrayListOwn);
-//
-//        arrayListOwn.removeElement(3);
-//        System.out.println(arrayListOwn);
-//
-//        System.out.println(arrayListOwn.getSize());
-//
-//        arrayListOwn.clearTheArray();
-//        System.out.println(arrayListOwn);
+        arrayListOwn.add(789);
+        System.out.println(arrayListOwn);
+
+        arrayListOwn.add(1, 999);
+        System.out.println(arrayListOwn);
+
+        arrayListOwn.removeElement(2);
+        System.out.println(arrayListOwn);
+
+        System.out.println("Size of your ArrayListOwn = " + arrayListOwn.getSize());
+
+        arrayListOwn.clearTheArray();
+        System.out.println("Clear ArrayListOwn: " + arrayListOwn);
+
+        arrayListOwn.add(789);
+        System.out.println(arrayListOwn);
     }
 }

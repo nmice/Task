@@ -14,6 +14,7 @@ public class ArrayListOwnTest {
         List<String> myStrings = new ArrayList<String>();
         String s ="Hi all!";
         myStrings.add(s);
+
     }
 
     @Test
