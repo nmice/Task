@@ -1,7 +1,6 @@
 package week06.TaskG02_04_ArrayList;
 
-import java.util.Iterator;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -9,7 +8,7 @@ import java.util.function.Consumer;
  * It’s ok to implement the functionality partially. But SOMETHING SHOULD WORK
  */
 
-public class ArrayListOwn<T> implements Iterable {
+public class ArrayListOwn<E> implements List<E>, Iterable<E> {
 
     public static final int DEFAULT_CAPACITY = 10;
 
@@ -28,20 +27,52 @@ public class ArrayListOwn<T> implements Iterable {
         return array;
     }
 
-    public int getCurrentIndex() {
-        return currentIndex;
-    }
-
-    public void add(T elem) {
+    public boolean add(E elem) {
         if (currentIndex == array.length - 1) {
             Object[] newArray = new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, currentIndex);
             array = newArray;
         }
         array[currentIndex++] = elem;
+        return true;
     }
 
-    public void add(int index, T elem) {
+    @Override
+    public boolean remove(Object o) {
+        return true;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void clear() {
+        clearTheArray();
+    }
+
+    public void add(int index, E elem) {
         if (currentIndex == array.length - 1) {
             Object[] newArray = new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, currentIndex);
@@ -55,12 +86,50 @@ public class ArrayListOwn<T> implements Iterable {
         currentIndex++;
     }
 
+    @Override
+    public E remove(int index) {
+        E old = (E) array[index];
+        removeElement(index);
+        return old;
+
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index) {
+        return null;
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return null;
+    }
+
     public void removeElement(int index) {
         System.arraycopy(array, index + 1, array, index, currentIndex - index - 1);
 //        for (int i = index; i < currentIndex; i++) {//TODO System.arraycopy
 //            array[i] = array[i + 1];
 //        }
         array[currentIndex--] = null;
+        if (currentIndex < array.length / 2 && array.length / 2 >= DEFAULT_CAPACITY) {
+            Object[] newArray = new Object[array.length / 2];
+            System.arraycopy(array, 0, newArray, 0, currentIndex);
+            array = newArray;
+        }
     }
 
     public int getSize() {
@@ -74,11 +143,18 @@ public class ArrayListOwn<T> implements Iterable {
         currentIndex = 0;
     }
 
-    public T get(int index) {
+    public E get(int index) {
         if (index >= currentIndex) {
             throw new IndexOutOfBoundsException("This element is not live in this ArrayListOwn");
         }
-        return (T) array[index];
+        return (E) array[index];
+    }
+
+    @Override
+    public E set(int index, E element) {
+        E old = (E) array[index];
+        array[index] = element;
+        return old;
     }
 
     @Override
@@ -88,7 +164,22 @@ public class ArrayListOwn<T> implements Iterable {
             result.append(result.length() == 0 ? "" : ", ");
             result.append(elem);
         }
-        return result.toString();
+        return "[" + result.toString() + "]";
+    }
+
+    @Override
+    public int size() {
+        return getSize();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
     }
 
     @Override
@@ -109,6 +200,16 @@ public class ArrayListOwn<T> implements Iterable {
                 throw new UnsupportedOperationException("Cannot remove an element of an array.");
             }
         };
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T1> T1[] toArray(T1[] a) {
+        return null;
     }
 
 

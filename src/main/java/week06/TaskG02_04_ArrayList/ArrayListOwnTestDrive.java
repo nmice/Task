@@ -1,6 +1,8 @@
 package week06.TaskG02_04_ArrayList;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ArrayListOwnTestDrive {
@@ -38,5 +40,17 @@ public class ArrayListOwnTestDrive {
 
         arrayListOwn.add(789);
         System.out.println(arrayListOwn);
+
+        List test = new ArrayListOwn();
+        test.add("Hi All");
+        test.add("!");
+        test.add(" three");
+        System.out.println(test);
+        System.out.println(test.set(1, " two!"));
+        System.out.println(test);
+
+        /*  [Hi All, !,  three]
+        !
+        [Hi All,  two!,  three]*/
     }
 }
