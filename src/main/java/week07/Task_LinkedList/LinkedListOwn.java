@@ -19,16 +19,21 @@ public class LinkedListOwn<E> implements List<E> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
+        for (Node current = first; current != null; current = current.next) {
+            if (current.item.equals(o)) {
+                return true;
+            }
+        }
         return false;
     }
 
