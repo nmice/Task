@@ -23,8 +23,8 @@ public class EqualsTestDrive {
             this.lastName = lastName;
 
         }
-        @Override
-        public boolean equals(Object student) {
+
+        public boolean equals(Student student) {
             if (student.firstName == null && firstName == null) {
                 return true;
             }

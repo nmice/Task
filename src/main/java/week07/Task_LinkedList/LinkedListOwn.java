@@ -44,7 +44,12 @@ public class LinkedListOwn<E> implements List<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] array = new Object[size];
+        int i = 0;
+        for (Node current = first; current != null; current = current.next) {
+            array[i++] = current.item;
+        }
+        return array;
     }
 
     @Override
@@ -54,12 +59,34 @@ public class LinkedListOwn<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        return false;
+        Node<E> node = new Node<>();
+        node.item = e;
+
+        if (size == 0) {
+            first = node;
+        } else {
+            last.next = node;
+            node.prev = last;
+        }
+        size++;
+        last = node;
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        for (Node current = first; current != null; current = current.next) {
+            if (current.item.equals(o)) {
+                while (current != null) {
+                    current.item = current.next.item;
+                    current = current.next;
+                }
+                last = null;
+                size--;
+                return true;
+            }
+        }
+        throw new UnsupportedOperationException("The item to remove is not in this LinkedListOwn");
     }
 
     @Override
@@ -137,15 +164,28 @@ public class LinkedListOwn<E> implements List<E> {
         return null;
     }
 
-    private static class Node<E> {
-        E item;
-        Node<E> next;
-        Node<E> prev;
-
-        Node(Node<E> prev, E element, Node<E> next) {
-            this.item = element;
-            this.next = next;
-            this.prev = prev;
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (Node current = first; current != null; current = current.next) {
+            result.append(result.length() == 0 ? "[" : ", ");
+            result.append(current.item);
         }
+        return result.toString() + "]";
+    }
+
+//    public static void main(String[] args) {
+//        System.out.println(new LinkedListOwn<>().Node.Node1().s);
+//    }
+
+    private static class Node<E> {
+        private E item;
+        private Node<E> next;
+        private Node<E> prev;
+
+//        private static class Node1{
+//            private String s = "123";
+//        }
     }
 }
+
