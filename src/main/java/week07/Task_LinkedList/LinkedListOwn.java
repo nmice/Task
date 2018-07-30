@@ -120,16 +120,16 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        if (index < 0 || index > size + 1) {
+        if (index < 0 || index > size) {
             throw new UnsupportedOperationException("Incorrect index of the search element");
         }
-        if (index == 1) {
+        if (index == 0) {
             return first.item;
         }
-        if (index == size) {
+        if (index == size - 1) {
             return last.item;
         }
-        int i = 1;
+        int i = 0;
         Node current = first;
         while (current != null) {
             if (i == index) {
@@ -144,20 +144,20 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        if (index < 1 || index > size) {
+        if (index < 0 || index > size - 1) {
             throw new UnsupportedOperationException("Incorrect index of the search element");
         }
-        if (index == 1) {
+        if (index == 0) {
             E old = first.item;
             first.item = element;
             return old;
         }
-        if (index == size) {
+        if (index == size - 1) {
             E old = last.item;
             last.item = element;
             return old;
         }
-        int i = 1;
+        int i = 0;
         Node current = first;
         while (current != null) {
             if (i == index) {
@@ -174,7 +174,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        if (index == 1) {
+        if (index == 0) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
             first.prev = newNode;
@@ -183,7 +183,7 @@ public final class LinkedListOwn<E> implements List<E> {
             size++;
             return;
         }
-        if (index == size + 1) {
+        if (index == size) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
             last.next = newNode;
@@ -195,7 +195,7 @@ public final class LinkedListOwn<E> implements List<E> {
         if (index < 1 || index > size + 1) {
             throw new UnsupportedOperationException("Incorrect index of the element being added");
         }
-        int i = 1;
+        int i = 0;
         for (Node current = first; current != null; current = current.next) {
             if (i == index) {
                 Node<E> newNode = new Node<>();
@@ -215,7 +215,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public E remove(int index) {
-        int i = 1;
+        int i = 0;
         for (Node current = first; current != null; current = current.next) {
             if (i == index) {
                 E old = (E) current.item;
@@ -232,7 +232,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        int i = 1;
+        int i = 0;
         for (Node current = first; current != null; current = current.next) {
             if (current.item.equals(o)) {
                 return i;
@@ -245,7 +245,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public int lastIndexOf(Object o) {
-        int i = size;
+        int i = size-1;
         for (Node current = last; current != null; current = current.prev) {
             if (current.item.equals(o)) {
                 return i;
