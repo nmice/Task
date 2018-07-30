@@ -174,6 +174,14 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
+        if (index == 0 && size ==0) {
+            Node<E> newNode = new Node<>();
+            newNode.item = element;
+            last = newNode;
+            first = newNode;
+            size++;
+            return;
+        }
         if (index == 0) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
@@ -192,7 +200,7 @@ public final class LinkedListOwn<E> implements List<E> {
             size++;
             return;
         }
-        if (index < 1 || index > size + 1) {
+        if (index < 0 || index > size) {
             throw new UnsupportedOperationException("Incorrect index of the element being added");
         }
         int i = 0;
