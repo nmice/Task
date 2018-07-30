@@ -2,7 +2,7 @@ package week07.Task_LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,6 +51,16 @@ public class LinkedListOwnTest {
     public void contains() {
         boolean expected = true;
         assertEquals(expected, testLLO.contains(222));
+    }
+
+    @Test
+    public void containsAll() {
+        List containsTest = Arrays.asList(111, 222, 333);
+        boolean expected = true;
+        assertEquals(expected, testLLO.containsAll(containsTest));
+        List containsTest1 = Arrays.asList(111, 222, 333, 465);
+        boolean expected2 = false;
+        assertEquals(expected2, testLLO.containsAll(containsTest1));
     }
 
     @Test

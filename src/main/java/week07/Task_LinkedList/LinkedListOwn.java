@@ -1,9 +1,8 @@
 package week07.Task_LinkedList;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import week06.TaskG02_04_ArrayList.ArrayListOwn;
+
+import java.util.*;
 
 /**
  * Implement your own LinkedListOwn (should implement List<E>), so that it would be testable with the unit
@@ -86,9 +85,50 @@ public final class LinkedListOwn<E> implements List<E> {
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {//TODO
-        return false;
+    public boolean containsAll(Collection<?> c) {
+        Set set = new HashSet();
+        for (Node current = first; current != null; current = current.next) {
+            set.add(current.item);
+        }
+        for (Object o : c) {
+            if (!set.contains(o)) return false;
+        }
+        return true;
+//        List listOddSmall = new ArrayList();
+//        List listEvenSmall = new ArrayList();
+//        List listOddBig = new ArrayList();
+//        List listEvenBig = new ArrayList();
+//        for (Node current = first; current != null; current = current.next) {
+//            if ((Integer) current.item % 2 > 0 && (Integer) current.item < 1_250_000_000) {
+//                listOddSmall.add(current.item);
+//            } else if ((Integer) current.item % 2 > 0) {
+//                listOddBig.add(current.item);
+//            } else if ((Integer) current.item < 1_250_000_000) {
+//                listEvenSmall.add(current.item);
+//            } else {
+//                listEvenBig.add(current.item);
+//            }
+//        }
+//        for (Object element : c) {
+//            if ((Integer) element % 2 > 0 && (Integer) element < 1_250_000_000) {
+//                if (!listOddSmall.contains(element)) {
+//                    return false;
+//                }
+//            } else if ((Integer) element % 2 > 0) {
+//                if (!listOddBig.contains(element)) {
+//                    return false;
+//                }
+//            } else if ((Integer) element < 1_250_000_000) {
+//                if (!listEvenSmall.contains(element)) {
+//                    return false;
+//                }
+//            } else if (!listEvenBig.contains(element)) {
+//                return false;
+//            }
+//        }
+//        return true;
     }
+
 
     @Override
     public boolean addAll(Collection<? extends E> c) {//TODO
@@ -174,7 +214,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        if (index == 0 && size ==0) {
+        if (index == 0 && size == 0) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
             last = newNode;
@@ -253,7 +293,7 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public int lastIndexOf(Object o) {
-        int i = size-1;
+        int i = size - 1;
         for (Node current = last; current != null; current = current.prev) {
             if (current.item.equals(o)) {
                 return i;

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static util.PerfTestUtil.measureTime;
+
 public class ArrayListOwnPerfTest {
 
-    public static final int ARRAY_LENGTH = 1_000_000;
+    public static final int ARRAY_LENGTH = 500_000;
 
     public static void main(String[] args) {
 
@@ -18,12 +20,4 @@ public class ArrayListOwnPerfTest {
         IntStream.generate(() -> (int) ((Math.random() * Integer.MAX_VALUE))).limit(ARRAY_LENGTH).forEach(a -> list.add(list.size() / 2, a));
     }
 
-
-    public static void measureTime(String header, Runnable task) {
-        System.out.println(header);
-        long before = System.currentTimeMillis();
-        task.run();
-        long after = System.currentTimeMillis();
-        System.out.println(after - before);
-    }
 }
