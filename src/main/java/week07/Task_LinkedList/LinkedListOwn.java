@@ -37,11 +37,6 @@ public final class LinkedListOwn<E> implements List<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {//TODO
-        return null;
-    }
-
-    @Override
     public Object[] toArray() {
         Object[] array = new Object[size];
         int i = 0;
@@ -52,8 +47,24 @@ public final class LinkedListOwn<E> implements List<E> {
     }
 
     @Override
-    public <T> T[] toArray(T[] a) {//TODO optional
+    public Iterator<E> iterator() {//TODO
         return null;
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {//TODO optional
+        if (a.length < size) {
+            return (T[]) toArray();
+        }
+//            a = (T[])java.lang.reflect.Array.newInstance(
+//                    a.getClass().getComponentType(), size);
+        int i = 0;
+        E[] result = (E[]) new Object[a.length];
+        for (Node<E> x = first; x != null; x = x.next)
+            result[i++] = x.item;
+//        if (a.length > size)
+//            result[size] = null;
+        return (T[]) result;
     }
 
     @Override
@@ -136,13 +147,13 @@ public final class LinkedListOwn<E> implements List<E> {
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        throw new UnsupportedOperationException("Oops");
+    public boolean removeAll(Collection<?> c) {//TODO
+        return false;
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {//TODO
-        return false;
+    public boolean addAll(int index, Collection<? extends E> c) {
+        throw new UnsupportedOperationException("Oops");
     }
 
 

@@ -1,6 +1,7 @@
 package week07.Task_LinkedList;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class LinkedListOwnTestDrive {
@@ -33,8 +34,16 @@ public class LinkedListOwnTestDrive {
         List containsTest = Arrays.asList(666, 667, 668);
         System.out.println(numbers.containsAll(containsTest));
 
+        LinkedListOwn<String> numbersLL = new LinkedListOwn<>();
+        numbersLL.add("start");
+        numbersLL.add("start1");
+        numbersLL.add("start2");
+        numbersLL.add("start");
+        String[] testArray = {"me", "today", "me1", "today1", "me2", "today2"};
+        System.out.println(Arrays.toString(numbersLL.toArray(testArray)));
+
 //        final LinkedListOwn test = new LinkedListOwn();
-//        test.add("Putin is a gay");
+//        test.add("Hi All");
 //        System.out.println(test);
 //        test.clear();
 //        System.out.println(test);
