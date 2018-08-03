@@ -6,15 +6,15 @@ import java.util.List;
 
 public class LinkedListOwnTestDrive {
     public static void main(String[] args) {
-        LinkedListOwn<Integer> numbers = new LinkedListOwn<>();
+        List<Integer> numbers = new LinkedListOwn<>();
         System.out.println("New LLO is empty - is a " + numbers.isEmpty());
         System.out.println(numbers);
         System.out.println("LLO Size is a " + numbers.size());
         System.out.println("Add 4 nodes...");
         numbers.add(666);
-        numbers.add(667);
-        numbers.add(668);
-        numbers.add(669);
+//        numbers.add(667);
+//        numbers.add(668);
+//        numbers.add(669);
         System.out.println("LLO is a " + numbers);
 //        System.out.println("Now new LLO is empty - is a " + numbers.isEmpty());
 //        System.out.println("Now LLO Size is a " + numbers.size());
@@ -28,24 +28,35 @@ public class LinkedListOwnTestDrive {
 //        numbers.add(2, 554);
 //        System.out.println("Add element №2 - (554) is a " + numbers);
 //        System.out.println("Remove element 2 (" + numbers.remove(2) + ") is a " + numbers);
+//
+//        List containsTest = Arrays.asList(666, 667, 668);
+//        System.out.println("LLO contains (666, 667, 668) is a " + numbers.containsAll(containsTest));
+//
+//        StringBuilder result = new StringBuilder();
+//        for (Integer elem: numbers) {
+//        result.append(result.length() == 0 ? "" : ", ");
+//        result.append(elem);
+//        }
+//        System.out.println("[" + result.toString() + "]");
 
-        List containsTest = Arrays.asList(666, 667, 668);
-        System.out.println("LLO contains (666, 667, 668) is a " + numbers.containsAll(containsTest));
-
-        StringBuilder result = new StringBuilder();
-        for (Integer elem: numbers) {
-        result.append(result.length() == 0 ? "" : ", ");
-        result.append(elem);
-        }
-        System.out.println("[" + result.toString() + "]");
-
-        List addAllTest = Arrays.asList(670, 671, 672);
-        System.out.println(numbers.addAll(addAllTest));
         System.out.println(numbers);
 
-        List removeAllTest = Arrays.asList(670, 671, 672);
-        System.out.println(numbers.removeAll(addAllTest));
+        numbers.remove(Integer.valueOf(666));
+
         System.out.println(numbers);
+
+        numbers.add(669);
+
+        System.out.println(numbers);
+
+
+//        List addAllTest = Arrays.asList(670, 671, 672);
+//        System.out.println(numbers.addAll(addAllTest));
+//        System.out.println(numbers);
+
+//        List removeAllTest = Arrays.asList(670, 671, 672, 666);
+//        System.out.println(numbers.removeAll(removeAllTest));
+//        System.out.println(numbers);
 
 
 

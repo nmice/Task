@@ -154,6 +154,11 @@ public class LinkedListOwnTest {
         assertEquals(expected2, testLLO.addAll(addAllTest));
     }
 
-
-
+    @Test
+    public void removeAll() {
+        List removeAllTest = Arrays.asList(111, 222);
+        String expected1 = "[333]";
+        testLLO.removeAll(removeAllTest);
+        assertEquals(expected1, testLLO.toString());
+    }
 }

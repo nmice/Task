@@ -47,21 +47,21 @@ public final class LinkedListOwn<E> implements List<E> {
     @Override
     public Iterator<E> iterator() {//TODO
         return new Iterator() {
-            private int numberOfElement = 0;
-            private Node<E> x = first;
+            private int elementIndex = 0;
+            private Node<E> currentNode = first;
 
             public boolean hasNext() {
-                return size > numberOfElement;
+                return size > elementIndex;
             }
 
             public Object next() {
-                if (numberOfElement == 0) {
-                    numberOfElement++;
-                    return x.item;
+                if (elementIndex == 0) {
+                    elementIndex++;
+                    return currentNode.item;
                 } else {
-                    numberOfElement++;
-                    x = x.next;
-                    return x.item;// x = x.next
+                    elementIndex++;
+                    currentNode = currentNode.next;
+                    return currentNode.item;
                 }
             }
 
@@ -103,8 +103,19 @@ public final class LinkedListOwn<E> implements List<E> {
     public boolean remove(Object o) {
         for (Node current = first; current != null; current = current.next) {
             if (current.item.equals(o)) {
-                current.prev.next = current.next;
-                current.next.prev = current.prev;
+                if (first == last){
+                    first = null;
+                    last = null;
+                } else if(current == first){
+                    first.next.prev = null;
+                    first = first.next;
+                } else if (current == last) {
+                    last.prev.next = null;
+                    last = last.prev;
+                } else {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
                 size--;
                 return true;
             }
@@ -369,4 +380,3 @@ public final class LinkedListOwn<E> implements List<E> {
         private Node<E> prev;
     }
 }
-
