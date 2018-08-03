@@ -1,7 +1,5 @@
 package week07.Task_LinkedList;
 
-import week06.TaskG02_04_ArrayList.ArrayListOwn;
-
 import java.util.*;
 
 /**
@@ -48,23 +46,42 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {//TODO
-        return null;
+        return new Iterator() {
+            private int numberOfElement = 0;
+            private Node<E> x = first;
+
+            public boolean hasNext() {
+                return size > numberOfElement;
+            }
+
+            public Object next() {
+                if (numberOfElement == 0) {
+                    numberOfElement++;
+                    return x.item;
+                } else {
+                    numberOfElement++;
+                    x = x.next;
+                    return x.item;// x = x.next
+                }
+            }
+
+            public void remove() {
+                throw new UnsupportedOperationException("Cannot remove an element of an list.");
+            }
+        };
     }
 
     @Override
     public <T> T[] toArray(T[] a) {//TODO optional
-        if (a.length < size) {
+        if (a.length <= size) {
             return (T[]) toArray();
         }
-//            a = (T[])java.lang.reflect.Array.newInstance(
-//                    a.getClass().getComponentType(), size);
+        T[] result = a;
+        result[size] = null;
         int i = 0;
-        E[] result = (E[]) new Object[a.length];
         for (Node<E> x = first; x != null; x = x.next)
-            result[i++] = x.item;
-//        if (a.length > size)
-//            result[size] = null;
-        return (T[]) result;
+            result[i++] = (T) x.item;
+        return result;
     }
 
     @Override
@@ -143,12 +160,18 @@ public final class LinkedListOwn<E> implements List<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {//TODO
-        return false;
+        for (E elem : c) {
+            this.add(elem);
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {//TODO
-        return false;
+        for (Object elem : c) {
+            this.remove(elem);
+        }
+        return true;
     }
 
     @Override

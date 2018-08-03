@@ -186,16 +186,12 @@ public class ArrayListOwn<E> implements List<E>, Iterable<E> {
     public Iterator iterator() {
         return new Iterator() {
             private int pos = 0;
-
             public boolean hasNext() {
                 return currentIndex > pos;
             }
-
-
             public Object next() {
                 return array[pos++];
             }
-
             public void remove() {
                 throw new UnsupportedOperationException("Cannot remove an element of an array.");
             }

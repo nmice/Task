@@ -24,23 +24,42 @@ public class LinkedListOwnTestDrive {
 //        System.out.println("Remove node \"667\" - is a " + numbers);
 //        System.out.println("Third element of LLO is a " + numbers.get(3));
 //        System.out.println("Set second element of LLO - " + numbers.set(2, 555) + " to \"555\" is a " + numbers);
-//        System.out.println("Last index of \"669\" is a " + numbers.lastIndexOf(669));
+//        System.out.println("Last index of \"667\" is a " + numbers.lastIndexOf(668));
 //        numbers.add(2, 554);
-//        System.out.println("Add second element (554) is a " + numbers);
-//        System.out.println("Remove third element (" + numbers.remove(3) + ") is a " + numbers);
+//        System.out.println("Add element №2 - (554) is a " + numbers);
+//        System.out.println("Remove element 2 (" + numbers.remove(2) + ") is a " + numbers);
+
+        List containsTest = Arrays.asList(666, 667, 668);
+        System.out.println("LLO contains (666, 667, 668) is a " + numbers.containsAll(containsTest));
+
+        StringBuilder result = new StringBuilder();
+        for (Integer elem: numbers) {
+        result.append(result.length() == 0 ? "" : ", ");
+        result.append(elem);
+        }
+        System.out.println("[" + result.toString() + "]");
+
+        List addAllTest = Arrays.asList(670, 671, 672);
+        System.out.println(numbers.addAll(addAllTest));
+        System.out.println(numbers);
+
+        List removeAllTest = Arrays.asList(670, 671, 672);
+        System.out.println(numbers.removeAll(addAllTest));
+        System.out.println(numbers);
+
+
+
+
 //        numbers.clear();
 //        System.out.println("Clear LLO is a " + numbers);
 
-        List containsTest = Arrays.asList(666, 667, 668);
-        System.out.println(numbers.containsAll(containsTest));
 
-        LinkedListOwn<String> numbersLL = new LinkedListOwn<>();
-        numbersLL.add("start");
-        numbersLL.add("start1");
-        numbersLL.add("start2");
-        numbersLL.add("start");
-        String[] testArray = {"me", "today", "me1", "today1", "me2", "today2"};
-        System.out.println(Arrays.toString(numbersLL.toArray(testArray)));
+//        LinkedListOwn<String> numbersLL = new LinkedListOwn<>();
+//        numbersLL.add("start");
+//        numbersLL.add("start1");
+//        numbersLL.add("start2");
+//        String[] testArray = {"me", "today", "me1", "today1", "me2", "today2"};
+//        System.out.println(Arrays.toString(numbersLL.toArray(testArray)));
 
 //        final LinkedListOwn test = new LinkedListOwn();
 //        test.add("Hi All");

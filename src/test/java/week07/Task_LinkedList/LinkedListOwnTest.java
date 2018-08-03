@@ -2,6 +2,7 @@ package week07.Task_LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -123,4 +124,36 @@ public class LinkedListOwnTest {
         String expected = "[]";
         assertEquals(expected, testLLO.toString());
     }
+
+    @Test
+    public void toArrayInAnotherArray() {
+        Integer[] anotherArray = {1, 2, 3, 4, 555, 666, 777};
+        String expected = "[111, 222, 333, null, 555, 666, 777]";
+        assertEquals(expected, Arrays.toString(testLLO.toArray(anotherArray)));
+    }
+
+    @Test
+    public void iterator() {
+        StringBuilder result = new StringBuilder();
+        for (Object elem: testLLO) {
+            result.append(result.length() == 0 ? "" : ", ");
+            result.append(elem);
+        }
+        String actual = "[" + result.toString() + "]";
+        String expected = "[111, 222, 333]";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addAll() {
+        List addAllTest = Arrays.asList(444, 555, 666);
+        testLLO.addAll(addAllTest);
+        String expected1 = "[111, 222, 333, 444, 555, 666]";
+        assertEquals(expected1, testLLO.toString());
+        boolean expected2 = true;
+        assertEquals(expected2, testLLO.addAll(addAllTest));
+    }
+
+
+
 }
