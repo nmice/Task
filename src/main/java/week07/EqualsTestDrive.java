@@ -25,19 +25,7 @@ public class EqualsTestDrive {
         }
 
         public boolean equals(Student student) {
-            if (student.firstName == null && firstName == null) {
-                return true;
-            }
-            if (student.lastName == null && lastName == null) {
-                return true;
-            }
-            if (student.firstName == null && firstName != null) {
-                return false;
-            }
-            if (student.lastName == null && lastName != null) {
-                return false;
-            }
-            return (student.firstName.equals(firstName) && student.lastName.equals(lastName));
+            return false;//it's not worked
         }
     }
 }

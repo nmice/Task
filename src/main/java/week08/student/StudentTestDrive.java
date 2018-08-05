@@ -14,6 +14,6 @@ public class StudentTestDrive {
         Object s2 = new String("s1");
         System.out.println(s1 == s2);//false
         System.out.println(s1.equals(s2));//true
-        System.out.println(s1.equals(new Object()));//false
+        System.out.println(student1.equals(new Object()));//false
     }
 }
