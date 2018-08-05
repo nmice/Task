@@ -10,7 +10,6 @@ public class Student {
     private String firstName;
     private String lastName;
 
-
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,34 +17,34 @@ public class Student {
 
     @Override
     public int hashCode() {//BY MySelf
-        int result = 17;
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        return result;
+        if (firstName == null) {
+            return 16337 + lastName.hashCode();
+        }
+        if (lastName == null) {
+            return 16337 + 31 * firstName.hashCode();
+        }
+        return 16337 + 31 * firstName.hashCode() + lastName.hashCode();
     }
 
-    /*    @Override
-    public int hashCode() {//BY IDEA
+    public int hashCodeByIdea() {//BY IDEA
         int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
-    }*/
+    }
 
-    /*    @Override
-    public int hashCode() {//BY HashCodeBuilder
+    public int hashCodeByHCB() {//BY HashCodeBuilder
         return new HashCodeBuilder(17, 37)
                 .append(firstName)
                 .append(lastName)
                 .toHashCode();
-    }*/
-
+    }
 
     @Override
     public boolean equals(Object obj) {//TODO - DONE BY MySelf
         if (!(obj instanceof Student)) {
             return false;
         }
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
         Student that = (Student) obj;
@@ -65,17 +64,15 @@ public class Student {
         return false;
     }
 
-/*    @Override
-    public boolean equals(Object o) {//BY IDEA
+    public boolean equalsByIdea(Object o) {//BY IDEA
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
         return Objects.equals(firstName, student.firstName) &&
                 Objects.equals(lastName, student.lastName);
-    }*/
+    }
 
-/*    @Override
-    public boolean equals(Object o) {//BY EqualsBuilder
+    public boolean equalsByEB(Object o) {//BY EqualsBuilder
         if (this == o) return true;
 
         if (o == null || getClass() != o.getClass()) return false;
@@ -86,7 +83,7 @@ public class Student {
                 .append(firstName, student.firstName)
                 .append(lastName, student.lastName)
                 .isEquals();
-    }*/
+    }
 
     public String toString() {
         return "[" + firstName + ", " + lastName + "]";
