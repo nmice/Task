@@ -10,13 +10,11 @@ import java.util.function.Consumer;
 
 public class ArrayListOwn<E> implements List<E>, Iterable<E> {
 
-    public static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public ArrayListOwn() {
-        this(DEFAULT_CAPACITY);
-    }
+    public ArrayListOwn() {this(DEFAULT_CAPACITY);}
 
-    public ArrayListOwn(int capacity) {
+    private ArrayListOwn(int capacity) {
         array = new Object[capacity];
     }
 
