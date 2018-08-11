@@ -32,6 +32,8 @@ public class HashMapOwnTestDrive {
         System.out.println(booksOrigin);
         System.out.println(booksOrigin.remove(null));
         System.out.println(booksOrigin);
+        booksOrigin.clear();
+        System.out.println(booksOrigin);
 
 
         System.out.println();//spacebar
@@ -61,6 +63,8 @@ public class HashMapOwnTestDrive {
         System.out.println(books.remove(null));
         System.out.println(books);
         System.out.println(books.remove(null));
+        System.out.println(books);
+        books.clear();
         System.out.println(books);
     }
 }

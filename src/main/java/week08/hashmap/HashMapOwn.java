@@ -134,7 +134,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public void clear() { //TODO
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = null;
         }
         size = 0;
@@ -176,7 +176,6 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
         final K key;
         V value;
         Node<K, V> next;
-        Node<K, V> first;
 
         Node(int hash, K key, V value, Node<K, V> next) {
             this.hash = hash;
