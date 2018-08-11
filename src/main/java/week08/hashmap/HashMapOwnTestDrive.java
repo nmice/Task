@@ -25,6 +25,13 @@ public class HashMapOwnTestDrive {
         System.out.println(booksOrigin.get("AaAaAa"));
         System.out.println(booksOrigin.get("AaA"));
         System.out.println(booksOrigin.get(null));
+        System.out.println(booksOrigin);
+        System.out.println(booksOrigin.remove("AaAaAa"));
+        System.out.println(booksOrigin);
+        System.out.println(booksOrigin.remove(null));
+        System.out.println(booksOrigin);
+        System.out.println(booksOrigin.remove(null));
+        System.out.println(booksOrigin);
 
 
         System.out.println();//spacebar
@@ -48,5 +55,12 @@ public class HashMapOwnTestDrive {
         System.out.println(books.get("AaAaAa"));
         System.out.println(books.get("AaA"));
         System.out.println(books.get(null));
+        System.out.println(books);
+        System.out.println(books.remove("AaAaAa"));
+        System.out.println(books);
+        System.out.println(books.remove(null));
+        System.out.println(books);
+        System.out.println(books.remove(null));
+        System.out.println(books);
     }
 }

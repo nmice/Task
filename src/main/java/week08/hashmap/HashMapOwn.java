@@ -109,6 +109,21 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object key) {
+        int index = 0;
+        if (key != null) {
+            index = key.hashCode() % array.length;
+        }
+        if (array[index] != null) {
+            List<Node<K, V>> nodeList = (List) array[index];
+            for (Node<K, V> node : nodeList) {
+                if (key == null && node.key == null || key.equals(node.key)) {
+                    V oldValue = node.value;
+                    nodeList.remove(node);
+                    size--;
+                    return oldValue;
+                }
+            }
+        }
         return null;
     }//TODO
 
