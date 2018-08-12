@@ -1,6 +1,14 @@
 package week09.counter;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class CodeLinesCounter {
 
@@ -15,62 +23,39 @@ public class CodeLinesCounter {
 
     public static void main(String[] args) throws IOException {
         int counter = 0;
-        File folder = new File("d:/Repo/Task/src/main/java/util");
-        counter = foldersCodeLineCounter(folder, counter);
 
-        String foldersName = "d:/Repo/Task/src/main/java/week0";
-        for (int i = 1; i <= 9; i++) {
-            folder = new File(foldersName + i);
-            counter = foldersCodeLineCounter(folder, counter);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String extention = reader.readLine();
+        String wayToFolder = reader.readLine();//TODO
+
+        List<File> listOfFiles = Files.walk(Paths.get(extention.equals("\r\n") ? "d:/Repos/Task/src/" : extention))
+                .filter(Files::isRegularFile)
+                .filter(path -> FilenameUtils.getExtension(path.toString()).equals("java"))
+                .map(Path::toFile)
+                .collect(Collectors.toList());
+
+        for (File file : listOfFiles) {
+            counter += countCodeLinesOfFile(file);
         }
-
-        folder = new File("d:/Repo/Task/src/main/java/week03/garbage");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week03/task13_012");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week05/TaskG01_06_CustomListImpl_part1");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week06/TaskG02_04_ArrayList");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week07/Task_LinkedList");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week08/hashmap");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week08/student");
-        counter = foldersCodeLineCounter(folder, counter);
-
-        folder = new File("d:/Repo/Task/src/main/java/week09/counter");
-        counter = foldersCodeLineCounter(folder, counter);
 
         System.out.println("Result counter = " + counter);
     }
 
-    public static int foldersCodeLineCounter(File folder, int counter) throws IOException {
-        File[] listOfFiles = folder.listFiles();
-        for (File fileInFolder : listOfFiles) {
-            if (fileInFolder.isFile()) {
-                System.out.println(fileInFolder.getName());
-                //Создаем объект FileReader для объекта File
-                FileReader fr = new FileReader(fileInFolder);
-                //Создаем BufferedReader с существующего FileReader для построчного считывания
-                BufferedReader reader = new BufferedReader(fr);
-                //Считываем первую строку
-                String line = reader.readLine();
-                //Инкрементируем счетчик
-                counter++;
-                while (line != null) {
-                    // считываем остальные строки в цикле
-                    line = reader.readLine();
-                    //Инкрементируем счетчик
-                    counter++;
-                }
-            }
+    public static int countCodeLinesOfFile(File file) throws IOException {
+        int counter = 0;
+        //Создаем объект FileReader для объекта File
+        FileReader fr = new FileReader(file);
+        //Создаем BufferedReader с существующего FileReader для построчного считывания
+        BufferedReader reader = new BufferedReader(fr);
+        //Считываем первую строку
+        String line = reader.readLine();
+        //Инкрементируем счетчик
+        counter++;
+        while (line != null) {
+            // считываем остальные строки в цикле
+            line = reader.readLine();
+            //Инкрементируем счетчик
+            counter++;
         }
         return counter;
     }

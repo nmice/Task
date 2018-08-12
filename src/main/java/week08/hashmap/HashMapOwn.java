@@ -20,6 +20,12 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
     // private int MAXIMUM_CAPACITY = 1073741824;
     // private float DEFAULT_LOAD_FACTOR = 0.75f;
 
+    public int getArrayIndex(Object key) {
+        if (key == null) {
+            return 0;
+        }
+        return Math.abs(key.hashCode()) % array.length;
+    }
 
     @Override
     public int size() {
@@ -33,19 +39,23 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public boolean containsKey(Object key) {
-        //for (int index = key.hashCode() % array.length; array[key.hashCode() % array.length] != null; index++){
-        if (array[key.hashCode() % array.length] != null) {
-            return true;
+        if (array[getArrayIndex(key)] != null) {
+            List<Node<K, V>> list = (List) array[getArrayIndex(key)];
+            for (Node<K, V> node : list) {
+                if (node.key.equals(key)) return true;
+            }
         }
-        //}
         return false;
     }
 
     @Override
     public boolean containsValue(Object value) {
         for (int index = 0; index < array.length; index++) {
-            if (array[index].equals(value)) {
-                return true;
+            if (array[index] != null) {
+                List<Node<K, V>> list = (List) array[index];
+                for (Node<K, V> node : list) {
+                    if (node.value.equals(value)) return true;
+                }
             }
         }
         return false;
@@ -53,10 +63,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V get(Object key) {
-        int index = 0;
-        if (key != null) {
-            index = key.hashCode() % array.length;
-        }
+        int index = getArrayIndex(key);
         if (array[index] != null) {
             List<Node<K, V>> nodeList = (List) array[index];
             for (Node<K, V> node : nodeList) {
@@ -72,14 +79,9 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
     public V put(K key, V value) {
         //1) Создать эл-т Node<K,V> c ключом и значением
         Node<K, V> newNode;
+        newNode = new Node(key, value);
         //2) Найти индекс ячейки для помещения Node
-        int index = 0;
-        if (key == null) {
-            newNode = new Node(0, key, value, null);
-        } else {
-            newNode = new Node(key.hashCode(), key, value, null);
-            index = key.hashCode() % array.length;
-        }
+        int index = getArrayIndex(key);
         //2.1) Если ячейка пуста, Создать новый связный список,
         if (array[index] == null) {
             List nodeList = new LinkedList();
@@ -87,7 +89,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
             array[index] = nodeList;
             //2.1.2) Поместить эл-т Node в связный список
             nodeList.add(newNode);
-            //2.2) Если ячейка не пуста,
+            //2.2) Если ячейка не пуста
         } else {
             //2.2.1) если оба Key==null или совпадают Key, заменить в эл-те Node с ключом key значение value на переданное в метод значение value
             List<Node<K, V>> nodeList = (LinkedList) array[index];
@@ -109,10 +111,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object key) {
-        int index = 0;
-        if (key != null) {
-            index = key.hashCode() % array.length;
-        }
+        int index = getArrayIndex(key);
         if (array[index] != null) {
             List<Node<K, V>> nodeList = (List) array[index];
             for (Node<K, V> node : nodeList) {
@@ -172,16 +171,12 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
     }
 
     static class Node<K, V> implements Map.Entry<K, V> {
-        final int hash;
         final K key;
         V value;
-        Node<K, V> next;
 
-        Node(int hash, K key, V value, Node<K, V> next) {
-            this.hash = hash;
+        Node(K key, V value) {
             this.key = key;
             this.value = value;
-            this.next = next;
         }
 
         public final K getKey() {
