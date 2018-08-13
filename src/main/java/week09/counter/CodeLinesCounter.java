@@ -25,12 +25,16 @@ public class CodeLinesCounter {
         int counter = 0;
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String extention = reader.readLine();
-        String wayToFolder = reader.readLine();//TODO
+        System.out.println("Enter the path to the files: ");
+        String wayToFolder = reader.readLine().replaceAll("\\s","");
+        System.out.println((wayToFolder.equals("")? "Default path is - d:/Repos/Task/src/": "You path is " + wayToFolder)+"\r\n");
+        System.out.println("Enter the file extension: ");
+        String extention = reader.readLine().replaceAll("\\s","");
+        System.out.println(extention.equals("")? "Default extention is - .java": "You extention is " + extention);
 
-        List<File> listOfFiles = Files.walk(Paths.get(extention.equals("\r\n") ? "d:/Repos/Task/src/" : extention))
+        List<File> listOfFiles = Files.walk(Paths.get(wayToFolder.equals("") ? "d:/Repos/Task/src/" : wayToFolder))
                 .filter(Files::isRegularFile)
-                .filter(path -> FilenameUtils.getExtension(path.toString()).equals("java"))
+                .filter(path -> FilenameUtils.getExtension(path.toString()).equals(extention.equals("") ? "java" : extention))
                 .map(Path::toFile)
                 .collect(Collectors.toList());
 
