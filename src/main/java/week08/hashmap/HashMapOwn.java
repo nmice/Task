@@ -10,18 +10,25 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     private static final int DEFAULT_CAPACITY = 17;
     private static final int MAXIMUM_CAPACITY = 1_073_741_824;
+    int threshold;
 
     public HashMapOwn() {
         this(DEFAULT_CAPACITY);
     }
 
     private HashMapOwn(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Illegal initial capacity: " + capacity);
+        }
+        if (capacity > MAXIMUM_CAPACITY){
+            capacity = MAXIMUM_CAPACITY;
+        }
         array = new Object[capacity];
+        this.threshold = array.length * 3 / 4;
     }
 
     private Object[] array;
     private int size = 0;
-    //int TRESHOLD = array.length * 3 / 4;
 
     public int getArrayIndex(Object key) {
         if (key == null) {
@@ -82,7 +89,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
     private void copyElementsInNewHashmapown(int newArrayLength) {
         Object[] oldArray = array;
         array = new Object[newArrayLength];
-
+        threshold = array.length * 3 / 4;
         for (int indexOfOldArray = 0; indexOfOldArray < oldArray.length; indexOfOldArray++) {
             List<Node<K, V>> nodeListInOldArray = (List) oldArray[indexOfOldArray];
             if (nodeListInOldArray != null) {
@@ -110,7 +117,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V put(K key, V value) {
-        if (size >= array.length * 3 / 4 && array.length <= MAXIMUM_CAPACITY) {
+        if (size >= threshold && array.length <= MAXIMUM_CAPACITY) {
             copyElementsInNewHashmapown(array.length * 2);
         }
         //1) Создать эл-т Node<K,V> c ключом и значением
@@ -146,7 +153,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object key) {
-        if (size * 2 < array.length * 3 / 4 && array.length / 2 >= DEFAULT_CAPACITY) {
+        if (size * 2 < threshold && array.length / 2 >= DEFAULT_CAPACITY) {
             copyElementsInNewHashmapown(array.length / 2);
         }
         int index = getArrayIndex(key);
