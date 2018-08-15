@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class HashMapOwnPerfTest {
 
-    public static final int MAP_SIZE = 1_00000;
+    public static final int MAP_SIZE = 1_000_000;
 
     public static void main(String[] args) {
         Map<Integer, Integer> map = new HashMap<>();

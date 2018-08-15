@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Implement the code counter in lines written for the entire learning time
+ */
+
 public class CodeLinesCounter {
 
 //1) Предоставить доступ к файлам в папке SRC
@@ -26,11 +30,11 @@ public class CodeLinesCounter {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the path to the files: ");
-        String wayToFolder = reader.readLine().replaceAll("\\s","");
-        System.out.println((wayToFolder.equals("")? "Default path is - d:/Repos/Task/src/": "You path is " + wayToFolder)+"\r\n");
+        String wayToFolder = reader.readLine().replaceAll("\\s", "");
+        System.out.println((wayToFolder.equals("") ? "Default path is - d:/Repos/Task/src/" : "You path is " + wayToFolder) + "\r\n");
         System.out.println("Enter the file extension: ");
-        String extention = reader.readLine().replaceAll("\\s","");
-        System.out.println(extention.equals("")? "Default extention is - .java": "You extention is " + extention);
+        String extention = reader.readLine().replaceAll("\\s", "");
+        System.out.println(extention.equals("") ? "Default extention is - .java" : "You extention is " + extention);
 
         List<File> listOfFiles = Files.walk(Paths.get(wayToFolder.equals("") ? "d:/Repos/Task/src/" : wayToFolder))
                 .filter(Files::isRegularFile)

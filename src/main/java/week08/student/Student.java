@@ -5,6 +5,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.Objects;
 
+/**
+ * Implement three variants of methods hashcode () & equals () for class Student
+ */
+
 public class Student {
 
     private String firstName;

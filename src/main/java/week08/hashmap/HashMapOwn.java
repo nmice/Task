@@ -2,9 +2,14 @@ package week08.hashmap;
 
 import java.util.*;
 
+/**
+ * Implement your own HashMap (put, remove, clear, size, containsKey)
+ */
+
 public final class HashMapOwn<K, V> implements Map<K, V> {
 
     private static final int DEFAULT_CAPACITY = 17;
+    private static final int MAXIMUM_CAPACITY = 1_073_741_824;
 
     public HashMapOwn() {
         this(DEFAULT_CAPACITY);
@@ -16,9 +21,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     private Object[] array;
     private int size = 0;
-
-    // private int MAXIMUM_CAPACITY = 1073741824;
-    // private float DEFAULT_LOAD_FACTOR = 0.75f;
+    //int TRESHOLD = array.length * 3 / 4;
 
     public int getArrayIndex(Object key) {
         if (key == null) {
@@ -75,11 +78,43 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
         return null;
     }//TODO
 
+
+    private void copyElementsInNewHashmapown(int newArrayLength) {
+        Object[] oldArray = array;
+        array = new Object[newArrayLength];
+
+        for (int indexOfOldArray = 0; indexOfOldArray < oldArray.length; indexOfOldArray++) {
+            List<Node<K, V>> nodeListInOldArray = (List) oldArray[indexOfOldArray];
+            if (nodeListInOldArray != null) {
+                for (Node<K, V> nodeFromOldList : nodeListInOldArray) {
+                    int index = getArrayIndex(nodeFromOldList.key);
+                    if (array[index] == null) {
+                        List<Node<K, V>> nodeListInNewArray = new LinkedList();
+                        array[index] = nodeListInNewArray;
+                        nodeListInNewArray.add(nodeFromOldList);
+                    } else {
+                        List<Node<K, V>> nodeListInNewArray = (LinkedList) array[index];
+                        for (Node<K, V> nodeFromNewList : nodeListInNewArray) {
+                            if (nodeFromNewList.key == null && nodeFromOldList.key == null || nodeFromNewList.key.equals(nodeFromOldList.key)) {
+                                nodeFromNewList.value = nodeFromOldList.value;
+                                break;
+                            }
+                        }
+                        nodeListInNewArray.add(nodeFromOldList);
+                    }
+                }
+            }
+        }
+    }
+
+
     @Override
     public V put(K key, V value) {
+        if (size >= array.length * 3 / 4 && array.length <= MAXIMUM_CAPACITY) {
+            copyElementsInNewHashmapown(array.length * 2);
+        }
         //1) Создать эл-т Node<K,V> c ключом и значением
-        Node<K, V> newNode;
-        newNode = new Node(key, value);
+        Node<K, V> newNode = new Node(key, value);
         //2) Найти индекс ячейки для помещения Node
         int index = getArrayIndex(key);
         //2.1) Если ячейка пуста, Создать новый связный список,
@@ -111,6 +146,9 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object key) {
+        if (size * 2 < array.length * 3 / 4 && array.length / 2 >= DEFAULT_CAPACITY) {
+            copyElementsInNewHashmapown(array.length / 2);
+        }
         int index = getArrayIndex(key);
         if (array[index] != null) {
             List<Node<K, V>> nodeList = (List) array[index];
@@ -132,7 +170,7 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void clear() { //TODO
+    public void clear() {
         for (int i = 0; i < array.length; i++) {
             array[i] = null;
         }
