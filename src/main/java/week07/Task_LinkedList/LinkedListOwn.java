@@ -103,10 +103,10 @@ public final class LinkedListOwn<E> implements List<E> {
     public boolean remove(Object o) {
         for (Node current = first; current != null; current = current.next) {
             if (current.item.equals(o)) {
-                if (first == last){
+                if (first == last) {
                     first = null;
                     last = null;
-                } else if(current == first){
+                } else if (current == first) {
                     first.next.prev = null;
                     first = first.next;
                 } else if (current == last) {
@@ -312,8 +312,12 @@ public final class LinkedListOwn<E> implements List<E> {
         for (Node current = first; current != null; current = current.next) {
             if (i == index) {
                 E old = (E) current.item;
-                current.prev.next = current.next;
-                current.next.prev = current.prev;
+                if (current.prev != null) {
+                    current.prev.next = current.next;
+                }
+                if (current.next != null) {
+                    current.next.prev = current.prev;
+                }
                 size--;
                 return old;
             } else {

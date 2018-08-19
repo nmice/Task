@@ -1,7 +1,5 @@
 package week09.counter;
 
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,6 +26,7 @@ public class CodeLinesCounter {
     public static void main(String[] args) throws IOException {
         int counter = 0;
 
+/*
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the path to the files: ");
         String wayToFolder = reader.readLine().replaceAll("\\s", "");
@@ -66,5 +65,6 @@ public class CodeLinesCounter {
             counter++;
         }
         return counter;
+*/
     }
 }
