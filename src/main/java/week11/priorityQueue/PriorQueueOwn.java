@@ -1,4 +1,4 @@
-package week10.priorityQueue;
+package week11.priorityQueue;
 
 public class PriorQueueOwn {
 }

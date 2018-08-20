@@ -320,9 +320,8 @@ public final class LinkedListOwn<E> implements List<E> {
                 }
                 size--;
                 return old;
-            } else {
-                i++;
             }
+            i++;
         }
         return null;
     }

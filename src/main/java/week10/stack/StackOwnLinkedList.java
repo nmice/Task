@@ -3,27 +3,27 @@ package week10.stack;
 
 import week07.Task_LinkedList.LinkedListOwn;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
-public class StackOwn<E> implements IStack<E> {
-
-    List<E> list = new LinkedListOwn();
+public class StackOwnLinkedList<E> implements IStack<E> {
+    Deque<E> list = new LinkedList<>();
 
     @Override
     public E push(E item) {
-        list.add(item);
+        list.push(item);
         return item;
     }
 
     @Override
     public E pop() {
-        E poppingElement = list.remove(list.size() - 1);
-        return poppingElement;
+        return list.pop();
     }
 
     @Override
     public E peek() {
-        return list.get(list.size() - 1);
+        return list.peek();
     }
 
     @Override

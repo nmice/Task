@@ -1,5 +1,7 @@
 package week09.counter;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,48 +25,52 @@ public class CodeLinesCounter {
 //4.3) Суммировать кол-во переходов к счетчику строк
 //4.4) При выходе из цикла вернуть значение
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int counter = 0;
 
-/*
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         System.out.println("Enter the path to the files: ");
-        String wayToFolder = reader.readLine().replaceAll("\\s", "");
-        System.out.println((wayToFolder.equals("") ? "Default path is - d:/Repos/Task/src/" : "You path is " + wayToFolder) + "\r\n");
-        System.out.println("Enter the file extension: ");
-        String extention = reader.readLine().replaceAll("\\s", "");
-        System.out.println(extention.equals("") ? "Default extention is - .java" : "You extention is " + extention);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            String wayToFolder = reader.readLine().replaceAll("\\s", "");
+            System.out.println((wayToFolder.equals("") ? "Default path is - d:/Repos/Task/src/" : "You path is " + wayToFolder) + "\r\n");
+            System.out.println("Enter the file extension: ");
+            String extention = reader.readLine().replaceAll("\\s", "");
+            System.out.println(extention.equals("") ? "Default extention is - .java" : "You extention is " + extention);
 
-        List<File> listOfFiles = Files.walk(Paths.get(wayToFolder.equals("") ? "d:/Repos/Task/src/" : wayToFolder))
-                .filter(Files::isRegularFile)
-                .filter(path -> FilenameUtils.getExtension(path.toString()).equals(extention.equals("") ? "java" : extention))
-                .map(Path::toFile)
-                .collect(Collectors.toList());
+            List<File> listOfFiles = Files.walk(Paths.get(wayToFolder.equals("") ? "d:/Repos/Task/src/" : wayToFolder))
+                    .filter(Files::isRegularFile)
+                    .filter(path -> FilenameUtils.getExtension(path.toString()).equals(extention.equals("") ? "java" : extention))
+                    .map(Path::toFile)
+                    .collect(Collectors.toList());
 
-        for (File file : listOfFiles) {
-            counter += countCodeLinesOfFile(file);
+            for (File file : listOfFiles) {
+                counter += countCodeLinesOfFile(file);
+            }
+            System.out.println("Result counter = " + counter);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        System.out.println("Result counter = " + counter);
     }
 
-    public static int countCodeLinesOfFile(File file) throws IOException {
+    public static int countCodeLinesOfFile(File file) {
         int counter = 0;
         //Создаем объект FileReader для объекта File
-        FileReader fr = new FileReader(file);
-        //Создаем BufferedReader с существующего FileReader для построчного считывания
-        BufferedReader reader = new BufferedReader(fr);
-        //Считываем первую строку
-        String line = reader.readLine();
-        //Инкрементируем счетчик
-        counter++;
-        while (line != null) {
-            // считываем остальные строки в цикле
-            line = reader.readLine();
+        try (FileReader fr = new FileReader(file);
+             BufferedReader reader = new BufferedReader(fr)) {
+            //Создаем BufferedReader с существующего FileReader для построчного считывания
+            //Считываем первую строку
+            String line = reader.readLine();
             //Инкрементируем счетчик
             counter++;
+            while (line != null) {
+                // считываем остальные строки в цикле
+                line = reader.readLine();
+                //Инкрементируем счетчик
+                counter++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return counter;
-*/
     }
 }
