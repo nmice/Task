@@ -7,7 +7,7 @@ import java.util.*;
  * and performance tests from the previous task.
  */
 
-public final class LinkedListOwn<E> implements List<E> {
+public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     private int size = 0;
     private Node<E> first;
@@ -97,6 +97,42 @@ public final class LinkedListOwn<E> implements List<E> {
         size++;
         last = node;
         return true;
+    }
+
+    @Override
+    public boolean offer(E e) {
+        this.add(e);
+        return true;
+    }
+
+    @Override
+    public E remove() {
+        E old = this.get(0);
+        this.remove(this.peek());
+        return old;
+    }
+
+    @Override
+    public E poll() {
+        if (this.size() == 0){
+            return null;
+        }
+        E old = this.get(0);
+        this.remove(this.peek());
+        return old;
+    }
+
+    @Override
+    public E element() {
+        return this.get(0);
+    }
+
+    @Override
+    public E peek() {
+        if (this.size() == 0){
+            return null;
+        }
+        return this.get(0);
     }
 
     @Override
