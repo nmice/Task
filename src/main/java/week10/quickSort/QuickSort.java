@@ -2,6 +2,7 @@ package week10.quickSort;
 
 import week07.Task_LinkedList.LinkedListOwn;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -9,24 +10,20 @@ import java.util.List;
 public class QuickSort {
 
     public static void main(String[] args) {
-        List<Integer> list = new LinkedListOwn<>();
-        list.add(122);
-        list.add(137);
-        list.add(148);
-        list.add(247);
-        list.add(2028);
-        list.add(-500);
-        list.add(0);
-        System.out.println(list);
-        Comparator newComparator = (Comparator) new ListComparator();
-        sortCollection(list, newComparator);
-        System.out.println(list);
-
+        Integer[] myArray = {184, 124, 187, 136, 185, 2041, 0, -100, 1, 256, 4};
+        System.out.println("Your Array: " + Arrays.toString(myArray));
+        System.out.println("Sorted Array by quickSort: " + Arrays.toString(quickSortArray(myArray)));
     }
 
+    public static Integer[] quickSortArray(Integer[] array) {
+        if (array.length == 1) {
+            return array;
+        }
+        Integer primary = array[array.length / 2];
+        for (int i = 0; i <= primary; i++) {
+            
+        }
 
-    public static void sortCollection(Collection col, Comparator comparator){
+        return array;
     }
-
-
 }
