@@ -22,7 +22,7 @@ public class QuickSort {
         if (end - start <= 1) {
             return array;
         }
-        Integer indexOfBasicElement = (end - start) / 2;
+        int indexOfBasicElement = (end - start) / 2;
         int i = start;
         int j = end;
         while (i < j) {
@@ -30,7 +30,7 @@ public class QuickSort {
                 i++;
             }
             while (j > indexOfBasicElement && array[j] >= array[indexOfBasicElement]) {
-                j++;
+                j--;
             }
             if (i < j) {
                 int temp = array[i];
@@ -42,8 +42,8 @@ public class QuickSort {
                     indexOfBasicElement = i;
             }
         }
-        quickSortArray(array, start, indexOfBasicElement);
-        quickSortArray(array, indexOfBasicElement, end);
+        //quickSortArray(array, start, indexOfBasicElement);
+        quickSortArray(array, indexOfBasicElement+1, end);
         return array;
     }
 }
