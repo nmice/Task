@@ -1,14 +1,8 @@
 package week10.quickSort;
 
-import java.util.Arrays;
+import java.util.Comparator;
 
-public class QuickSort {
-
-    public static void main(String[] args) {
-        Integer[] myArray = {184, 124, 187, 136, 185, 2041, 0, -100, 1, 256, 4};
-        System.out.println("Your Array: " + Arrays.toString(myArray));
-        System.out.println("Sorted Array by quickSort: " + Arrays.toString(quickSortArray(myArray)));
-    }
+public class QuickSor<T>{
 
     public static Comparable[] quickSortArray(Comparable[] array) {
         return doSort(array, 0, array.length - 1);
@@ -41,5 +35,9 @@ public class QuickSort {
         doSort(array, start, indexOfBasicElement);
         doSort(array, indexOfBasicElement + 1, end);
         return array;
+    }
+
+    public T[] quickSortArray(T[] array, Comparator<T> comparator) {
+        return doSort(array, 0, array.length - 1);
     }
 }
