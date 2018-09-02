@@ -2,8 +2,6 @@ package week10.quickSort;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
-import static week10.quickSort.QuickSor.quickSortArray;
 import static week10.quickSort.QuickSort.quickSortArray;
 
 public class QuickSortTestDrive {
@@ -30,7 +28,7 @@ public class QuickSortTestDrive {
             System.out.println(b.getAuthor() + " - " + b.getTitle());
         }
         quickSortArray(bookArray, bookComparator);
-        System.out.println("Sorted Array by quickSort: ");
+        System.out.println("\r\nSorted Array by quickSort: ");
         for (Book b : bookArray) {
             System.out.println(b.getAuthor() + " - " + b.getTitle());
         }
