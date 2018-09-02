@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class QuickSort {
 
-    public static Comparable[] quickSortArray(Comparable[] array) { //FOR COMPARABLE ARRAY
+    public static Comparable[] quickSortArray(Comparable[] array) { // FOR COMPARABLE ARRAY
         return doSort(array, 0, array.length - 1);
     }
 
