@@ -9,7 +9,11 @@ import static week10.quickSort.QuickSort.quickSortArray;
 public class QuickSortTestDrive {
 
     public static void main(String[] args) {
-        Integer[] myArray = {184, 124, 187, 136, 185, 2041, 0, -100, 1, 256, 4};
+        //Integer[] myArray = {184, 124, 187, 136, 185, 2041, 0, -100, 1, 256, 4};
+        Integer[] myArray = new Integer[11];
+        for (int i=0; i<11; i++){
+            myArray[i] = (int) (Math.random() * 1000);
+        }
         System.out.println("Your Array: " + Arrays.toString(myArray));
 
         Integer[] myArray2 = new Integer[11];
