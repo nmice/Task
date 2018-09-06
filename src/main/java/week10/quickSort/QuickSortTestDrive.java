@@ -37,14 +37,16 @@ public class QuickSortTestDrive {
         bookArray[7] = new Book("Gogol", "Nose");
         bookArray[8] = new Book("Bradbury", "451 Fahrenheit");
         bookArray[9] = new Book("Pelevin", "Generation P");
-        System.out.println("Your Array: ");
-        for (Book b : bookArray) {
-            System.out.println(b.getAuthor() + " - " + b.getTitle());
-        }
+        System.out.println("Your Array: " + Arrays.toString(bookArray));
+
+        Book[] bookArray2 = new Book[10];
+        System.arraycopy(bookArray,0,bookArray2,0,10);
+        System.out.println("Your SECOND Array: " + Arrays.toString(bookArray2));
+        sort(bookArray2);
+        System.out.println("Sorted SECOND Array by sort: " + Arrays.toString(bookArray2));
+
         quickSortArray(bookArray, bookComparator);
-        System.out.println("\r\nSorted Array by quickSort: ");
-        for (Book b : bookArray) {
-            System.out.println(b.getAuthor() + " - " + b.getTitle());
-        }
+        System.out.println("Sorted Array by quickSort: " + Arrays.toString(bookArray));
+
     }
 }
