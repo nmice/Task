@@ -413,7 +413,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
         return "[" + result.toString() + "]";
     }
 
-    private static class Node<E> {
+    protected static class Node<E> {
         private E item;
         private Node<E> next;
         private Node<E> prev;
