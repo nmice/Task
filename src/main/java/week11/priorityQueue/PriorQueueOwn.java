@@ -17,26 +17,28 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         }
     }
 
-    private Comparator<? super E> pqComparator = new PQComparator();
     private static int DEFAULT_INITIAL_CAPACITY = 5;
+    private Comparator<E> pqComparator = new PQComparator();
+
 
     public PriorQueueOwn() {
         this(DEFAULT_INITIAL_CAPACITY, pqComparator);
     }
 
     public PriorQueueOwn(int initialCapacity) {
-        this(initialCapacity, DEFAULT_COMPARATOR);
+        this(initialCapacity, pqComparator);
     }
 
-    public PriorQueueOwn(Comparator<? super E> comparator) {
+    public PriorQueueOwn(Comparator<E> comparator) {
         this(DEFAULT_INITIAL_CAPACITY, comparator);
     }
 
     public PriorQueueOwn(int initialCapacity,
-                         Comparator<? super E> comparator) {
+                         Comparator<E> comparator) {
         if (initialCapacity < 1) {
             throw new IllegalArgumentException();
         }
+        this.pqComparator = comparator;
 
     }
 
