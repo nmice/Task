@@ -18,8 +18,8 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     }
 
     private static int DEFAULT_INITIAL_CAPACITY = 5;
-    private Comparator<E> pqComparator = new PQComparator();
-
+    private Comparator<? extends Comparable> pqComparator = new PQComparator();
+    private final Comparator<? super E> comparator;
 
     public PriorQueueOwn() {
         this(DEFAULT_INITIAL_CAPACITY, pqComparator);
