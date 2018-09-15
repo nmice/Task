@@ -72,8 +72,7 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         return super.get(0);
     }
 
-
-
+/*  //THIS METHODS HAVE SUPER IMPLEMENTATION & DO NOT NEED TO OVERRIDE:
     @Override
     public boolean remove(Object o) { return super.remove(o); }
 
@@ -93,8 +92,7 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     public int size() { return super.size(); }
 
     @Override
-    public void clear(){ super.clear(); }
-
+    public void clear(){ super.clear(); }*/
 
 
     @Override

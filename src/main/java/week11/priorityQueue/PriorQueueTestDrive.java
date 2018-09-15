@@ -74,6 +74,16 @@ public class PriorQueueTestDrive {
         bookQueue.add(book8);
         bookQueue.add(book9);
         System.out.println(bookQueue.peek());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue.remove());
+        System.out.println(bookQueue);
         System.out.println("Comparator is " + bookQueue.comparator());
 
         System.out.println("Priority Queue - Book test with comparator:");

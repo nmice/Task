@@ -1,11 +1,26 @@
 package week10.quickSort;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Book implements Comparable<Book> {
 
     private String author;
     private String title;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return Objects.equals(getAuthor(), book.getAuthor()) &&
+                Objects.equals(getTitle(), book.getTitle());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAuthor(), getTitle());
+    }
 
     public Book(String author, String title) {
         this.author = author;
@@ -32,6 +47,8 @@ public class Book implements Comparable<Book> {
         return this.getAuthor() + " - " + this.getTitle();
     }
 }
+
+
 
 class BookAuthorComparator implements Comparator<Book> {
     @Override
