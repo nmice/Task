@@ -3,12 +3,14 @@ package week11.priorityQueue;
 import week07.Task_LinkedList.LinkedListOwn;
 
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class PriorQueueOwn<E> extends LinkedListOwn<E> {
 
     //Передаю ЛЮБОЙ объект E
     //Если тип объекта наследован от Comparable, используется наш стандартный компаратор, сводящий compare() к compareTo()
-    //Если же тип объекта не наследован от Comparable - тогда в конструктор должен быть передан Comparator
+    //Если же передается Comparator - используется квази переданный метод compare() от переданного компаратора.
 
     private static class PQComparator<E extends Comparable> implements Comparator<E> {
         @Override
@@ -18,68 +20,48 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     }
 
     private static int DEFAULT_INITIAL_CAPACITY = 5;
-    private Comparator<E> pqComparator = new PQComparator();
+    private Comparator<? super E> pqComparator = new PQComparator();
+    private int comparatorCounter = 0;
 
     public PriorQueueOwn() {
-        this(DEFAULT_INITIAL_CAPACITY, pqComparator);
+        this(DEFAULT_INITIAL_CAPACITY, null);
     }
 
     public PriorQueueOwn(int initialCapacity) {
-        this(initialCapacity, pqComparator);
+        this(initialCapacity, null);
     }
 
-    public PriorQueueOwn(Comparator<E> comparator) {
+    public PriorQueueOwn(Comparator<? super E> comparator) {
         this(DEFAULT_INITIAL_CAPACITY, comparator);
     }
 
     public PriorQueueOwn(int initialCapacity,
-                         Comparator<?> comparator) {
+                         Comparator<? super E> comparator) {
         if (initialCapacity < 1) {
             throw new IllegalArgumentException();
         }
-        this.pqComparator = comparator;
+        if (comparator != null) {
+            this.pqComparator = comparator;
+            this.comparatorCounter = 1;
+        }
     }
-
 
     @Override
     public boolean add(E e) {
-        return true;
+        return offer(e);
     }
 
     @Override
     public boolean offer(E e) {
-        this.add(e);
-        return true;
-    }
-
-    @Override
-    public E remove() {
-        E old = this.get(0);
-        this.remove(this.peek());
-        return old;
-    }
-
-    @Override
-    public E poll() {
-        E result = this.get(0);
-        this.remove(0);
-        E hiPriority = this.get(0);
-        for (int i = 0; i < this.size(); i++) {
-            if (hiPriority.compareTo(this.get(i)) > 0) {
-                hiPriority = this.get(i);
-            }
-            if (i == this.size() - 1 && hiPriority != this.get(0)) {
-                E temp = this.get(0);
-                this.set(0, hiPriority);
-                this.set(i, temp);
-            }
+        if (e == null) {
+            throw new NullPointerException();
         }
-        return result;
-    }
-
-    @Override
-    public E element() {
-        return this.get(0);
+        if (this.size() > 0 && pqComparator.compare(e, this.peek()) <= 0) {
+            super.add(0, e);
+        } else {
+            super.add(e);
+        }
+        return true;
     }
 
     @Override
@@ -87,7 +69,63 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         if (this.size() == 0) {
             return null;
         }
-        return this.get(0);
+        return super.get(0);
     }
 
+
+
+    @Override
+    public boolean remove(Object o) { return super.remove(o); }
+
+    @Override
+    public boolean contains(Object o) { return super.contains(o); }
+
+    @Override
+    public Object[] toArray() { return super.toArray(); }
+
+    @Override
+    public <T> T[] toArray(T[] a) { return super.toArray(a); }
+
+    @Override
+    public Iterator<E> iterator() { return super.iterator(); }
+
+    @Override
+    public int size() { return super.size(); }
+
+    @Override
+    public void clear(){ super.clear(); }
+
+
+
+    @Override
+    public E remove() {
+        E result = this.peek();
+        this.remove(0);
+        E hiPriority = this.peek();
+        int tempPos = 0;
+        for (int i = 0; i < super.size(); i++) {
+            if (pqComparator.compare(hiPriority, super.get(i)) > 0) {
+                hiPriority = super.get(i);
+                tempPos = i;
+            }
+            if (i == super.size() - 1 && hiPriority != super.get(0)) {
+                E temp = this.get(0);
+                super.set(tempPos, temp);
+                super.set(0, hiPriority);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public E poll() {
+        return this.remove();
+    }
+
+    public Comparator<? super E> comparator() {
+        if (comparatorCounter != 0) {
+            return pqComparator;
+        }
+        return null;
+    }
 }

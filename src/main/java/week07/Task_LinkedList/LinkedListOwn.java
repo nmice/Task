@@ -46,7 +46,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     @Override
     public Iterator<E> iterator() {//TODO
-        return new Iterator() {
+        return new Iterator<E>() {
             private int elementIndex = 0;
             private Node<E> currentNode = first;
 
@@ -54,7 +54,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 return size > elementIndex;
             }
 
-            public Object next() {
+            public E next() {
                 if (elementIndex == 0) {
                     elementIndex++;
                     return currentNode.item;
@@ -64,7 +64,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                     return currentNode.item;
                 }
             }
-
             public void remove() {
                 throw new UnsupportedOperationException("Cannot remove an element of an list.");
             }
@@ -114,7 +113,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     @Override
     public E poll() {
-        if (this.size() == 0){
+        if (this.size() == 0) {
             return null;
         }
         E old = this.get(0);
@@ -129,7 +128,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     @Override
     public E peek() {
-        if (this.size() == 0){
+        if (this.size() == 0) {
             return null;
         }
         return this.get(0);
@@ -350,9 +349,15 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 E old = (E) current.item;
                 if (current.prev != null) {
                     current.prev.next = current.next;
+                } else if (current.next != null) {
+                    first = current.next;
+                    current.next.prev = first;
                 }
                 if (current.next != null) {
                     current.next.prev = current.prev;
+                } else {
+                    first = null;
+                    last = null;
                 }
                 size--;
                 return old;

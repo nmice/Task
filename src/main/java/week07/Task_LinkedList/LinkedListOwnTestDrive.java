@@ -10,7 +10,7 @@ public class LinkedListOwnTestDrive {
         System.out.println("New LLO is empty - is a " + numbers.isEmpty());
         System.out.println(numbers);
         System.out.println("LLO Size is a " + numbers.size());
-        System.out.println("Add 4 nodes...");
+        System.out.println("Add 1 nodes...");
         numbers.add(666);
 //        numbers.add(667);
 //        numbers.add(668);
@@ -41,7 +41,7 @@ public class LinkedListOwnTestDrive {
 
         System.out.println(numbers);
 
-        numbers.remove(Integer.valueOf(666));
+        numbers.remove(0);
 
         System.out.println(numbers);
 
