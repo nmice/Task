@@ -9,6 +9,7 @@ public class PriorQueueOwnTest {
 
     @Before
     public void setUp() throws Exception {
+        //
     }
 
     @Test
