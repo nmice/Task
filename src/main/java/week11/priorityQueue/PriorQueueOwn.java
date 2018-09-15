@@ -10,7 +10,7 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     //Если тип объекта наследован от Comparable, используется наш стандартный компаратор, сводящий compare() к compareTo()
     //Если же тип объекта не наследован от Comparable - тогда в конструктор должен быть передан Comparator
 
-    private class PQComparator<E extends Comparable> implements Comparator<E> {
+    private static class PQComparator<E extends Comparable> implements Comparator<E> {
         @Override
         public int compare(E o1, E o2) {
             return o1.compareTo(o2);
@@ -18,8 +18,7 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     }
 
     private static int DEFAULT_INITIAL_CAPACITY = 5;
-    private Comparator<? extends Comparable> pqComparator = new PQComparator();
-    private final Comparator<? super E> comparator;
+    private Comparator<E> pqComparator = new PQComparator();
 
     public PriorQueueOwn() {
         this(DEFAULT_INITIAL_CAPACITY, pqComparator);
@@ -34,24 +33,16 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     }
 
     public PriorQueueOwn(int initialCapacity,
-                         Comparator<E> comparator) {
+                         Comparator<?> comparator) {
         if (initialCapacity < 1) {
             throw new IllegalArgumentException();
         }
         this.pqComparator = comparator;
-
     }
+
 
     @Override
     public boolean add(E e) {
-        if (this.size() == 0) {
-            this.add(e);
-        } else {
-            last.next = node;
-            node.prev = last;
-        }
-        size++;
-        last = node;
         return true;
     }
 
