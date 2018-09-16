@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class HashSetTestDrive {
     public static void main(String[] args) {
-        Set<String> testSet = new HashSet<>();
+        Set<String> testSet = new HashSetOwn<>();
         testSet.add("Russia");
         testSet.add("USA");
         testSet.add("Germany");

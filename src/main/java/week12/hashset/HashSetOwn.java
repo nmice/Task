@@ -8,7 +8,7 @@ import java.util.*;
 public class HashSetOwn<E> implements Set<E> {
 
     private HashMapOwn<E, Object> map;
-    private static final Object PRESENT = new Object();
+    private Object PRESENT = new Object();
 
     public HashSetOwn() {
         map = new HashMapOwn<>();
