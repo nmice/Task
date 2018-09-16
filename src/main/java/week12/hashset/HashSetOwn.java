@@ -77,8 +77,16 @@ public class HashSetOwn<E> implements Set<E> {
     }
 
     @Override
-    public <T> T[] toArray(T[] a) {//TODO with Iterator<E> of this collection
-        return null;
+    public <T> T[] toArray(T[] a) {//DO with Iterator<E> of this collection
+        if (a.length <= size()) {
+            return (T[]) toArray();
+        }
+        T[] result = a;
+        result[size()] = null;
+        int i = 0;
+        for (E elem: this)
+            result[i++] = (T) elem;
+        return result;
     }
 
 

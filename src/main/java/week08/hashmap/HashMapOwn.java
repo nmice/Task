@@ -105,7 +105,7 @@ public class HashMapOwn<K, V> implements Map<K, V> {
                         array[index] = nodeListInNewArray;
                         nodeListInNewArray.add(nodeFromOldList);
                     } else {
-                        List<Node<K, V>> nodeListInNewArray = (LinkedList) array[index];
+                        List<Node<K, V>> nodeListInNewArray = (List) array[index];
                         for (Node<K, V> nodeFromNewList : nodeListInNewArray) {
                             if (nodeFromNewList.key == null && nodeFromOldList.key == null || nodeFromNewList.key.equals(nodeFromOldList.key)) {
                                 nodeFromNewList.value = nodeFromOldList.value;
@@ -139,7 +139,7 @@ public class HashMapOwn<K, V> implements Map<K, V> {
             //2.2) Если ячейка не пуста
         } else {
             //2.2.1) если оба Key==null или совпадают Key, заменить в эл-те Node с ключом key значение value на переданное в метод значение value
-            List<Node<K, V>> nodeList = (LinkedList) array[index];
+            List<Node<K, V>> nodeList = (List) array[index];
             for (Node<K, V> node : nodeList) {
                 if (key == null && node.key == null || key.equals(node.key)) {
                     V oldValue = node.value;
@@ -224,26 +224,25 @@ public class HashMapOwn<K, V> implements Map<K, V> {
     private class MyIterator<K> implements Iterator {
 
         private int indexInArray = 0;
-        private List<Node<K, V>> listInArray = null;
+        private LinkedList<Node<K, V>> listInArray;
         private int indexInList = 0;
-        private Node<K, V> nodeInList = null;
+        private Node<K, V> nodeInList;
         private Node<K, V> oldNode = null;
 
         public MyIterator() {
         }
 
         public boolean hasNext() {
-            while (indexInArray < array.length-1) {
+            while (indexInArray < array.length) {
                 if (array[indexInArray] != null) {
-                    listInArray = (List<Node<K, V>>) array[indexInArray];
-                    while (indexInList != listInArray.size()-1){
-                        if (nodeInList!= null){
-                            nodeInList = ((Node<K, V>) array[indexInArray]);
-                        }
+                    listInArray = (LinkedList<Node<K, V>>) array[indexInArray];
+                    while (indexInList < listInArray.size()) {
+                        nodeInList = listInArray.get(indexInList);
                         return true;
                     }
                 }
                 indexInArray++;
+                indexInList = 0;
             }
             return false;
         }
@@ -288,8 +287,8 @@ public class HashMapOwn<K, V> implements Map<K, V> {
 
 
     static class Node<K, V> implements Map.Entry<K, V> {
-        K key;
-        V value;
+        private K key;
+        private V value;
 
         Node(K key, V value) {
             this.key = key;

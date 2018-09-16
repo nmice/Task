@@ -39,11 +39,11 @@ public class HashMapOwnTestDrive {
         System.out.println();//spacebar
 
         System.out.println("!HASHMAP OWN!");
-        Map<String, String> books = new HashMapOwn<String, String>();
-        System.out.println("HashMap books is empty - is a " + books.isEmpty());
+        Map<String, String> books = new HashMapOwn<>();
+/*        System.out.println("HashMap books is empty - is a " + books.isEmpty());
         System.out.println("Number of HashMap books elements is " + books.size());
         System.out.println(books);
-        System.out.println(books.get(null));
+        System.out.println(books.get(null));*/
         books.put("AaAaAa", "NEG");
         books.put("AaAaAa", "NEG");
         books.put("AaAaAa", "NEG1");
