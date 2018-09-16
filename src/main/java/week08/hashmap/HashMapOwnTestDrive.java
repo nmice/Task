@@ -6,7 +6,7 @@ import java.util.Map;
 public class HashMapOwnTestDrive {
 
     public static void main(String[] args) {
-        System.out.println("!HASHMAP ORIGIN!");
+/*        System.out.println("!HASHMAP ORIGIN!");
         Map<String, String> booksOrigin = new HashMap<String, String>();
         System.out.println("HashMap books is empty - is a " + booksOrigin.isEmpty());
         System.out.println("Number of HashMap books elements is " + booksOrigin.size());
@@ -33,7 +33,7 @@ public class HashMapOwnTestDrive {
         System.out.println(booksOrigin.remove(null));
         System.out.println(booksOrigin);
         booksOrigin.clear();
-        System.out.println(booksOrigin);
+        System.out.println(booksOrigin);*/
 
 
         System.out.println();//spacebar

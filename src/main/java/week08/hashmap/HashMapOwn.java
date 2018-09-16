@@ -6,7 +6,7 @@ import java.util.*;
  * Implement your own HashMap (put, remove, clear, size, containsKey)
  */
 
-public final class HashMapOwn<K, V> implements Map<K, V> {
+public class HashMapOwn<K, V> implements Map<K, V> {
 
     private static final int DEFAULT_CAPACITY = 17;
     private static final int MAXIMUM_CAPACITY = 1_073_741_824;
@@ -16,16 +16,21 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
         this(DEFAULT_CAPACITY);
     }
 
-    private HashMapOwn(int capacity) {
+    public HashMapOwn(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Illegal initial capacity: " + capacity);
         }
-        if (capacity > MAXIMUM_CAPACITY){
+        if (capacity > MAXIMUM_CAPACITY) {
             capacity = MAXIMUM_CAPACITY;
         }
         array = new Object[capacity];
         this.threshold = array.length * 3 / 4;
     }
+
+    public HashMapOwn(int capacity, float loadFactor) {
+        this(capacity);
+    }
+
 
     private Object[] array;
     private int size = 0;
@@ -215,8 +220,75 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
         return "{" + result.toString() + "}";
     }
 
+
+    private class MyIterator<K> implements Iterator {
+
+        private int indexInArray = 0;
+        private List<Node<K, V>> listInArray = null;
+        private int indexInList = 0;
+        private Node<K, V> nodeInList = null;
+        private Node<K, V> oldNode = null;
+
+        public MyIterator() {
+        }
+
+        public boolean hasNext() {
+            while (indexInArray < array.length-1) {
+                if (array[indexInArray] != null) {
+                    listInArray = (List<Node<K, V>>) array[indexInArray];
+                    while (indexInList != listInArray.size()-1){
+                        if (nodeInList!= null){
+                            nodeInList = ((Node<K, V>) array[indexInArray]);
+                        }
+                        return true;
+                    }
+                }
+                indexInArray++;
+            }
+            return false;
+        }
+
+        public K next() {
+            indexInList++;
+            return nodeInList.getKey();
+        }
+
+    }
+
+    public Iterator<K> keyIterator() {
+        return new MyIterator();
+    }
+
+/*
+            public boolean hasNext() {
+                //ищем первый элемент
+                for (int i = array.length - 1; i >= 0; i--) {
+                    if (array[i] != null) {
+                        current = ((LinkedList<Node<K, V>>) array[i]).get(0);
+                    }
+                    if ()
+                }
+
+                //Нашли первый элемент,
+                //Запускаем цикл по след ячейкам массива от данной до последней. Если в ячейке есть лист, возвращаем true.
+
+                //Новых эл-в нет, возвращаем false.
+                return false;
+            }
+
+            @Override
+            public K next() {
+                //Если elem.hasNext = true, то:
+                //Если наш elem не последний в списке, возвращаем следующий.
+                //Запускаем цикл по след ячейкам массива от данной до последней,
+                //Если в ячейке есть лист, присваиваем нашему элементу значение нулевого элемента из списка.
+                //
+                return current.getKey();
+*/
+
+
     static class Node<K, V> implements Map.Entry<K, V> {
-        final K key;
+        K key;
         V value;
 
         Node(K key, V value) {
@@ -238,6 +310,12 @@ public final class HashMapOwn<K, V> implements Map<K, V> {
 
         public final int hashCode() {
             return Objects.hashCode(key) ^ Objects.hashCode(value);
+        }
+
+        public final K setKey(K newKey) {
+            K oldKey = key;
+            key = newKey;
+            return oldKey;
         }
 
         public final V setValue(V newValue) {
