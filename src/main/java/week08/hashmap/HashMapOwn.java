@@ -227,9 +227,8 @@ public class HashMapOwn<K, V> implements Map<K, V> {
         private LinkedList<Node<K, V>> listInArray;
         private int indexInList = 0;
         private Node<K, V> nodeInList;
-        private Node<K, V> oldNode = null;
 
-        public MyIterator() {
+        private MyIterator() {
         }
 
         public boolean hasNext() {
