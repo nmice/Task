@@ -10,7 +10,7 @@ public class PriorQueueTestDrive {
 
     public static void main(String[] args) {
         System.out.println("Priority Queue - Integer test:");
-        Queue<Integer> intQueue = new PriorQueueOwn<>();
+        Queue<Integer> intQueue = new PriorityQueue<>();
         intQueue.offer(27);
         intQueue.offer(367);
         intQueue.offer(124);

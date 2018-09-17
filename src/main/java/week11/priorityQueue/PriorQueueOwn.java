@@ -101,12 +101,14 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         this.remove(0);
         E hiPriority = this.peek();
         int tempPos = 0;
-        for (int i = 0; i < super.size(); i++) {
-            if (pqComparator.compare(hiPriority, super.get(i)) > 0) {
-                hiPriority = super.get(i);
+        final int size = super.size();
+        for (int i = 0; i < size; i++) {
+            E superGetI = super.get(i);
+            if (pqComparator.compare(hiPriority, superGetI) > 0) {
+                hiPriority = superGetI;
                 tempPos = i;
             }
-            if (i == super.size() - 1 && hiPriority != super.get(0)) {
+            if (i == size - 1 && hiPriority != super.get(0)) {
                 E temp = this.get(0);
                 super.set(tempPos, temp);
                 super.set(0, hiPriority);

@@ -235,7 +235,8 @@ public class HashMapOwn<K, V> implements Map<K, V> {
             while (indexInArray < array.length) {
                 if (array[indexInArray] != null) {
                     listInArray = (LinkedList<Node<K, V>>) array[indexInArray];
-                    while (indexInList < listInArray.size()) {
+                    int sizeOfList = listInArray.size();
+                    while (indexInList < sizeOfList) {
                         nodeInList = listInArray.get(indexInList);
                         return true;
                     }

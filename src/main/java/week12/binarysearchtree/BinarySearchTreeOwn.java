@@ -63,7 +63,6 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     }
 
     private boolean matchCheck(E e, Node<E> node) {
-
         if (bstoComparator.compare(e, node.item) == 0) {
             return true;
         }
@@ -128,7 +127,18 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        if (!contains(o)) {
+            return false;
+        }//TODO
+/*        E e = (E) o;
+        if (size == 0) {
+            root = new Node<>();
+            root.item = e;
+            size++;
+            return true;
+        }
+        addChild(e, root);*/
+        return true;
     }
 
     @Override
@@ -138,7 +148,8 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public void clear() {
-
+        size = 0;
+        root = null;
     }
 
     @Override
@@ -169,8 +180,8 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         private MyIterator() {
         }
 
-        private boolean checkLeftBranch(Node<E> node){
-            if (node.leftBranch!=null){
+        private boolean checkLeftBranch(Node<E> node) {
+            if (node.leftBranch != null) {
                 checkLeftBranch(node.leftBranch);
             } else {
                 currentNode = node;
@@ -181,17 +192,35 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         }
 
         public boolean hasNext() {
-            if (root == null) {
+            if (currentNode == null) {
                 return false;
-            } else if (indexOfNode == 0) {
-                currentNode = root;
-                indexOfNode++;
-                return true;
             }
             if (indexOfNode == size() - 1) {
                 return false;
             }
+
             if (currentNode.leftBranch != null) {
+                currentNode = currentNode.leftBranch;
+                indexOfNode++;
+                return true;
+            }
+
+/*            if (bstoComparator.compare(e, node.item) == 0) {
+                return true;
+            }
+            if (bstoComparator.compare(e, node.item) < 0) {
+                if (node.leftBranch != null) {
+                    return matchCheck(e, node.leftBranch);
+                }
+            }
+            if (bstoComparator.compare(e, node.item) > 0) {
+                if (node.rightBranch != null) {
+                    return matchCheck(e, node.rightBranch);
+                }
+            }
+            return false;*/
+
+/*            if (currentNode.leftBranch != null) {
                 currentNode = currentNode.leftBranch;
                 indexOfNode++;
                 return true;
@@ -205,19 +234,6 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 currentNode = currentNode.rightBranch;
                 indexOfNode++;
                 return true;
-            }
-
-
-/*            while (indexOfNode < size()) {
-                if (array[indexInArray] != null) {
-                    listInArray = (LinkedList<Node<K, V>>) array[indexInArray];
-                    while (indexOfNode < size()) {
-                        nodeInList = listInArray.get(indexOfNode);
-                        return true;
-                    }
-                    indexInArray++;
-                    indexOfNode = 0;
-                }
             }*/
             return false;
         }
@@ -227,14 +243,14 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             if (currentNode.leftBranch != null) {
                 return currentNode.leftBranch.item;
             }
-            if ((currentNode.rightBranch != null) {
+            if (currentNode.rightBranch != null) {
                 return currentNode.rightBranch.item;
             }
+            return null;
         }
-
     }
 
-    public Iterator<E> keyIterator() {
+    public Iterator<E> iterator() {
         return new MyIterator();
     }
 
