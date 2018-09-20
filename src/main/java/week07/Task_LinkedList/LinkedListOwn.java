@@ -64,8 +64,44 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                     return currentNode.item;
                 }
             }
+
             public void remove() {
-                throw new UnsupportedOperationException("Cannot remove an element of an list.");
+                if (currentNode == null) {
+                    throw new IllegalStateException("");
+                }
+
+/*                if (first == last) {
+                    first = null;
+                    last = null;
+                } else if (current == first) {
+                    first.next.prev = null;
+                    first = first.next;
+                } else if (current == last) {
+                    last.prev.next = null;
+                    last = last.prev;
+                } else {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
+                size--;*/
+
+
+                if (currentNode == first) {
+                    currentNode = first.next;
+                    currentNode.prev = null;
+                    first = currentNode;
+                }
+                if (currentNode == last) {
+                    currentNode = last.prev;
+                    last = currentNode;
+                }
+                if (currentNode.next != null && currentNode.prev != null) {
+                    currentNode.prev.next = currentNode.next;
+                    currentNode.next.prev = currentNode.prev;
+                    currentNode = currentNode.next;
+                }
+
+
             }
         };
     }
@@ -107,7 +143,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
     @Override
     public E remove() {
         E old = this.get(0);
-        this.remove(this.peek());
+        this.remove(0);
         return old;
     }
 
@@ -294,7 +330,10 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     @Override
     public void add(int index, E element) {
-        if (index == 0 && size == 0) {
+        if (index < 0 || index > size) {
+            throw new UnsupportedOperationException("Incorrect index of the element being added");
+        }
+        if (size == 0) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
             last = newNode;
@@ -305,8 +344,8 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
         if (index == 0) {
             Node<E> newNode = new Node<>();
             newNode.item = element;
-            first.prev = newNode;
             newNode.next = first;
+            first.prev = newNode;
             first = newNode;
             size++;
             return;
@@ -319,9 +358,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
             last = newNode;
             size++;
             return;
-        }
-        if (index < 0 || index > size) {
-            throw new UnsupportedOperationException("Incorrect index of the element being added");
         }
         int i = 0;
         for (Node current = first; current != null; current = current.next) {
@@ -347,18 +383,36 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
         for (Node current = first; current != null; current = current.next) {
             if (i == index) {
                 E old = (E) current.item;
-                if (current.prev != null) {
+
+                if (current == first) {
+                    if (current.next != null) {
+                        first = current.next;
+                        first.prev = null;
+                    } else {
+                        first = null;
+                        last = null;
+                    }
+                } else if (current == last) {
+                    last = current.prev;
+                    last.next = null;
+                } else {
+                    current.next.prev = current.prev;
                     current.prev.next = current.next;
+                }
+
+/*                if (current.prev != null) {
+
                 } else if (current.next != null) {
                     first = current.next;
-                    current.next.prev = first;
+                    current = first;
+                    current.prev = null;
                 }
                 if (current.next != null) {
                     current.next.prev = current.prev;
                 } else {
                     first = null;
                     last = null;
-                }
+                }*/
                 size--;
                 return old;
             }

@@ -4,6 +4,7 @@ import week07.Task_LinkedList.LinkedListOwn;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PriorQueueOwn<E> extends LinkedListOwn<E> {
@@ -100,20 +101,21 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         E result = this.peek();
         this.remove(0);
         E hiPriority = this.peek();
-        int tempPos = 0;
+        int posOfHiPriorityElem = 0;
         final int size = super.size();
-        for (int i = 0; i < size; i++) {
-            E superGetI = super.get(i);
-            if (pqComparator.compare(hiPriority, superGetI) > 0) {
-                hiPriority = superGetI;
-                tempPos = i;
+        int tempPos = 0;
+        for (E elem : this) {
+            if (pqComparator.compare(elem, hiPriority) < 0) {
+                hiPriority = elem;
+                posOfHiPriorityElem = tempPos;
             }
-            if (i == size - 1 && hiPriority != super.get(0)) {
-                E temp = this.get(0);
-                super.set(tempPos, temp);
-                super.set(0, hiPriority);
+            tempPos++;
+            if (tempPos == size && posOfHiPriorityElem != 0) {
+                super.remove(posOfHiPriorityElem);
+                super.add(0, hiPriority);
             }
         }
+
         return result;
     }
 
