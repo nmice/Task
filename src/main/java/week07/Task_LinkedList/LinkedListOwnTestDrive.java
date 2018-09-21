@@ -12,10 +12,18 @@ public class LinkedListOwnTestDrive {
         System.out.println("LLO Size is a " + numbers.size());
         System.out.println("Add 1 nodes...");
         numbers.add(666);
-//        numbers.add(667);
-//        numbers.add(668);
-//        numbers.add(669);
+        numbers.add(667);
+        numbers.add(668);
+        numbers.add(669);
         System.out.println("LLO is a " + numbers);
+        for (Integer num : numbers) {
+            if (num>667){
+                System.out.println(num);
+                numbers.iterator().remove();
+            }
+        }
+        System.out.println(numbers);
+        System.out.println(numbers.size());
 //        System.out.println("Now new LLO is empty - is a " + numbers.isEmpty());
 //        System.out.println("Now LLO Size is a " + numbers.size());
 //        System.out.println("LLO contains \"667\" - is a " + numbers.contains(667));
@@ -39,7 +47,7 @@ public class LinkedListOwnTestDrive {
 //        }
 //        System.out.println("[" + result.toString() + "]");
 
-        System.out.println(numbers);
+/*        System.out.println(numbers);
 
         numbers.remove(0);
 
@@ -47,7 +55,7 @@ public class LinkedListOwnTestDrive {
 
         numbers.add(669);
 
-        System.out.println(numbers);
+        System.out.println(numbers);*/
 
 
 //        List addAllTest = Arrays.asList(670, 671, 672);

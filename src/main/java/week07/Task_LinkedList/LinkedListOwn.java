@@ -51,57 +51,67 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
             private Node<E> currentNode = first;
 
             public boolean hasNext() {
-                return size > elementIndex;
+                if (currentNode == null) {
+                    return false;
+                }
+                return currentNode.next != null;
             }
 
             public E next() {
-                if (elementIndex == 0) {
-                    elementIndex++;
-                    return currentNode.item;
-                } else {
-                    elementIndex++;
+                if (elementIndex != 0) {
                     currentNode = currentNode.next;
-                    return currentNode.item;
                 }
+                elementIndex++;
+                return currentNode.item;
             }
 
             public void remove() {
-                if (currentNode == null) {
+/*                if (currentNode == null) {
                     throw new IllegalStateException("");
                 }
-
-/*                if (first == last) {
+                if (currentNode == first && first == last) {
                     first = null;
                     last = null;
-                } else if (current == first) {
-                    first.next.prev = null;
-                    first = first.next;
-                } else if (current == last) {
-                    last.prev.next = null;
-                    last = last.prev;
-                } else {
-                    current.prev.next = current.next;
-                    current.next.prev = current.prev;
-                }
-                size--;*/
-
-
-                if (currentNode == first) {
-                    currentNode = first.next;
-                    currentNode.prev = null;
-                    first = currentNode;
-                }
-                if (currentNode == last) {
+                    elementIndex = 0;
+                } else if (currentNode == last) {
                     currentNode = last.prev;
+                    currentNode.next = null;
                     last = currentNode;
-                }
-                if (currentNode.next != null && currentNode.prev != null) {
+                    elementIndex--;
+                } else if (currentNode == first) {
+                    currentNode.next.prev = null;
+                    first = currentNode.next;
+                    elementIndex = 0;
+                } else {
                     currentNode.prev.next = currentNode.next;
                     currentNode.next.prev = currentNode.prev;
                     currentNode = currentNode.next;
+                    elementIndex--;
                 }
+                size--;*/
 
-
+                if (currentNode == null) {
+                    throw new IllegalStateException("");
+                }
+                if (currentNode == first && first == last) {
+                    first = null;
+                    last = null;
+                } else if (currentNode == first) {
+                    currentNode = first.next;
+                    currentNode.prev = null;
+                    first = currentNode;
+                } else if (currentNode == last) {
+                    currentNode = last.prev;
+                    currentNode.next = null;
+                    last = currentNode;
+                } else {
+                    currentNode.prev.next = currentNode.next;
+                    currentNode.next.prev = currentNode.prev;
+                    elementIndex--;
+                    currentNode = currentNode.next;
+                    elementIndex--;
+                }
+                size--;
             }
         };
     }
