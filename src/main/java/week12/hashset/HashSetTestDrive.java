@@ -18,14 +18,13 @@ public class HashSetTestDrive {
         System.out.println(testSet);
         Object[] countrys = testSet.toArray();
         System.out.println(Arrays.toString(countrys));
-
-/*        List<String> testAllSet = new LinkedListOwn<>();
+        List<String> testAllSet = new LinkedListOwn<>();
         testAllSet.add("Australia");
         testAllSet.add("Bosnia");
         testAllSet.add("Herzegovina");
         testAllSet.add("Bratislava");
         System.out.println(testSet.containsAll(testAllSet));
-        System.out.println(testSet);*/
+        System.out.println(testSet);
     }
 
 

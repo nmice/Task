@@ -65,32 +65,6 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         return true;
     }
 
-/*  //THIS METHODS HAVE SUPER IMPLEMENTATION & DO NOT NEED TO OVERRIDE:
-    @Override
-    public E peek() { return super.peek(); }
-
-    @Override
-    public boolean remove(Object o) { return super.remove(o); }
-
-    @Override
-    public boolean contains(Object o) { return super.contains(o); }
-
-    @Override
-    public Object[] toArray() { return super.toArray(); }
-
-    @Override
-    public <T> T[] toArray(T[] a) { return super.toArray(a); }
-
-    @Override
-    public Iterator<E> iterator() { return super.iterator(); }
-
-    @Override
-    public int size() { return super.size(); }
-
-    @Override
-    public void clear(){ super.clear(); }*/
-
-
     @Override
     public E remove() {
         E result = this.peek();
@@ -106,22 +80,6 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
             }
         }
         return result;
-/* II VERSION      for (E elem : this) {
-            if (pqComparator.compare(elem, hiPriority) < 0) {
-                super.add(0, elem);
-                this.iterator().remove();
-            }
-            tempPos++;*/
-
-/* I VERSION         if (pqComparator.compare(elem, hiPriority) < 0) {
-                hiPriority = elem;
-                posOfHiPriorityElem = tempPos;
-            }
-            if (tempPos == size - 1 && posOfHiPriorityElem != 0) {
-                super.remove(posOfHiPriorityElem);
-                super.add(0, hiPriority);
-            }
-            tempPos++;*/
     }
 
     @Override

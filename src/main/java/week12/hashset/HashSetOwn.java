@@ -27,7 +27,6 @@ public class HashSetOwn<E> implements Set<E> {
     @Override
     public Iterator<E> iterator() {
         return map.keyIterator();
-        //throw new UnsupportedOperationException("This operation is not supported now...");
     }
 
     @Override
@@ -146,6 +145,5 @@ public class HashSetOwn<E> implements Set<E> {
             result.append(elem.toString());
         }
         return "[" + result.toString() + "]";
-        //return Arrays.toString(this.toArray());
     }
 }
