@@ -65,15 +65,10 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         return true;
     }
 
-    @Override
-    public E peek() {
-        if (this.size() == 0) {
-            return null;
-        }
-        return super.get(0);
-    }
-
 /*  //THIS METHODS HAVE SUPER IMPLEMENTATION & DO NOT NEED TO OVERRIDE:
+    @Override
+    public E peek() { return super.peek(); }
+
     @Override
     public boolean remove(Object o) { return super.remove(o); }
 
@@ -101,20 +96,24 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
         E result = this.peek();
         this.remove(0);
         E hiPriority = this.peek();
-        int posOfHiPriorityElem = 0;
-        final int size = super.size();
-        int tempPos = 0;
-        for (E elem : this) {
-
+        Iterator<E> iterator = this.iterator();
+        while (iterator.hasNext()) {
+            E elem = iterator.next();
             if (pqComparator.compare(elem, hiPriority) < 0) {
-/*                hiPriority = elem;
-                super.remove(elem);*/
+                iterator.remove();
+                super.add(0, elem);
+                hiPriority = elem;
+            }
+        }
+        return result;
+/* II VERSION      for (E elem : this) {
+            if (pqComparator.compare(elem, hiPriority) < 0) {
                 super.add(0, elem);
                 this.iterator().remove();
             }
-            tempPos++;
+            tempPos++;*/
 
-/*            if (pqComparator.compare(elem, hiPriority) < 0) {
+/* I VERSION         if (pqComparator.compare(elem, hiPriority) < 0) {
                 hiPriority = elem;
                 posOfHiPriorityElem = tempPos;
             }
@@ -123,8 +122,6 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
                 super.add(0, hiPriority);
             }
             tempPos++;*/
-        }
-        return result;
     }
 
     @Override

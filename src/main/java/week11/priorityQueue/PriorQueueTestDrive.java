@@ -22,7 +22,7 @@ public class PriorQueueTestDrive {
         intQueue.offer(225);
         intQueue.offer(112);
         intQueue.offer(992);
-        intQueue.offer(716);
+        intQueue.offer(26);
         System.out.println(intQueue);
         System.out.println(intQueue.remove());
         System.out.println(intQueue);
@@ -36,7 +36,15 @@ public class PriorQueueTestDrive {
         System.out.println(intQueue);
         System.out.println(intQueue.poll());
         System.out.println(intQueue);
-
+        System.out.println(intQueue.poll());
+        System.out.println(intQueue);
+        System.out.println(intQueue.poll());
+        System.out.println(intQueue);
+        System.out.println(intQueue.poll());
+        System.out.println(intQueue);
+        System.out.println(intQueue.poll());
+        System.out.println(intQueue);
+        System.out.println(intQueue.poll());
 
         System.out.println("Priority Queue - String test:");
         Queue<String> strQueue = new PriorQueueOwn<>();

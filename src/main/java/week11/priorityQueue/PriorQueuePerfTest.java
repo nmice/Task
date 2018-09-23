@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class PriorQueuePerfTest {
-    public static int CAPACITY_OF_QUEUE = 20_000;
+    public static int CAPACITY_OF_QUEUE = 3_000;
 
     public static void main(String[] args) {
         Queue<Integer> standart = new PriorityQueue<>();

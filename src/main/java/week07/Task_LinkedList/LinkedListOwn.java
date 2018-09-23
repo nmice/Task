@@ -84,7 +84,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 } else {
                     currentNode.prev.next = currentNode.next;
                     currentNode.next.prev = currentNode.prev;
-                    currentNode = currentNode.next;
+                    currentNode = currentNode.prev;
                 }
                 size--;
             }
@@ -173,10 +173,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
 
     @Override
     public E peek() {
-        if (this.size() == 0) {
-            return null;
-        }
-        return this.get(0);
+        return this.size() != 0 ? this.get(0) : null;
     }
 
     @Override
