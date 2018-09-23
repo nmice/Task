@@ -17,7 +17,7 @@ public class LinkedListOwnTestDrive {
         numbers.add(669);
         System.out.println("LLO is a " + numbers);
         for (Integer num : numbers) {
-            if (num>667){
+            if (num>668){
                 System.out.println(num);
                 numbers.iterator().remove();
             }

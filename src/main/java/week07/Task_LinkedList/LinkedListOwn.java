@@ -62,11 +62,34 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                     currentNode = currentNode.next;
                 }
                 elementIndex++;
+
                 return currentNode.item;
             }
 
             public void remove() {
-/*                if (currentNode == null) {
+                if (currentNode == null) {
+                    throw new IllegalStateException("");
+                }
+                if (currentNode == first && first == last) {
+                    first = null;
+                    last = null;
+                } else if (currentNode == first) {
+                    currentNode = first.next;
+                    currentNode.prev = null;
+                    first = currentNode;
+                } else if (currentNode == last) {
+                    currentNode = last.prev;
+                    currentNode.next = null;
+                    last = currentNode;
+                } else {
+                    currentNode.prev.next = currentNode.next;
+                    currentNode.next.prev = currentNode.prev;
+                    currentNode = currentNode.next;
+                }
+                size--;
+            }
+
+            /*                if (currentNode == null) {
                     throw new IllegalStateException("");
                 }
                 if (currentNode == first && first == last) {
@@ -89,30 +112,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                     elementIndex--;
                 }
                 size--;*/
-
-                if (currentNode == null) {
-                    throw new IllegalStateException("");
-                }
-                if (currentNode == first && first == last) {
-                    first = null;
-                    last = null;
-                } else if (currentNode == first) {
-                    currentNode = first.next;
-                    currentNode.prev = null;
-                    first = currentNode;
-                } else if (currentNode == last) {
-                    currentNode = last.prev;
-                    currentNode.next = null;
-                    last = currentNode;
-                } else {
-                    currentNode.prev.next = currentNode.next;
-                    currentNode.next.prev = currentNode.prev;
-                    elementIndex--;
-                    currentNode = currentNode.next;
-                    elementIndex--;
-                }
-                size--;
-            }
         };
     }
 
