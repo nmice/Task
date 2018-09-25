@@ -59,24 +59,24 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             return false;
         }
         E e = (E) o;
-        return matchCheck(e, root);
+        return getMatchingNode(e, root) != null;
     }
 
-    private boolean matchCheck(E e, Node<E> node) {
+    private Node<E> getMatchingNode(E e, Node<E> node) {
         if (bstoComparator.compare(e, node.item) == 0) {
-            return true;
+            return node;
         }
         if (bstoComparator.compare(e, node.item) < 0) {
             if (node.leftBranch != null) {
-                return matchCheck(e, node.leftBranch);
+                return getMatchingNode(e, node.leftBranch);
             }
         }
         if (bstoComparator.compare(e, node.item) > 0) {
             if (node.rightBranch != null) {
-                return matchCheck(e, node.rightBranch);
+                return getMatchingNode(e, node.rightBranch);
             }
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -101,52 +101,99 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 addChild(e, node.leftBranch);
                 return;
             } else {
-                Node<E> newNode = new Node<>();
-                node.leftBranch = newNode;
-                newNode.item = e;
-                newNode.parrent = node;
+                Node<E> leftChild = new Node<>();
+                node.leftBranch = leftChild;
+                leftChild.item = e;
+                leftChild.parrent = node;
             }
         } else {
             if (node.rightBranch != null) {
                 addChild(e, node.rightBranch);
                 return;
             } else {
-                Node<E> newNode = new Node<>();
-                node.rightBranch = newNode;
-                newNode.item = e;
-                newNode.parrent = node;
+                Node<E> rightChild = new Node<>();
+                node.rightBranch = rightChild;
+                rightChild.item = e;
+                rightChild.parrent = node;
             }
         }
         size++;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
+        return;
     }
 
     @Override
     public boolean remove(Object o) {
-        if (!contains(o)) {
-            return false;
-        }//TODO
         E e = (E) o;
+        if (o == null) {
+            return false;
+        }
+        if (size == 0) {
+            return false;
+        }
+        if (size == 1 && bstoComparator.compare(e, root.item) == 0) {
+            root = null;
+            size--;
+            return true;
+        }
+        Node<E> nodeToBeRemove = getMatchingNode(e, root);
+        if (nodeToBeRemove == null) {
+            return false;
+        }
+        if (nodeToBeRemove.leftBranch == null && nodeToBeRemove.rightBranch == null) {
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
+                nodeToBeRemove.parrent.leftBranch = null;
+            } else {
+                nodeToBeRemove.parrent.rightBranch = null;
+            }
+            nodeToBeRemove = null;
+            return true;
+        }
+        if (nodeToBeRemove.leftBranch == null) {
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
+                nodeToBeRemove.parrent.leftBranch = nodeToBeRemove.rightBranch;
+                nodeToBeRemove.rightBranch.parrent = nodeToBeRemove.parrent;
+            } else {
+                nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.rightBranch;
+                nodeToBeRemove.rightBranch.parrent = nodeToBeRemove.parrent;
+            }
+            nodeToBeRemove = null;
+            return true;
+        }
+        if (nodeToBeRemove.rightBranch == null) {
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
+                nodeToBeRemove.parrent.leftBranch = nodeToBeRemove.leftBranch;
+                nodeToBeRemove.leftBranch.parrent = nodeToBeRemove.parrent;
+            } else {
+                nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.leftBranch;
+                nodeToBeRemove.leftBranch.parrent = nodeToBeRemove.parrent;
+            }
+            nodeToBeRemove = null;
+            return true;
+        }
+
+
+
+        //if (bstoComparator.compare(e, root.item) == 0)
 /*        if (bstoComparator.compare(e, node.item) == 0) {
             return true;
         }
         if (bstoComparator.compare(e, node.item) < 0) {
             if (node.leftBranch != null) {
-                return matchCheck(e, node.leftBranch);
+                return getMatchingNode(e, node.leftBranch);
             }
         }
         if (bstoComparator.compare(e, node.item) > 0) {
             if (node.rightBranch != null) {
-                return matchCheck(e, node.rightBranch);
+                return getMatchingNode(e, node.rightBranch);
             }
         }*/
 
-
         return true;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
     }
 
     @Override
@@ -218,12 +265,12 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             }
             if (bstoComparator.compare(e, node.item) < 0) {
                 if (node.leftBranch != null) {
-                    return matchCheck(e, node.leftBranch);
+                    return getMatchingNode(e, node.leftBranch);
                 }
             }
             if (bstoComparator.compare(e, node.item) > 0) {
                 if (node.rightBranch != null) {
-                    return matchCheck(e, node.rightBranch);
+                    return getMatchingNode(e, node.rightBranch);
                 }
             }
             return false;*/
