@@ -210,39 +210,39 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
             if (!set.contains(o)) return false;
         }
         return true;
-//        List listOddSmall = new ArrayList();
-//        List listEvenSmall = new ArrayList();
-//        List listOddBig = new ArrayList();
-//        List listEvenBig = new ArrayList();
-//        for (Node current = first; current != null; current = current.next) {
-//            if ((Integer) current.item % 2 > 0 && (Integer) current.item < 1_250_000_000) {
-//                listOddSmall.add(current.item);
-//            } else if ((Integer) current.item % 2 > 0) {
-//                listOddBig.add(current.item);
-//            } else if ((Integer) current.item < 1_250_000_000) {
-//                listEvenSmall.add(current.item);
-//            } else {
-//                listEvenBig.add(current.item);
-//            }
-//        }
-//        for (Object element : c) {
-//            if ((Integer) element % 2 > 0 && (Integer) element < 1_250_000_000) {
-//                if (!listOddSmall.contains(element)) {
-//                    return false;
-//                }
-//            } else if ((Integer) element % 2 > 0) {
-//                if (!listOddBig.contains(element)) {
-//                    return false;
-//                }
-//            } else if ((Integer) element < 1_250_000_000) {
-//                if (!listEvenSmall.contains(element)) {
-//                    return false;
-//                }
-//            } else if (!listEvenBig.contains(element)) {
-//                return false;
-//            }
-//        }
-//        return true;
+/*        List listOddSmall = new ArrayList();
+        List listEvenSmall = new ArrayList();
+        List listOddBig = new ArrayList();
+        List listEvenBig = new ArrayList();
+        for (Node current = first; current != null; current = current.next) {
+            if ((Integer) current.item % 2 > 0 && (Integer) current.item < 1_250_000_000) {
+                listOddSmall.add(current.item);
+            } else if ((Integer) current.item % 2 > 0) {
+                listOddBig.add(current.item);
+            } else if ((Integer) current.item < 1_250_000_000) {
+                listEvenSmall.add(current.item);
+            } else {
+                listEvenBig.add(current.item);
+            }
+        }
+        for (Object element : c) {
+            if ((Integer) element % 2 > 0 && (Integer) element < 1_250_000_000) {
+                if (!listOddSmall.contains(element)) {
+                    return false;
+                }
+            } else if ((Integer) element % 2 > 0) {
+                if (!listOddBig.contains(element)) {
+                    return false;
+                }
+            } else if ((Integer) element < 1_250_000_000) {
+                if (!listEvenSmall.contains(element)) {
+                    return false;
+                }
+            } else if (!listEvenBig.contains(element)) {
+                return false;
+            }
+        }
+        return true;*/
     }
 
 
@@ -405,20 +405,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                     current.next.prev = current.prev;
                     current.prev.next = current.next;
                 }
-
-/*                if (current.prev != null) {
-
-                } else if (current.next != null) {
-                    first = current.next;
-                    current = first;
-                    current.prev = null;
-                }
-                if (current.next != null) {
-                    current.next.prev = current.prev;
-                } else {
-                    first = null;
-                    last = null;
-                }*/
                 size--;
                 return old;
             }

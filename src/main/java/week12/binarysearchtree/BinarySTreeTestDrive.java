@@ -6,7 +6,7 @@ import java.util.TreeSet;
 public class BinarySTreeTestDrive {
 
     public static void main(String[] args) {
-        Set<String> myBinaryTree = new TreeSet<>();
+        Set<String> myBinaryTree = new BinarySearchTreeOwn<>();
         System.out.println(myBinaryTree);
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println("Added FIRST - " + myBinaryTree.add("first"));

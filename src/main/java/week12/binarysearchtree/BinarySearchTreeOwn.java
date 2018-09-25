@@ -130,14 +130,22 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         if (!contains(o)) {
             return false;
         }//TODO
-/*        E e = (E) o;
-        if (size == 0) {
-            root = new Node<>();
-            root.item = e;
-            size++;
+        E e = (E) o;
+/*        if (bstoComparator.compare(e, node.item) == 0) {
             return true;
         }
-        addChild(e, root);*/
+        if (bstoComparator.compare(e, node.item) < 0) {
+            if (node.leftBranch != null) {
+                return matchCheck(e, node.leftBranch);
+            }
+        }
+        if (bstoComparator.compare(e, node.item) > 0) {
+            if (node.rightBranch != null) {
+                return matchCheck(e, node.rightBranch);
+            }
+        }*/
+
+
         return true;
     }
 
