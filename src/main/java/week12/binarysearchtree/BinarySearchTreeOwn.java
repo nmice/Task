@@ -130,9 +130,27 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         if (size == 0) {
             return false;
         }
-        if (size == 1 && bstoComparator.compare(e, root.item) == 0) {
-            root = null;
-            size--;
+        if (bstoComparator.compare(e, root.item) == 0) {
+            if (size == 1) {
+                root = null;
+                size--;
+                return true;
+            }
+            if (root.leftBranch == null) {
+                root = root.rightBranch;
+                root.parrent = null;
+                size--;
+                return true;
+            }
+            if (root.rightBranch == null) {
+                root = root.leftBranch;
+                root.parrent = null;
+                size--;
+                return true;
+            }
+            Node<E> replacementNode = getLeftmostNode(root.rightBranch);
+            root.item = replacementNode.item;
+            remove(replacementNode);
             return true;
         }
         Node<E> nodeToBeRemove = getMatchingNode(e, root);
@@ -145,7 +163,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             } else {
                 nodeToBeRemove.parrent.rightBranch = null;
             }
-            nodeToBeRemove = null;
+            size--;
             return true;
         }
         if (nodeToBeRemove.leftBranch == null) {
@@ -156,7 +174,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.rightBranch;
                 nodeToBeRemove.rightBranch.parrent = nodeToBeRemove.parrent;
             }
-            nodeToBeRemove = null;
+            size--;
             return true;
         }
         if (nodeToBeRemove.rightBranch == null) {
@@ -167,28 +185,17 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.leftBranch;
                 nodeToBeRemove.leftBranch.parrent = nodeToBeRemove.parrent;
             }
-            nodeToBeRemove = null;
+            size--;
             return true;
         }
-
-
-
-        //if (bstoComparator.compare(e, root.item) == 0)
-/*        if (bstoComparator.compare(e, node.item) == 0) {
-            return true;
-        }
-        if (bstoComparator.compare(e, node.item) < 0) {
-            if (node.leftBranch != null) {
-                return getMatchingNode(e, node.leftBranch);
-            }
-        }
-        if (bstoComparator.compare(e, node.item) > 0) {
-            if (node.rightBranch != null) {
-                return getMatchingNode(e, node.rightBranch);
-            }
-        }*/
-
+        Node<E> replacementNode = getLeftmostNode(nodeToBeRemove.rightBranch);
+        nodeToBeRemove.item = replacementNode.item;
+        remove(replacementNode);
         return true;
+    }
+
+    private Node<E> getLeftmostNode(Node<E> node) {
+        return node.leftBranch == null ? node : getLeftmostNode(node.leftBranch);
     }
 
     @Override
@@ -205,6 +212,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     public void clear() {
         size = 0;
         root = null;
+        return;
     }
 
     @Override
@@ -230,7 +238,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     private class MyIterator implements Iterator {
 
         private int indexOfNode = 0;
-        private Node<E> currentNode = root;
+        private Node<E> currentNode = getLeftmostNode(root);
 
         private MyIterator() {
         }
@@ -247,53 +255,19 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         }
 
         public boolean hasNext() {
-            if (currentNode == null) {
-                return false;
-            }
-            if (indexOfNode == size() - 1) {
-                return false;
-            }
-
-            if (currentNode.leftBranch != null) {
-                currentNode = currentNode.leftBranch;
-                indexOfNode++;
-                return true;
-            }
-
-/*            if (bstoComparator.compare(e, node.item) == 0) {
-                return true;
-            }
-            if (bstoComparator.compare(e, node.item) < 0) {
-                if (node.leftBranch != null) {
-                    return getMatchingNode(e, node.leftBranch);
-                }
-            }
-            if (bstoComparator.compare(e, node.item) > 0) {
-                if (node.rightBranch != null) {
-                    return getMatchingNode(e, node.rightBranch);
-                }
-            }
-            return false;*/
-
-/*            if (currentNode.leftBranch != null) {
-                currentNode = currentNode.leftBranch;
-                indexOfNode++;
-                return true;
-            }
-            if (currentNode.parrent != null) {
-                currentNode = currentNode.parrent;
-                indexOfNode++;
-                return true;
-            }
-            if (currentNode.rightBranch != null) {
-                currentNode = currentNode.rightBranch;
-                indexOfNode++;
-                return true;
-            }*/
-            return false;
+            return size > indexOfNode;
         }
 
         public E next() {
+            if (indexOfNode == 0){
+                indexOfNode++;
+                return currentNode.item;
+            }
+            if (currentNode.rightBranch == null){
+
+            }
+
+
             indexOfNode++;
             if (currentNode.leftBranch != null) {
                 return currentNode.leftBranch.item;
