@@ -81,9 +81,6 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public boolean add(Object o) {
-        if (contains(o)) {
-            return false;
-        }
         E e = (E) o;
         if (size == 0) {
             root = new Node<>();
@@ -91,34 +88,38 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             size++;
             return true;
         }
-        addChild(e, root);
-        return true;
+        if (bstoComparator.compare(e, root.item) == 0) {
+            return false;
+        }
+        return addChild(e, root) != null;
     }
 
-    private void addChild(E e, Node<E> node) {
-        if (bstoComparator.compare(e, node.item) < 0) {
+    private Node<E> addChild(E e, Node<E> node) {
+        if (bstoComparator.compare(e, node.item) == 0) {
+            return null;
+        } else if (bstoComparator.compare(e, node.item) < 0) {
             if (node.leftBranch != null) {
                 addChild(e, node.leftBranch);
-                return;
+                return node;
             } else {
                 Node<E> leftChild = new Node<>();
                 node.leftBranch = leftChild;
                 leftChild.item = e;
-                leftChild.parrent = node;
+                leftChild.parent = node;
             }
         } else {
             if (node.rightBranch != null) {
                 addChild(e, node.rightBranch);
-                return;
+                return node;
             } else {
                 Node<E> rightChild = new Node<>();
                 node.rightBranch = rightChild;
                 rightChild.item = e;
-                rightChild.parrent = node;
+                rightChild.parent = node;
             }
         }
         size++;
-        return;
+        return node;
     }
 
     @Override
@@ -138,13 +139,13 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             }
             if (root.leftBranch == null) {
                 root = root.rightBranch;
-                root.parrent = null;
+                root.parent = null;
                 size--;
                 return true;
             }
             if (root.rightBranch == null) {
                 root = root.leftBranch;
-                root.parrent = null;
+                root.parent = null;
                 size--;
                 return true;
             }
@@ -158,32 +159,32 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             return false;
         }
         if (nodeToBeRemove.leftBranch == null && nodeToBeRemove.rightBranch == null) {
-            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
-                nodeToBeRemove.parrent.leftBranch = null;
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parent.item) < 0) {
+                nodeToBeRemove.parent.leftBranch = null;
             } else {
-                nodeToBeRemove.parrent.rightBranch = null;
+                nodeToBeRemove.parent.rightBranch = null;
             }
             size--;
             return true;
         }
         if (nodeToBeRemove.leftBranch == null) {
-            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
-                nodeToBeRemove.parrent.leftBranch = nodeToBeRemove.rightBranch;
-                nodeToBeRemove.rightBranch.parrent = nodeToBeRemove.parrent;
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parent.item) < 0) {
+                nodeToBeRemove.parent.leftBranch = nodeToBeRemove.rightBranch;
+                nodeToBeRemove.rightBranch.parent = nodeToBeRemove.parent;
             } else {
-                nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.rightBranch;
-                nodeToBeRemove.rightBranch.parrent = nodeToBeRemove.parrent;
+                nodeToBeRemove.parent.rightBranch = nodeToBeRemove.rightBranch;
+                nodeToBeRemove.rightBranch.parent = nodeToBeRemove.parent;
             }
             size--;
             return true;
         }
         if (nodeToBeRemove.rightBranch == null) {
-            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parrent.item) < 0) {
-                nodeToBeRemove.parrent.leftBranch = nodeToBeRemove.leftBranch;
-                nodeToBeRemove.leftBranch.parrent = nodeToBeRemove.parrent;
+            if (bstoComparator.compare(nodeToBeRemove.item, nodeToBeRemove.parent.item) < 0) {
+                nodeToBeRemove.parent.leftBranch = nodeToBeRemove.leftBranch;
+                nodeToBeRemove.leftBranch.parent = nodeToBeRemove.parent;
             } else {
-                nodeToBeRemove.parrent.rightBranch = nodeToBeRemove.leftBranch;
-                nodeToBeRemove.leftBranch.parrent = nodeToBeRemove.parrent;
+                nodeToBeRemove.parent.rightBranch = nodeToBeRemove.leftBranch;
+                nodeToBeRemove.leftBranch.parent = nodeToBeRemove.parent;
             }
             size--;
             return true;
@@ -201,7 +202,12 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] result = new Object[size];
+        int index = 0;
+        for (E elem : this) {
+            result[index++] = elem;
+        }
+        return result;
     }
 
     @Override
@@ -233,19 +239,20 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public Object[] toArray(Object[] a) {
+
         return new Object[0];
     }
 
     private class MyIterator implements Iterator {
 
         private int indexOfNode = 0;
-        private Node<E> currentNode = getLeftmostNode(root);
+        private Node<E> currentNode = root != null ? getLeftmostNode(root) : null;
 
         private MyIterator() {
         }
 
         private Node<E> getFirstBiggerParent(Node<E> node) {
-            return bstoComparator.compare(node.parrent.item, currentNode.item) > 0 ? node.parrent : getFirstBiggerParent(node.parrent);
+            return bstoComparator.compare(node.parent.item, currentNode.item) > 0 ? node.parent : getFirstBiggerParent(node.parent);
         }
 
         public boolean hasNext() {
@@ -261,8 +268,8 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 indexOfNode++;
                 return currentNode.item;
             } else {
-                if (bstoComparator.compare(currentNode.item, currentNode.parrent.item) < 0) {
-                    currentNode = currentNode.parrent;
+                if (bstoComparator.compare(currentNode.item, currentNode.parent.item) < 0) {
+                    currentNode = currentNode.parent;
                     indexOfNode++;
                     return currentNode.item;
                 } else {
@@ -280,8 +287,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (Iterator<E> iterator = this.iterator(); iterator.hasNext(); ) {
-            E elem = iterator.next();
+        for (E elem : this) {
             result.append(result.length() == 0 ? "" : ", ");
             result.append(elem.toString());
         }
@@ -289,7 +295,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     }
 
     protected static class Node<E> {
-        private Node<E> parrent;
+        private Node<E> parent;
         private E item;
         private Node<E> rightBranch;
         private Node<E> leftBranch;

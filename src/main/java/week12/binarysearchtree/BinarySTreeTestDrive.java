@@ -1,13 +1,19 @@
 package week12.binarysearchtree;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class BinarySTreeTestDrive {
 
     public static void main(String[] args) {
-        Set<String> myBinaryTree = new BinarySearchTreeOwn<>();
-        System.out.println(myBinaryTree);
+        Set<String> myBinaryTree = new BinarySearchTreeOwn<>(); //new TreeSet<>()   BinarySearchTreeOwn
+        for (Iterator<String> iterator = myBinaryTree.iterator(); iterator.hasNext(); ) {
+            String elem = iterator.next();
+            System.out.println(elem);
+        }
+      System.out.println(myBinaryTree);
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println("Added cFIRST - " + myBinaryTree.add("cfirst"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
@@ -23,6 +29,9 @@ public class BinarySTreeTestDrive {
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println("Added THIRD - " + myBinaryTree.add("third"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+        System.out.println(Arrays.toString(myBinaryTree.toArray()));
+
+
         System.out.println(myBinaryTree);
         System.out.println("Remove THIRD - " + myBinaryTree.remove("third"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
