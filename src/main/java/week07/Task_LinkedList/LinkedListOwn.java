@@ -88,30 +88,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 }
                 size--;
             }
-
-            /*                if (currentNode == null) {
-                    throw new IllegalStateException("");
-                }
-                if (currentNode == first && first == last) {
-                    first = null;
-                    last = null;
-                    elementIndex = 0;
-                } else if (currentNode == last) {
-                    currentNode = last.prev;
-                    currentNode.next = null;
-                    last = currentNode;
-                    elementIndex--;
-                } else if (currentNode == first) {
-                    currentNode.next.prev = null;
-                    first = currentNode.next;
-                    elementIndex = 0;
-                } else {
-                    currentNode.prev.next = currentNode.next;
-                    currentNode.next.prev = currentNode.prev;
-                    currentNode = currentNode.next;
-                    elementIndex--;
-                }
-                size--;*/
         };
     }
 
@@ -210,39 +186,6 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
             if (!set.contains(o)) return false;
         }
         return true;
-/*        List listOddSmall = new ArrayList();
-        List listEvenSmall = new ArrayList();
-        List listOddBig = new ArrayList();
-        List listEvenBig = new ArrayList();
-        for (Node current = first; current != null; current = current.next) {
-            if ((Integer) current.item % 2 > 0 && (Integer) current.item < 1_250_000_000) {
-                listOddSmall.add(current.item);
-            } else if ((Integer) current.item % 2 > 0) {
-                listOddBig.add(current.item);
-            } else if ((Integer) current.item < 1_250_000_000) {
-                listEvenSmall.add(current.item);
-            } else {
-                listEvenBig.add(current.item);
-            }
-        }
-        for (Object element : c) {
-            if ((Integer) element % 2 > 0 && (Integer) element < 1_250_000_000) {
-                if (!listOddSmall.contains(element)) {
-                    return false;
-                }
-            } else if ((Integer) element % 2 > 0) {
-                if (!listOddBig.contains(element)) {
-                    return false;
-                }
-            } else if ((Integer) element < 1_250_000_000) {
-                if (!listEvenSmall.contains(element)) {
-                    return false;
-                }
-            } else if (!listEvenBig.contains(element)) {
-                return false;
-            }
-        }
-        return true;*/
     }
 
 

@@ -195,7 +195,8 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     }
 
     private Node<E> getLeftmostNode(Node<E> node) {
-        return node.leftBranch == null ? node : getLeftmostNode(node.leftBranch);
+        node = node.leftBranch == null ? node : getLeftmostNode(node.leftBranch);
+        return node;
     }
 
     @Override
@@ -243,15 +244,8 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         private MyIterator() {
         }
 
-        private boolean checkLeftBranch(Node<E> node) {
-            if (node.leftBranch != null) {
-                checkLeftBranch(node.leftBranch);
-            } else {
-                currentNode = node;
-                indexOfNode++;
-                return true;
-            }
-            return false;
+        private Node<E> getFirstBiggerParent(Node<E> node) {
+            return bstoComparator.compare(node.parrent.item, currentNode.item) > 0 ? node.parrent : getFirstBiggerParent(node.parrent);
         }
 
         public boolean hasNext() {
@@ -259,28 +253,39 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
         }
 
         public E next() {
-            if (indexOfNode == 0){
+            if (indexOfNode == 0) {
                 indexOfNode++;
                 return currentNode.item;
+            } else if (currentNode.rightBranch != null) {
+                currentNode = getLeftmostNode(currentNode.rightBranch);
+                indexOfNode++;
+                return currentNode.item;
+            } else {
+                if (bstoComparator.compare(currentNode.item, currentNode.parrent.item) < 0) {
+                    currentNode = currentNode.parrent;
+                    indexOfNode++;
+                    return currentNode.item;
+                } else {
+                    currentNode = getFirstBiggerParent(currentNode);
+                    indexOfNode++;
+                    return currentNode.item;
+                }
             }
-            if (currentNode.rightBranch == null){
-
-            }
-
-
-            indexOfNode++;
-            if (currentNode.leftBranch != null) {
-                return currentNode.leftBranch.item;
-            }
-            if (currentNode.rightBranch != null) {
-                return currentNode.rightBranch.item;
-            }
-            return null;
         }
     }
 
     public Iterator<E> iterator() {
         return new MyIterator();
+    }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (Iterator<E> iterator = this.iterator(); iterator.hasNext(); ) {
+            E elem = iterator.next();
+            result.append(result.length() == 0 ? "" : ", ");
+            result.append(elem.toString());
+        }
+        return "[" + result.toString() + "]";
     }
 
     protected static class Node<E> {
