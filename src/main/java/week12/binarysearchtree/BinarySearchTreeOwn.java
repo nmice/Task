@@ -99,8 +99,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             return null;
         } else if (bstoComparator.compare(e, node.item) < 0) {
             if (node.leftBranch != null) {
-                addChild(e, node.leftBranch);
-                return node;
+                return addChild(e, node.leftBranch);
             } else {
                 Node<E> leftChild = new Node<>();
                 node.leftBranch = leftChild;
@@ -109,8 +108,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             }
         } else {
             if (node.rightBranch != null) {
-                addChild(e, node.rightBranch);
-                return node;
+                return addChild(e, node.rightBranch);
             } else {
                 Node<E> rightChild = new Node<>();
                 node.rightBranch = rightChild;
@@ -150,8 +148,9 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
                 return true;
             }
             Node<E> replacementNode = getLeftmostNode(root.rightBranch);
-            root.item = replacementNode.item;
-            remove(replacementNode);
+            E temp = replacementNode.item;
+            remove(replacementNode.item);
+            root.item = temp;
             return true;
         }
         Node<E> nodeToBeRemove = getMatchingNode(e, root);
@@ -190,8 +189,9 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
             return true;
         }
         Node<E> replacementNode = getLeftmostNode(nodeToBeRemove.rightBranch);
-        nodeToBeRemove.item = replacementNode.item;
-        remove(replacementNode);
+        E temp = replacementNode.item;
+        remove(replacementNode.item);
+        nodeToBeRemove.item = temp;
         return true;
     }
 
@@ -212,7 +212,7 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public boolean addAll(Collection c) {
-        return false;
+        throw new UnsupportedOperationException("This method is not available now");
     }
 
     @Override
@@ -224,23 +224,22 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
 
     @Override
     public boolean removeAll(Collection c) {
-        return false;
+        throw new UnsupportedOperationException("This method is not available now");
     }
 
     @Override
     public boolean retainAll(Collection c) {
-        return false;
+        throw new UnsupportedOperationException("This method is not available now");
     }
 
     @Override
     public boolean containsAll(Collection c) {
-        return false;
+        throw new UnsupportedOperationException("This method is not available now");
     }
 
     @Override
     public Object[] toArray(Object[] a) {
-
-        return new Object[0];
+        throw new UnsupportedOperationException("This method is not available now");
     }
 
     private class MyIterator implements Iterator {

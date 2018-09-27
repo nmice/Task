@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class BinarySTreeTestDrive {
 
     public static void main(String[] args) {
-        Set<String> myBinaryTree = new BinarySearchTreeOwn<>(); //new TreeSet<>()   BinarySearchTreeOwn
+        Set<String> myBinaryTree = new TreeSet<>(); //new TreeSet<>()   BinarySearchTreeOwn
         for (Iterator<String> iterator = myBinaryTree.iterator(); iterator.hasNext(); ) {
             String elem = iterator.next();
             System.out.println(elem);
@@ -41,6 +41,19 @@ public class BinarySTreeTestDrive {
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println("Remove aaSECOND - " + myBinaryTree.remove("aasecond"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+        System.out.println("Remove aaSECOND - " + myBinaryTree.remove("cfirst"));
+        System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+        System.out.println("Remove aaSECOND - " + myBinaryTree.remove("afirst"));
+        System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+        System.out.println("Remove aaSECOND - " + myBinaryTree.remove("bfirst"));
+        System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+        System.out.println("Remove aaSECOND - " + myBinaryTree.remove("bfirst"));
+        System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
+
+
+
+
+
 
     }
 
