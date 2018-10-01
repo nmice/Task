@@ -36,8 +36,8 @@ public class Roles {
             text = textLines[index];
             Replica replica = new Replica();
             replica.number = counter++;
-            replica.role = text.substring(0, text.indexOf(':')).trim();
-            replica.phrase = text.substring(text.indexOf(":") + 1).trim();
+            replica.role = text.substring(0, text.indexOf(':'));
+            replica.phrase = text.substring(text.indexOf(":") + 1);
             replicas[index] = replica;
         }
         //По итогу у нас массив Реплик.
@@ -53,7 +53,7 @@ public class Roles {
                 //Если поле Роль равно данной Роли, то печатаем поле номер, ), Реплику.
                 if (replicas[index].role.equals(roles[indexOfRole])) {
                     resultBuilder.append(replicas[index].number);
-                    resultBuilder.append(") ");
+                    resultBuilder.append(")");
                     resultBuilder.append(replicas[index].phrase);
                     resultBuilder.append(index == replicas.length - 1 ? "" : "\r\n");
                 }
