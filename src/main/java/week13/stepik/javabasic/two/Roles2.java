@@ -18,19 +18,16 @@ public class Roles2 {
     }
 
     private static String printTextPerRole(String[] roles, String[] textLines) {
-        StringBuilder resultBuilder = new StringBuilder("");
-        for (int indexOfRole = 0; indexOfRole < roles.length; indexOfRole++) {
-            resultBuilder.append(roles[indexOfRole]);
-            resultBuilder.append(":\r\n");
-            for (int index = 0; index < textLines.length; index++) {
-                if (textLines[index].substring(0, textLines[index].indexOf(':')).equals(roles[indexOfRole])) {
-                    resultBuilder.append((index + 1));
-                    resultBuilder.append(")");
-                    resultBuilder.append(textLines[index].substring(textLines[index].indexOf(":") + 1));
-                    resultBuilder.append(index == textLines.length - 1 ? "" : "\r\n");
+        StringBuilder resultBuilder = new StringBuilder();
+        for (String role : roles) {
+            resultBuilder.append(role.concat(":").concat("\n"));
+            for (int indexOfTextLine = 0; indexOfTextLine < textLines.length; indexOfTextLine++) {
+                if (textLines[indexOfTextLine].startsWith(role.concat(":"))) {
+                    resultBuilder.append(indexOfTextLine + 1);
+                    resultBuilder.append(")".concat(textLines[indexOfTextLine].replaceFirst(role.concat(":"), "")).concat("\n"));
                 }
             }
-            resultBuilder.append(indexOfRole == roles.length - 1 ? "" : "\r\n");
+            resultBuilder.append("\n");
         }
         return resultBuilder.toString();
     }
