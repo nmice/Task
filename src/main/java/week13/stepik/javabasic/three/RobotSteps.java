@@ -11,9 +11,59 @@ public class RobotSteps {
         //Узнать текущую координату - X
         int x = robot.getX();
         //Узнать текущую координату - Y
-        int y = robot.getX();
-
+        int y = robot.getY();
         //Узнать направление
+        if (x == toX && y == toY){
+            return;
+        }
+        if (robot.getDirection()==Robot.Direction.UP){
+            if (x<toX && y<toY){
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+                robot.turnRight();
+                while(robot.getX()!=toX){
+                    robot.stepForward();
+                }
+            }
+            if (x<toX && y==toY){
+                robot.turnRight();
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+            }
+            if (x<toX && y>toY){
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+                robot.turnRight();
+                while(robot.getX()!=toX){
+                    robot.stepForward();
+                }
+            }
+            if (x==toX && y<toY){
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+            }
+            if (x==toX && y>toY){
+
+            }
+            if (x>toX && y<toY){
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+            }
+            if (x>toX && y==toY){
+                robot.turnLeft();
+                while(robot.getY()!=toY){
+                    robot.stepForward();
+                }
+            }
+            if (x>toX && y>toY){
+
+            }
+        };
         //Если текущая Х меньше toX, то
             //Если текущее направление Left, 2 раза вызвать поворот вправо
         // поворачивать вправо пока getDirection не станет равным RIGHT
