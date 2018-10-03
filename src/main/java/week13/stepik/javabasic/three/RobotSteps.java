@@ -16,6 +16,8 @@ public class RobotSteps {
         if (x == toX && y == toY){
             return;
         }
+
+
         if (robot.getDirection()==Robot.Direction.UP){
             if (x<toX && y<toY){
                 while(robot.getY()!=toY){
