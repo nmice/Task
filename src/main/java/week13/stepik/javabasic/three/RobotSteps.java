@@ -1,10 +1,15 @@
 package week13.stepik.javabasic.three;
 
+import java.math.*;
+import java.util.Arrays;
+
 public class RobotSteps {
 
+
     public static void main(String[] args) {
-        Robot fancy = new Robot();
-        moveRobot(fancy, 12, 10);
+        Robot robot = new Robot(0, 0, Direction.DOWN);
+        moveRobot(robot, -10, 20);
+        System.out.println(robot.getX()==-10 && robot.getY()==20);
     }
 
     public static int abs(int x) {
@@ -29,7 +34,7 @@ public class RobotSteps {
             return;
         }
         //Робот смотрит вверх
-        if (robot.getDirection() == Robot.Direction.UP) {
+        if (robot.getDirection() == Direction.UP) {
             if (x < toX && y < toY) {
                 while (wayY != 0) {
                     robot.stepForward();
@@ -40,6 +45,7 @@ public class RobotSteps {
                     robot.stepForward();
                     wayX--;
                 }
+                return;
             }
             if (x < toX && y == toY) {
                 robot.turnRight();
@@ -47,6 +53,7 @@ public class RobotSteps {
                     robot.stepForward();
                     wayX--;
                 }
+                return;
             }
             if (x < toX && y > toY) {
                 robot.turnRight();
@@ -59,12 +66,14 @@ public class RobotSteps {
                     robot.stepForward();
                     wayY--;
                 }
+                return;
             }
             if (x == toX && y < toY) {
                 while (wayY != 0) {
                     robot.stepForward();
                     wayY--;
                 }
+                return;
             }
             if (x == toX && y > toY) {
                 robot.turnRight();
@@ -73,16 +82,19 @@ public class RobotSteps {
                     robot.stepForward();
                     wayY--;
                 }
+                return;
             }
             if (x > toX && y < toY) {
                 while (wayY != 0) {
                     robot.stepForward();
+                    wayY--;
                 }
                 robot.turnLeft();
                 while (wayX != toX) {
                     robot.stepForward();
                     wayX--;
                 }
+                return;
             }
             if (x > toX && y == toY) {
                 robot.turnLeft();
@@ -90,6 +102,7 @@ public class RobotSteps {
                     robot.stepForward();
                     wayX--;
                 }
+                return;
             }
             if (x > toX && y > toY) {
                 robot.turnLeft();
@@ -102,9 +115,264 @@ public class RobotSteps {
                     robot.stepForward();
                     wayY--;
                 }
+                return;
             }
         }
-        ;
+        //Робот смотрит влево
+        if (robot.getDirection() == Direction.LEFT) {
+            if (x < toX && y < toY) {
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnRight();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x < toX && y == toY) {
+                robot.turnRight();
+                robot.turnRight();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x < toX && y > toY) {
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnLeft();
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x == toX && y < toY) {
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x == toX && y > toY) {
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x > toX && y < toY) {
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x > toX && y == toY) {
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x > toX && y > toY) {
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+        }
+        //Робот смотрит вниз
+        if (robot.getDirection() == Direction.DOWN) {
+            if (x < toX && y < toY) {
+                robot.turnLeft();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x < toX && y == toY) {
+                robot.turnLeft();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x < toX && y > toY) {
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnLeft();
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x == toX && y < toY) {
+                robot.turnRight();
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x == toX && y > toY) {
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x > toX && y < toY) {
+                robot.turnLeft();
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x > toX && y == toY) {
+                robot.turnLeft();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x > toX && y > toY) {
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnLeft();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+        }
+        //Робот смотрит вправо
+        if (robot.getDirection() == Direction.RIGHT) {
+            if (x < toX && y < toY) {
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x < toX && y == toY) {
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x < toX && y > toY) {
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x == toX && y < toY) {
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x == toX && y > toY) {
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                return;
+            }
+            if (x > toX && y < toY) {
+                robot.turnLeft();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnLeft();
+                while (wayX != toX) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x > toX && y == toY) {
+                robot.turnRight();
+                robot.turnRight();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+            if (x > toX && y > toY) {
+                robot.turnRight();
+                while (wayY != 0) {
+                    robot.stepForward();
+                    wayY--;
+                }
+                robot.turnRight();
+                while (wayX != 0) {
+                    robot.stepForward();
+                    wayX--;
+                }
+                return;
+            }
+        }
         //Если текущая Х меньше toX, то
         //Если текущее направление Left, 2 раза вызвать поворот вправо
         // поворачивать вправо пока getDirection не станет равным RIGHT
@@ -115,45 +383,75 @@ public class RobotSteps {
         //Сделать шаг, Y++, если текущая Х больше toX - повторить
         //Если текущая Y больше toY, то поворачивать вправо пока getDirection не станет равным DOWN
         //Сделать шаг, Y--, если текущая Х больше toX - повторить
-        //
+    }
 
-
-        robot.stepForward(); // your implementation here
+    public enum Direction {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
     }
 
     static class Robot {
+        int x;
+        int y;
+        Direction dir;
 
-        public enum Direction {
-            UP,
-            DOWN,
-            LEFT,
-            RIGHT
+        public Robot(int x, int y, Direction dir) {
+            this.x = x;
+            this.y = y;
+            this.dir = dir;
         }
 
-
         public Direction getDirection() {
-            return null;// текущее направление взгляда
+            return dir;
         }
 
         public int getX() {
-            return 0;// текущая координата X
+            return x;
         }
 
         public int getY() {
-            return 0;// текущая координата Y
+            return y;
         }
 
         public void turnLeft() {
-            // повернуться на 90 градусов против часовой стрелки
+            if (dir == Direction.UP) {
+                dir = Direction.LEFT;
+            } else if (dir == Direction.DOWN) {
+                dir = Direction.RIGHT;
+            } else if (dir == Direction.LEFT) {
+                dir = Direction.DOWN;
+            } else if (dir == Direction.RIGHT) {
+                dir = Direction.UP;
+            }
         }
 
         public void turnRight() {
-            // повернуться на 90 градусов по часовой стрелке
+            if (dir == Direction.UP) {
+                dir = Direction.RIGHT;
+            } else if (dir == Direction.DOWN) {
+                dir = Direction.LEFT;
+            } else if (dir == Direction.LEFT) {
+                dir = Direction.UP;
+            } else if (dir == Direction.RIGHT) {
+                dir = Direction.DOWN;
+            }
         }
 
         public void stepForward() {
-            // шаг в направлении взгляда
-            // за один шаг робот изменяет одну свою координату на единицу
+            if (dir == Direction.UP) {
+                y++;
+            }
+            if (dir == Direction.DOWN) {
+                y--;
+            }
+            if (dir == Direction.LEFT) {
+                x--;
+            }
+            if (dir == Direction.RIGHT) {
+                x++;
+            }
         }
     }
 }
