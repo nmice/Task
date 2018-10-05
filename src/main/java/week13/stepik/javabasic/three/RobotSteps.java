@@ -7,9 +7,31 @@ public class RobotSteps {
 
 
     public static void main(String[] args) {
-        Robot robot = new Robot(0, 0, Direction.DOWN);
-        moveRobot(robot, -10, 20);
-        System.out.println(robot.getX()==-10 && robot.getY()==20);
+        int toX = -10;
+        int toY = -20;
+        Robot robot = new Robot(0, 0, Direction.UP);
+        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
+        moveRobot(robot, toX, toY);
+        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
+        System.out.println(robot.getX() == toX && robot.getY() == toY);
+
+        robot = new Robot(0, 0, Direction.DOWN);
+        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
+        moveRobot(robot, toX, toY);
+        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
+        System.out.println(robot.getX() == toX && robot.getY() == toY);
+
+        robot = new Robot(0, 0, Direction.LEFT);
+        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
+        moveRobot(robot, toX, toY);
+        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
+        System.out.println(robot.getX() == toX && robot.getY() == toY);
+
+        robot = new Robot(0, 0, Direction.RIGHT);
+        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
+        moveRobot(robot, toX, toY);
+        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
+        System.out.println(robot.getX() == toX && robot.getY() == toY);
     }
 
     public static int abs(int x) {
@@ -20,15 +42,14 @@ public class RobotSteps {
     }
 
     public static void moveRobot(Robot robot, int toX, int toY) {
-        //Узнать текущую координату - X
+        //Записываем в переменную x текущую координату - X
         int x = robot.getX();
-        //Узнать текущую координату - Y
+        //Записываем в переменную y текущую координату - Y
         int y = robot.getY();
         //количество шагов до X;
         int wayX = abs(x - toX);
         //количество шагов до Y;
         int wayY = abs(y - toY);
-
         //Робот уже на месте
         if (wayX == 0 && wayY == 0) {
             return;
@@ -57,7 +78,7 @@ public class RobotSteps {
             }
             if (x < toX && y > toY) {
                 robot.turnRight();
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -90,7 +111,7 @@ public class RobotSteps {
                     wayY--;
                 }
                 robot.turnLeft();
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -149,7 +170,7 @@ public class RobotSteps {
                     wayY--;
                 }
                 robot.turnLeft();
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -172,11 +193,11 @@ public class RobotSteps {
                 return;
             }
             if (x > toX && y < toY) {
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
-                robot.turnLeft();
+                robot.turnRight();
                 while (wayY != 0) {
                     robot.stepForward();
                     wayY--;
@@ -232,7 +253,7 @@ public class RobotSteps {
                     wayY--;
                 }
                 robot.turnLeft();
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -255,12 +276,12 @@ public class RobotSteps {
                 return;
             }
             if (x > toX && y < toY) {
-                robot.turnLeft();
-                while (wayX != toX) {
+                robot.turnRight();
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
-                robot.turnLeft();
+                robot.turnRight();
                 while (wayY != 0) {
                     robot.stepForward();
                     wayY--;
@@ -268,7 +289,7 @@ public class RobotSteps {
                 return;
             }
             if (x > toX && y == toY) {
-                robot.turnLeft();
+                robot.turnRight();
                 while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
@@ -280,7 +301,7 @@ public class RobotSteps {
                     robot.stepForward();
                     wayY--;
                 }
-                robot.turnLeft();
+                robot.turnRight();
                 while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
@@ -310,7 +331,7 @@ public class RobotSteps {
                 return;
             }
             if (x < toX && y > toY) {
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -344,7 +365,7 @@ public class RobotSteps {
                     wayY--;
                 }
                 robot.turnLeft();
-                while (wayX != toX) {
+                while (wayX != 0) {
                     robot.stepForward();
                     wayX--;
                 }
@@ -370,19 +391,8 @@ public class RobotSteps {
                     robot.stepForward();
                     wayX--;
                 }
-                return;
             }
         }
-        //Если текущая Х меньше toX, то
-        //Если текущее направление Left, 2 раза вызвать поворот вправо
-        // поворачивать вправо пока getDirection не станет равным RIGHT
-        //Сделать шаг, Х++, если текущая Х меньше toX - повторить
-        //Если текущая Х больше toX, то поворачивать влево пока getDirection не станет равным LEFT
-        //Сделать шаг, Х--, если текущая Х больше toX - повторить
-        //Если текущая Y меньше toY, то поворачивать вправо пока getDirection не станет равным UP
-        //Сделать шаг, Y++, если текущая Х больше toX - повторить
-        //Если текущая Y больше toY, то поворачивать вправо пока getDirection не станет равным DOWN
-        //Сделать шаг, Y--, если текущая Х больше toX - повторить
     }
 
     public enum Direction {
