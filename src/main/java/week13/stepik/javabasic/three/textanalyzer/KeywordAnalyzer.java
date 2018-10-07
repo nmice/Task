@@ -1,11 +1,8 @@
 package week13.stepik.javabasic.three.textanalyzer;
 
 public abstract class KeywordAnalyzer {
-    protected String[] getKeywords(){
-        return null;
-    }
-    protected Label getLabel(){
-        return null;
-    }
 
+    protected abstract String[] getKeywords();
+
+    protected abstract Label getLabel(String word, String[] keyWords);
 }
