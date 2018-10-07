@@ -1,14 +1,9 @@
 package week13.stepik.javabasic.three.textanalyzer;
 
-public class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
+public class NegativeTextAnalyzer extends KeywordAnalyzer {
 
 
     public NegativeTextAnalyzer() {
-    }
-
-    @Override
-    public Label processText(String text) {
-        return getLabel(text, getKeywords());
     }
 
     @Override
@@ -18,14 +13,11 @@ public class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyze
 
     @Override
     protected Label getLabel(String text, String[] keyWords) {
-        String[] wordsInText = text.split(" ", Integer.MAX_VALUE);
-        for (String word : wordsInText) {
             for (String key : keyWords) {
-                if (word.equals(key)) {
+                if (text.contains(key)) {
                     return Label.NEGATIVE_TEXT;
                 }
             }
-        }
         return Label.OK;
     }
 }
