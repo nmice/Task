@@ -31,7 +31,6 @@ public class BinarySTreeTestDrive {
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println(Arrays.toString(myBinaryTree.toArray()));
 
-
         System.out.println(myBinaryTree);
         System.out.println("Remove THIRD - " + myBinaryTree.remove("third"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
@@ -49,12 +48,5 @@ public class BinarySTreeTestDrive {
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
         System.out.println("Remove aaSECOND - " + myBinaryTree.remove("bfirst"));
         System.out.println("Size of myBinaryTree - " + myBinaryTree.size());
-
-
-
-
-
-
     }
-
 }
