@@ -32,12 +32,40 @@ public class RobotExeption {
 
 
     public static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) {
-        try (RobotConnection connection = robotConnectionManager.getConnection()){            }
-        catch (RobotConnectionException e){            }
-        catch (Throwable e){
-            throw e;
+/*        boolean connectionOk = false;
+        try (RobotConnection connection = robotConnectionManager.getConnection()) {
+            connection.moveRobotTo(toX, toY);
+            connectionOk = true;
+        } catch (RobotConnectionException e1) {
+            try (RobotConnection connection = robotConnectionManager.getConnection()) {
+                connection.moveRobotTo(toX, toY);
+                connectionOk = true;
+            } catch (RobotConnectionException e2) {
+                try (RobotConnection connection = robotConnectionManager.getConnection()) {
+                    connection.moveRobotTo(toX, toY);
+                    connectionOk = true;
+                } catch (RobotConnectionException e3) {
+                }
+            }
         }
+        if (!connectionOk) {
+            throw new RobotConnectionException("3 attempts exhausted");
+        }*/
+
+        boolean connectionOk = false;
+        for (int attempt = 0; !connectionOk && attempt < 3; attempt++) {
+            try (RobotConnection connection = robotConnectionManager.getConnection()) {
+                connection.moveRobotTo(toX, toY);
+                connectionOk = true;
+            } catch (RobotConnectionException e) {
+            }
+            if (connectionOk) {
+                return;
+            }
+        }
+        throw new RobotConnectionException("3 attempts exhausted");
     }
+
 
     public enum Direction {
         UP,
@@ -46,7 +74,7 @@ public class RobotExeption {
         RIGHT
     }
 
-    static class Robot implements RobotConnection, RobotConnectionManager{
+    static class Robot implements RobotConnection, RobotConnectionManager {
         int x;
         int y;
         Direction dir;
