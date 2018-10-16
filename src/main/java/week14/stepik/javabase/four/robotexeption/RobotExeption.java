@@ -45,19 +45,17 @@ public class RobotExeption {
                     connection.moveRobotTo(toX, toY);
                     connectionOk = true;
                 } catch (RobotConnectionException e3) {
-                }
-            }
-        }
+                }}}
         if (!connectionOk) {
             throw new RobotConnectionException("3 attempts exhausted");
         }*/
 
         boolean connectionOk = false;
-        for (int attempt = 0; !connectionOk && attempt < 3; attempt++) {
+        for (int attempt = 0; attempt < 3; attempt++) {
             try (RobotConnection connection = robotConnectionManager.getConnection()) {
                 connection.moveRobotTo(toX, toY);
                 connectionOk = true;
-            } catch (RobotConnectionException e) {
+            } catch (RobotConnectionException ignored) {
             }
             if (connectionOk) {
                 return;

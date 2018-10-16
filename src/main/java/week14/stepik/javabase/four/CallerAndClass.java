@@ -1,7 +1,5 @@
 package week14.stepik.javabase.four;
 
-import java.util.Arrays;
-
 public class CallerAndClass {
     public static void main(String[] args) {
         System.out.println(getCallerClassAndMethodName());
@@ -30,4 +28,5 @@ public class CallerAndClass {
         StackTraceElement st_el = stackTraceElements[3];
         return st_el.getClassName() + '#' + st_el.getMethodName();
     }
+
 }
