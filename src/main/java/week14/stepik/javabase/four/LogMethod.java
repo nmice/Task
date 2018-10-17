@@ -19,8 +19,10 @@ package week14.stepik.javabase.four;
         Level есть не только у Logger, но и у Handler.
         Передача сообщения на обработку родительскому Handler'у регулируется свойством useParentHandlers.*/
 
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.XMLFormatter;
 
 public class LogMethod {
 
@@ -29,8 +31,25 @@ public class LogMethod {
     }
 
     private static void configureLogging() {
-        final Logger ClassA = Logger.getLogger(LogMethod.class.getName());
-        LOGGER1.log(Level.INFO, "",e);
+        final Logger ClassA = Logger.getLogger("org.stepic.java.logging.ClassA");
+        ClassA.setLevel(Level.ALL);
+        ClassA.log(Level.ALL, "SOME EXCEPTION");
+
+        final Logger ClassB = Logger.getLogger("org.stepic.java.logging.ClassB");
+        ClassB.setLevel(Level.WARNING);
+        ClassB.warning("WARNING");
+
+        final Logger logger = Logger.getLogger("org.stepic.java");
+        logger.setLevel(Level.ALL);
+
+        ConsoleHandler myHandler = new ConsoleHandler();
+        myHandler.setLevel(Level.ALL);
+        XMLFormatter myFormatter = new XMLFormatter();
+        myHandler.setFormatter(myFormatter);
+
+        logger.addHandler(myHandler);
+
+        logger.setUseParentHandlers(false);
         // your implementation here
     }
 }
