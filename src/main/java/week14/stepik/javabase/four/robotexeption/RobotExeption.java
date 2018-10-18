@@ -1,126 +1,23 @@
 package week14.stepik.javabase.four.robotexeption;
 
+import java.util.Scanner;
+
 public class RobotExeption {
-
     public static void main(String[] args) {
-        int toX = -10;
-        int toY = -20;
-        Robot robot = new Robot(0, 0, Direction.UP);
-        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
-        moveRobot(robot, toX, toY);
-        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
-        System.out.println(robot.getX() == toX && robot.getY() == toY);
-
-        robot = new Robot(0, 0, Direction.DOWN);
-        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
-        moveRobot(robot, toX, toY);
-        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
-        System.out.println(robot.getX() == toX && robot.getY() == toY);
-
-        robot = new Robot(0, 0, Direction.LEFT);
-        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
-        moveRobot(robot, toX, toY);
-        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
-        System.out.println(robot.getX() == toX && robot.getY() == toY);
-
-        robot = new Robot(0, 0, Direction.RIGHT);
-        System.out.println("Start position: x = " + robot.getX() + ", y = " + robot.getY());
-        moveRobot(robot, toX, toY);
-        System.out.println("End position: x = " + robot.getX() + ", y = " + robot.getY());
-        System.out.println(robot.getX() == toX && robot.getY() == toY);
-    }
-
-
-    public static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) {
-        try (RobotConnection connection = robotConnectionManager.getConnection()){            }
-        catch (RobotConnectionException e){            }
-        catch (Throwable e){
-            throw e;
-        }
-    }
-
-    public enum Direction {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
-
-    static class Robot implements RobotConnection, RobotConnectionManager{
-        int x;
-        int y;
-        Direction dir;
-
-        public Robot(int x, int y, Direction dir) {
-            this.x = x;
-            this.y = y;
-            this.dir = dir;
-        }
-
-        public Direction getDirection() {
-            return dir;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void turnLeft() {
-            if (dir == Direction.UP) {
-                dir = Direction.LEFT;
-            } else if (dir == Direction.DOWN) {
-                dir = Direction.RIGHT;
-            } else if (dir == Direction.LEFT) {
-                dir = Direction.DOWN;
-            } else if (dir == Direction.RIGHT) {
-                dir = Direction.UP;
-            }
-        }
-
-        public void turnRight() {
-            if (dir == Direction.UP) {
-                dir = Direction.RIGHT;
-            } else if (dir == Direction.DOWN) {
-                dir = Direction.LEFT;
-            } else if (dir == Direction.LEFT) {
-                dir = Direction.UP;
-            } else if (dir == Direction.RIGHT) {
-                dir = Direction.DOWN;
-            }
-        }
-
-        public void stepForward() {
-            if (dir == Direction.UP) {
-                y++;
-            }
-            if (dir == Direction.DOWN) {
-                y--;
-            }
-            if (dir == Direction.LEFT) {
-                x--;
-            }
-            if (dir == Direction.RIGHT) {
-                x++;
-            }
-        }
-
-        @Override
-        public void moveRobotTo(int x, int y) {
-
-        }
-
-        @Override
-        public void close() {
-
-        }
-
-        @Override
-        public RobotConnection getConnection() {
-            return null;
-        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Now is a 30.07.2018");
+        System.out.println("How you can give for next Porshe before you take a first java-dev job?");
+        int a = scanner.nextInt();
+        System.out.println("Ок, in 03.2019 you had your first Java-dev job for 1k$. How you can give for next Porshe in mounth?");
+        int b = scanner.nextInt();
+        System.out.println("Ок, in 03.2020 you had Job for 2k$/per mounth. How you can give for next Porshe in mounth?");
+        int c = scanner.nextInt();
+        System.out.println("Ок, in 03.2021 you had Job for 3k$/per mounth. How you can give for next Porshe in mounth?");
+        int d = scanner.nextInt();
+        System.out.println("Ок. And in 03.2022 you had Job for 4k$/per mounth. How you can give for next Porshe in mounth?");
+        int e = scanner.nextInt();
+        int sum = a + (b + c + d + e) * 12;
+        System.out.println("So, it's " + sum + "$ for you Porshe!");
+        System.out.println("And it's " + sum*62 + " rubles on today course! Let's do it! ;)");
     }
 }
