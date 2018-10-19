@@ -20,12 +20,7 @@ public class Main {
         private MailService[] bandits;
 
         public UntrustworthyMailWorker(MailService[] mailServices) {
-            if (mailServices == null) {
-                bandits = null;
-            } else {
-                bandits = new MailService[mailServices.length];
-                System.arraycopy(mailServices, 0, bandits, 0, mailServices.length);
-            }
+            bandits = mailServices;
         }
 
         public MailService getRealMailService() {
@@ -45,16 +40,15 @@ public class Main {
     public static class Spy implements MailService {
         private Logger LOGGER;
 
-        public Spy (Logger logger) {
+        public Spy(Logger logger) {
             LOGGER = logger;
         }
 
         @Override
         public Sendable processMail(Sendable mail) {
-            if (mail instanceof MailMessage){
-                if (mail.getFrom().equals(AUSTIN_POWERS) || mail.getTo().equals(AUSTIN_POWERS)){
-                    LOGGER.warning("Detected target mail correspondence: from " + mail.getFrom() + " to " + mail.getTo() + "\"" +
-                            ((MailMessage) mail).getMessage()+"\"");
+            if (mail instanceof MailMessage) {
+                if (mail.getFrom().equals(AUSTIN_POWERS) || mail.getTo().equals(AUSTIN_POWERS)) {
+                    LOGGER.warning("Detected target mail correspondence: from " + mail.getFrom() + " to " + mail.getTo() + " \"" + ((MailMessage) mail).getMessage() + "\"");
                 } else {
                     LOGGER.info("Usual correspondence: from " + mail.getFrom() + " to " + mail.getTo());
                 }
@@ -67,32 +61,64 @@ public class Main {
         private int minimumPriceForStealing;
         private int stolenValue;
 
-        public Thief(int greedLevel){
+        public Thief(int greedLevel) {
             minimumPriceForStealing = greedLevel;
         }
 
-        public int getStolenValue (){
+        public int getStolenValue() {
             return stolenValue;
         }
 
 
         @Override
         public Sendable processMail(Sendable mail) {
-            if (mail instanceof MailPackage){
+            if (mail instanceof MailPackage) {
                 MailPackage mailInProceed = (MailPackage) mail;
                 int price = mailInProceed.getContent().getPrice();
-                String content = mailInProceed.getContent().getContent();
+                if (price >= minimumPriceForStealing) {
+                    String from = mailInProceed.getFrom();
+                    String to = mailInProceed.getTo();
+                    String content = mailInProceed.getContent().getContent();
+                    Package changedPackage = new Package("stones instead of " + content, 0);
+                    MailPackage changedMail = new MailPackage(from, to, changedPackage);
+                    stolenValue += price;
+                    return changedMail;
+                }
             }
             return mail;
         }
     }
 
-    public static class Inspector implements MailService {
-        @Override
-        public Sendable processMail(Sendable mail) {
-            return null;
-        }
+
+    public static class IllegalPackageException extends RuntimeException {
+        /*public IllegalPackageException(String message) {
+            super(message);
+        }*/
     }
 
+    public static class StolenPackageException extends RuntimeException {
+        /*public StolenPackageException(String message) {
+            super(message);
+        }*/
+    }
 
+    public static class Inspector implements MailService {
+
+        @Override
+        public Sendable processMail(Sendable mail) {
+            if (mail instanceof MailPackage) {
+                MailPackage mailInProceed = (MailPackage) mail;
+                int price = mailInProceed.getContent().getPrice();
+                String from = mailInProceed.getFrom();
+                String to = mailInProceed.getTo();
+                String content = mailInProceed.getContent().getContent();
+                if (content.equals(WEAPONS) || content.equals(BANNED_SUBSTANCE)) {
+                    throw new IllegalPackageException(/*"This package has prohibited content!"*/);
+                } else if (content.contains("stones")) {
+                    throw new StolenPackageException(/*"This package may be from the Thief"*/);
+                }
+            }
+            return mail;
+        }
+    }
 }
