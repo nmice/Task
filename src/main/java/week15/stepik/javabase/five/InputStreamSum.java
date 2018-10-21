@@ -20,36 +20,40 @@ package week15.stepik.javabase.five;
  * На вход подан InputStream, последовательно возвращающий три байта: 0x33 0x45 0x01. В качестве контрольной суммы должно быть возвращено число 71.
  */
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class InputStreamSum {
 
     public static void main(String[] args) throws IOException {
         byte[] data = {0x33, 0x45, 0x01};
         byte[] data1 = {51, 69, 1};
-        byte[] data2 = {};
+        byte[] data12 = {};
         InputStream myStream = new ByteArrayInputStream(data);
         System.out.println(checkSumOfStream(myStream));
-
-
     }
 
     public static int checkSumOfStream(InputStream inputStream) throws IOException {
+        // Создаем новый объект типа ByteArrayOutputStream
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        // Задаем переменную для результата чтения n-ых байтов из потока
         int nRead;
-        byte[] data = new byte[16384];
+        // Инициализируем новый массив байтов размером 1 кБ
+        byte[] data = new byte[1024];
+        // Запускаем цикл - записываем в переменную nRead значение, пока дальше при считывании не возникнет пустой поток
         while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+        // записываем в переменную buffer последовательно значения nRead
             buffer.write(data, 0, nRead);
         }
-        byte[] iSTBA = buffer.toByteArray();
+        // Инициализируем байтовый массив представлением объекта buffer в виде массива байтов
+        byte[] byteArray = buffer.toByteArray();
+        // Инициализируем переменную контрольной суммы
         int sum = 0;
-        for (byte element : iSTBA) {
-            sum = Integer.rotateLeft(sum, 1) ^ element;
+        // Запускаем цикл - перебираем все элементы из нашего массива байтов byteArray
+        for (byte element : byteArray) {
+        // Считаем контрольную сумму через рекуррентную формулу, интовое значение element приводим к байтовому без перегрузки
+            sum = Integer.rotateLeft(sum, 1) ^ element & 0xFF;
         }
-        // your implementation here
+        // Возвращаем контрольную сумму
         return sum;
     }
 }
