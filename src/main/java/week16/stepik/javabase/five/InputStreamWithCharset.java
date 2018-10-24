@@ -12,18 +12,19 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class InputStreamWithCharset {
+
     public static void main(String[] args) {
 
     }
 
     public static String readAsString(InputStream inputStream, Charset charset) throws IOException {
         Reader reader = new InputStreamReader(inputStream, charset);
-        BufferedReader bufReader = new BufferedReader(reader);
-        String result = new String;
-        while (bufReader.readLine() != null) {
-            result += "\r\n"+ bufReader.readLine();
+        StringBuilder result = new StringBuilder();
+        int byteNumber = reader.read();
+        while (byteNumber != -1) {
+            result = result.append((char) byteNumber);
+            byteNumber = reader.read();
         }
-        return result;
-// your implementation here
+        return result.toString();
     }
 }
