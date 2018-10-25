@@ -21,21 +21,28 @@ package week16.stepik.javabase.five;
 import java.util.Scanner;
 
 public class ParseDouble {
+
     public static void main(String[] args) {
+        //Создаем объект типа Scanner
         Scanner scan = new Scanner(System.in);
+        //Инициализируем переменную суммы
         double sum = 0;
+        //Инициализируем переменную суммы считанных значений double
         double num = 0;
+        // Запускаем цикл с условием - если на вход подаются ещё данные - hasNext()
         while (scan.hasNext()) {
+            // Если следующий токен double, записываем в переменную num считанное значение
             if (scan.hasNextDouble()) {
                 num = Double.parseDouble(scan.next());
+                // Прибавляем к сумме значение num
                 sum += num;
+                // Иначе переходим к следующему токену
             } else {
                 scan.next();
             }
         }
-//        System.out.printf("%.6f", sum);
+        // Переводим результат к строке с заданным форматом числа double
         String result = String.format("%.6f", sum);
         System.out.println(result);
-        return;
     }
 }
