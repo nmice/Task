@@ -15,16 +15,17 @@ package week17.stepic.javabase.six;
  * 13, 16, 25, 62, 384, 745, 502, 200, 0, ... (дальше бесконечное количество нулей)
  */
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class PseudoRandomNumbers {
 
     public static void main(String[] args) {
-
+        IntStream intStream = pseudoRandomStream(13);
+        System.out.println(Arrays.toString(intStream.limit(10).toArray()));
     }
 
     public static IntStream pseudoRandomStream(int seed) {
-        return null; // your implementation here
+        return IntStream.iterate(seed, n -> ((n*n)%10000)/10);
     }
-
 }
