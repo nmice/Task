@@ -10,17 +10,12 @@ package week17.stepic.javabase.six;
  */
 
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FindMinMaxInStream {
 
     public static void main(String[] args) {
-
     }
 
     public static <T> void findMinMax(
