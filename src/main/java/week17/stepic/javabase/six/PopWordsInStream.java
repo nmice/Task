@@ -49,21 +49,21 @@ public class PopWordsInStream {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Map<String, Integer> wordsByNumber = new HashMap<>();
+        Map<String, Integer> wordsByFreq = new HashMap<>();
 
         while (scanner.hasNext()) {
             String wordFromScan = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я0-9]", " ");
             String[] words = wordFromScan.split(" ");
             for (String word : words) {
-                if (wordsByNumber.containsKey(word)) {
-                    wordsByNumber.put(word, wordsByNumber.get(word) + 1);
+                if (wordsByFreq.containsKey(word)) {
+                    wordsByFreq.put(word, wordsByFreq.get(word) + 1);
                 } else {
-                    wordsByNumber.put(word, 1);
+                    wordsByFreq.put(word, 1);
                 }
             }
         }
 
-        List<Map.Entry<String, Integer>> listFromWords = new ArrayList<>(wordsByNumber.entrySet());
+        List<Map.Entry<String, Integer>> listFromWords = new ArrayList<>(wordsByFreq.entrySet());
 
         Comparator<Map.Entry<String, Integer>> wordsComparator = new FreqComparator().thenComparing(new LexComparator());
 
