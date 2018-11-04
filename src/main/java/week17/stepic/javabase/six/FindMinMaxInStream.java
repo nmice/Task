@@ -9,8 +9,11 @@ package week17.stepic.javabase.six;
  * minMaxConsumer.accept(null, null);
  */
 
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FindMinMaxInStream {
@@ -22,6 +25,10 @@ public class FindMinMaxInStream {
             Stream<? extends T> stream,
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer) {
+        List listFromStream = stream.collect(Collectors.toList());
+        Stream<? extends T> stream1 = listFromStream.stream();
+        Stream<? extends T> stream2 = listFromStream.stream();
+
         Object[] minAndMax = {null,null};
         stream.forEach(element -> {
             if (minAndMax[0] == null) minAndMax[0] = element;

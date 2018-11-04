@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -54,6 +52,35 @@ import java.util.stream.Stream;
 
 public class PopWordsInStream {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
+        //перевести поток в строку
+        //Убрать все посторонние символы(заменить на пробелы)
+        //перевести все слова в строке в строчный регистр
+
+        Scanner scanner = new Scanner(System.in);
+        String wordFromScan;
+        Map<String, Integer> wordsByNumber = new HashMap<>();
+
+        while (scanner.hasNext()) {
+            wordFromScan = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я0-9]", "");
+            if (wordsByNumber.containsKey(wordFromScan)) {
+                wordsByNumber.put(wordFromScan, wordsByNumber.get(wordFromScan) + 1);
+            } else {
+                wordsByNumber.put(wordFromScan, 1);
+            }
+
+            List<Map<String, Integer>> listFromWords = new ArrayList<>();
+            for (Map.Entry<String, Integer> entry : wordsByNumber.entrySet()) {
+                String word = entry.getKey();
+                Integer number = entry.getValue();
+
+                if (!numberByWords.containsKey(number)) {
+                    numberByWords.put(number, new ArrayList<>());
+                }
+
+                numberByWords.get(number).add(word);
+        }
+
+
     }
 }
