@@ -1,12 +1,7 @@
 package week17.stepic.javabase.six;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
+
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -52,35 +47,43 @@ import java.util.stream.Stream;
 
 public class PopWordsInStream {
 
-    public static void main(String[] args){
-        //перевести поток в строку
-        //Убрать все посторонние символы(заменить на пробелы)
-        //перевести все слова в строке в строчный регистр
-
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String wordFromScan;
         Map<String, Integer> wordsByNumber = new HashMap<>();
 
         while (scanner.hasNext()) {
-            wordFromScan = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я0-9]", "");
-            if (wordsByNumber.containsKey(wordFromScan)) {
-                wordsByNumber.put(wordFromScan, wordsByNumber.get(wordFromScan) + 1);
-            } else {
-                wordsByNumber.put(wordFromScan, 1);
-            }
-
-            List<Map<String, Integer>> listFromWords = new ArrayList<>();
-            for (Map.Entry<String, Integer> entry : wordsByNumber.entrySet()) {
-                String word = entry.getKey();
-                Integer number = entry.getValue();
-
-                if (!numberByWords.containsKey(number)) {
-                    numberByWords.put(number, new ArrayList<>());
+            String wordFromScan = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я0-9]", " ");
+            String[] words = wordFromScan.split(" ");
+            for (String word : words) {
+                if (wordsByNumber.containsKey(word)) {
+                    wordsByNumber.put(word, wordsByNumber.get(word) + 1);
+                } else {
+                    wordsByNumber.put(word, 1);
                 }
-
-                numberByWords.get(number).add(word);
+            }
         }
 
+        List<Map.Entry<String, Integer>> listFromWords = new ArrayList<>(wordsByNumber.entrySet());
 
+        Comparator<Map.Entry<String, Integer>> wordsComparator = new FreqComparator().thenComparing(new LexComparator());
+
+        Stream<Map.Entry<String, Integer>> entryStream = listFromWords.stream()
+                .sorted(wordsComparator)
+                .limit(10);
+        entryStream.forEach(p -> System.out.println(p.getKey()));
+    }
+
+    static class FreqComparator implements Comparator<Map.Entry<String, Integer>> {
+        @Override
+        public int compare(Map.Entry o1, Map.Entry o2) {
+            return ((Integer) o2.getValue()).compareTo((Integer) o1.getValue());
+        }
+    }
+
+    static class LexComparator implements Comparator<Map.Entry<String, Integer>> {
+        @Override
+        public int compare(Map.Entry o1, Map.Entry o2) {
+            return ((String) o1.getKey()).compareTo((String) o2.getKey());
+        }
     }
 }
