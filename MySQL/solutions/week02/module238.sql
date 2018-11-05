@@ -27,6 +27,19 @@ SELECT * FROM A
   INNER JOIN C
     ON a.c_id = C.id;*/
     
-SELECT source.name AS source_name FROM source
-
-where count(sale.id)=0
+SELECT source.name AS source_name 
+    FROM source 
+		WHERE NOT EXISTS (SELECT * FROM client WHERE client.source_id=source.id) 
+    UNION 
+SELECT source.name AS source_namee 
+    FROM source 
+		INNER JOIN client ON client.source_id=source.id 
+		INNER JOIN sale ON sale.client_id=client.id 
+		WHERE sale.number IS NULL OR sale.number='' 
+    UNION 
+SELECT source.name AS source_name 
+    FROM source 
+		INNER JOIN client ON client.source_id=source.id 
+		INNER JOIN sale ON sale.client_id=client.id 
+		INNER JOIN status ON status.id=sale.status_id 
+    WHERE status.name='rejected';
