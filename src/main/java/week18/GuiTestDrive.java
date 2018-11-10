@@ -22,16 +22,11 @@ class SimpleWindow extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2,3,5,10));
-        //panel.add(createPanel(new TitledBorder("Рамка с заголовком"), "TitledBorder"));
         panel.add(createPanel(new LineBorder(Color.ORANGE, 4), "Бездействие"));
-        panel.add(createPanel(new BevelBorder(BevelBorder.LOWERED), ""));
-        panel.add(createPanel(new BevelBorder(BevelBorder.LOWERED), ""));
         panel.add(createPanel(new SoftBevelBorder(BevelBorder.RAISED), "Прокрастинация"));
-        panel.add(createPanel(new BevelBorder(BevelBorder.LOWERED), ""));
-        panel.add(createPanel(new BevelBorder(BevelBorder.LOWERED), ""));
         setContentPane(panel);
         pack();
-        setSize(800, 600);
+        setSize(1440, 900);
 
     }
 
@@ -39,7 +34,7 @@ class SimpleWindow extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.add(new JButton(text));
-        panel.setBorder(new CompoundBorder(new EmptyBorder(12,12,12,12), border));
+        panel.setBorder(new CompoundBorder(new EmptyBorder(150,200,150,200), border));
         return panel;
     }
 }
