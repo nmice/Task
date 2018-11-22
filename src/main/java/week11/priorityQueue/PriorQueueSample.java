@@ -1,18 +1,15 @@
 package week11.priorityQueue;
 
-import week10.queue.QueueOwn;
 import week10.quickSort.Book;
 
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class PriorQueueTestDrive {
+public class PriorQueueSample {
 
     public static void main(String[] args) {
         System.out.println("Priority Queue - Integer test:");
-        Queue<Integer> intQueue = new PriorQueueOwn<>();
+        Queue<Integer> intQueue = new CustomPriorityQueue<>();
         intQueue.offer(27);
         intQueue.offer(367);
         intQueue.offer(124);
@@ -47,7 +44,7 @@ public class PriorQueueTestDrive {
         System.out.println(intQueue.poll());
 
         System.out.println("Priority Queue - String test:");
-        Queue<String> strQueue = new PriorQueueOwn<>();
+        Queue<String> strQueue = new CustomPriorityQueue<>();
         strQueue.add("as");
         strQueue.add("come");
         strQueue.add("of");
@@ -61,7 +58,7 @@ public class PriorQueueTestDrive {
         System.out.println(strQueue.peek());
 
         System.out.println("Priority Queue - Book test wo comparator:");
-        PriorQueueOwn<Book> bookQueue = new PriorQueueOwn<>();
+        CustomPriorityQueue<Book> bookQueue = new CustomPriorityQueue<>();
         Book book0 = new Book("Pushkin", "Eugene Onegin");
         Book book1 = new Book("Pushkin", "The Tale about Tsar Saltan");
         Book book2 = new Book("Gogol", "Viy");
@@ -97,7 +94,7 @@ public class PriorQueueTestDrive {
 
         System.out.println("Priority Queue - Book test with comparator:");
         Comparator<Book> bookComparator = new BookTitleComparator();
-        PriorQueueOwn<Book> bookQueueWComp = new PriorQueueOwn<>(bookComparator);
+        CustomPriorityQueue<Book> bookQueueWComp = new CustomPriorityQueue<>(bookComparator);
         bookQueueWComp.add(book0);
         bookQueueWComp.add(book1);
         bookQueueWComp.add(book2);

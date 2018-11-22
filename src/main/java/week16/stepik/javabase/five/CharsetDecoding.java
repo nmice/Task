@@ -1,6 +1,5 @@
 package week16.stepik.javabase.five;
 
-import com.sun.imageio.spi.OutputStreamImageOutputStreamSpi;
 
 import java.io.*;
 import java.nio.charset.Charset;

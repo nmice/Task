@@ -8,7 +8,7 @@ public class PriorQueuePerfTest {
 
     public static void main(String[] args) {
         Queue<Integer> standart = new PriorityQueue<>();
-        Queue<Integer> my = new PriorQueueOwn<>();
+        Queue<Integer> my = new CustomPriorityQueue<>();
 
         //adding test for standart implementation
         long beginTime = System.currentTimeMillis();

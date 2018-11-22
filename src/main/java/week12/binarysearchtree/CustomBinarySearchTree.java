@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BinarySearchTreeOwn<E> implements Set<E> {
+public class CustomBinarySearchTree<E> implements Set<E> {
 
     private static class BSTOComparator<E extends Comparable> implements Comparator<E> {
         @Override
@@ -17,19 +17,19 @@ public class BinarySearchTreeOwn<E> implements Set<E> {
     private static final int DEFAULT_CAPACITY = 16;
     private Comparator<? super E> bstoComparator = new BSTOComparator();
 
-    public BinarySearchTreeOwn() {
+    public CustomBinarySearchTree() {
         this(DEFAULT_CAPACITY, null);
     }
 
-    public BinarySearchTreeOwn(int capacity) {
+    public CustomBinarySearchTree(int capacity) {
         this(capacity, null);
     }
 
-    public BinarySearchTreeOwn(Comparator comparator) {
+    public CustomBinarySearchTree(Comparator comparator) {
         this(DEFAULT_CAPACITY, comparator);
     }
 
-    public BinarySearchTreeOwn(int capacity, Comparator comparator) {
+    public CustomBinarySearchTree(int capacity, Comparator comparator) {
         if (capacity < 1) {
             throw new IllegalArgumentException();
         }

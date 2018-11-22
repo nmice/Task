@@ -2,7 +2,7 @@ package week10.queue;
 
 import org.junit.Before;
 import org.junit.Test;
-import java.util.List;
+
 import java.util.Queue;
 
 import static org.junit.Assert.*;
@@ -12,7 +12,7 @@ public class QueueOwnTest {
 
     @Test
     public void add() {
-        testQueueOwn = new QueueOwn<>();
+        testQueueOwn = new QueueCustom<>();
         Integer elem1 = 111;
         Integer elem2 = 222;
         Integer elem3 = 333;
@@ -25,7 +25,7 @@ public class QueueOwnTest {
 
     @Test
     public void offer() {
-        testQueueOwn = new QueueOwn();
+        testQueueOwn = new QueueCustom();
         Integer elem1 = 111;
         Integer elem2 = 222;
         Integer elem3 = 333;
@@ -38,7 +38,7 @@ public class QueueOwnTest {
 
     @Before
     public void before() {
-        testQueueOwn = new QueueOwn();
+        testQueueOwn = new QueueCustom();
         Integer elem1 = 111;
         Integer elem2 = 222;
         Integer elem3 = 333;

@@ -1,12 +1,11 @@
 package week07.Task_LinkedList;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-public class LinkedListOwnTestDrive {
+public class CustomLinkedListSample {
     public static void main(String[] args) {
-        List<Integer> numbers = new LinkedListOwn<>();
+        List<Integer> numbers = new CustomLinkedList<>();
         System.out.println("New LLO is empty - is a " + numbers.isEmpty());
         System.out.println(numbers);
         System.out.println("LLO Size is a " + numbers.size());
@@ -38,8 +37,8 @@ public class LinkedListOwnTestDrive {
         System.out.println("LLO contains (666, 667, 668) is a " + numbers.containsAll(containsTest));
         StringBuilder result = new StringBuilder();
         for (Integer elem: numbers) {
-        result.append(result.length() == 0 ? "" : ", ");
-        result.append(elem);
+            result.append(result.length() == 0 ? "" : ", ");
+            result.append(elem);
         }
         System.out.println("[" + result.toString() + "]");
 
@@ -55,14 +54,14 @@ public class LinkedListOwnTestDrive {
         numbers.clear();
         System.out.println("Clear LLO is a " + numbers);
 
-        LinkedListOwn<String> numbersLL = new LinkedListOwn<>();
+        CustomLinkedList<String> numbersLL = new CustomLinkedList<>();
         numbersLL.add("start");
         numbersLL.add("start1");
         numbersLL.add("start2");
         String[] testArray = {"me", "today", "me1", "today1", "me2", "today2"};
         System.out.println(Arrays.toString(numbersLL.toArray(testArray)));
 
-        final LinkedListOwn test = new LinkedListOwn();
+        final CustomLinkedList test = new CustomLinkedList();
         test.add("Hi All");
         System.out.println(test);
         test.clear();

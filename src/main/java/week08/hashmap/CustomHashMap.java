@@ -6,17 +6,17 @@ import java.util.*;
  * Implement your own HashMap (put, remove, clear, size, containsKey)
  */
 
-public class HashMapOwn<K, V> implements Map<K, V> {
+public class CustomHashMap<K, V> implements Map<K, V> {
 
     private static final int DEFAULT_CAPACITY = 17;
     private static final int MAXIMUM_CAPACITY = 1_073_741_824;
     int threshold;
 
-    public HashMapOwn() {
+    public CustomHashMap() {
         this(DEFAULT_CAPACITY);
     }
 
-    public HashMapOwn(int capacity) {
+    public CustomHashMap(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Illegal initial capacity: " + capacity);
         }
@@ -27,7 +27,7 @@ public class HashMapOwn<K, V> implements Map<K, V> {
         this.threshold = array.length * 3 / 4;
     }
 
-    public HashMapOwn(int capacity, float loadFactor) {
+    public CustomHashMap(int capacity, float loadFactor) {
         this(capacity);
     }
 

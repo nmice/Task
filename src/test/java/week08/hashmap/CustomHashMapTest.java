@@ -3,17 +3,16 @@ package week08.hashmap;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class HashMapOwnTest {
+public class CustomHashMapTest {
     private Map testHMO = null;
 
     @Before
     public void before() {
-        testHMO = new HashMapOwn();
+        testHMO = new CustomHashMap();
     }
 
     @Test

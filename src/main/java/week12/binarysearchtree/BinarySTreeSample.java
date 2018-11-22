@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class BinarySTreeTestDrive {
+public class BinarySTreeSample {
 
     public static void main(String[] args) {
-        Set<String> myBinaryTree = new TreeSet<>(); //new TreeSet<>()   BinarySearchTreeOwn
+        Set<String> myBinaryTree = new TreeSet<>(); //new TreeSet<>()   CustomBinarySearchTree
         for (Iterator<String> iterator = myBinaryTree.iterator(); iterator.hasNext(); ) {
             String elem = iterator.next();
             System.out.println(elem);

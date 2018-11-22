@@ -1,7 +1,5 @@
 package week10.queue;
 
-import week07.Task_LinkedList.LinkedListOwn;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -25,8 +23,8 @@ public class QueueOwnTestDrive {
         System.out.println(queue.peek()); //возвращает 1й элемент. если эта очередь пуста, возвращает null
         System.out.println();
 
-        System.out.println("QueueOwn test:");
-        Queue<Integer> queueLLO = new QueueOwn<>();//May be new LinkedListOwn<>();
+        System.out.println("QueueCustom test:");
+        Queue<Integer> queueLLO = new QueueCustom<>();//May be new CustomLinkedList<>();
         System.out.println(queueLLO.peek()); //возвращает 1й элемент. если эта очередь пуста, возвращает null
         System.out.println(queueLLO.poll()); //возвращает 1й элемент. если эта очередь пуста, возвращает null
         System.out.println(queueLLO.add(1001));//добавляет эл-т, если ок, возвращает true, если нет - Exception

@@ -2,7 +2,7 @@ package week11.priorityQueue;
 
 import java.util.PriorityQueue;
 
-public class DemoForComparatorMethod {
+public class ComparatorSample {
     public static void main(String args[]) {
 
         // create priority queue

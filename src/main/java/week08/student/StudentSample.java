@@ -2,7 +2,7 @@ package week08.student;
 
 import java.util.Objects;
 
-public class StudentTestDrive {
+public class StudentSample {
     public static void main(String[] args) {
         Student igor = new Student("Igor", "Akinfeev");
         System.out.println(igor);

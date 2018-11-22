@@ -4,17 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class LinkedListOwnTest {
+public class CustomLinkedListTest {
     private List testLLO = null;
 
     @Test
     public void add() {
-        testLLO = new LinkedListOwn();
+        testLLO = new CustomLinkedList();
         Integer elem1 = 111;
         Integer elem2 = 222;
         Integer elem3 = 333;
@@ -27,7 +26,7 @@ public class LinkedListOwnTest {
 
     @Before
     public void before() {
-        testLLO = new LinkedListOwn();
+        testLLO = new CustomLinkedList();
         Integer elem1 = 111;
         Integer elem2 = 222;
         Integer elem3 = 333;

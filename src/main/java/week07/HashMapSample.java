@@ -3,7 +3,7 @@ package week07;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashMapTestDrive {
+public class HashMapSample {
 
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();

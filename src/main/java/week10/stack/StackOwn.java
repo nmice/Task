@@ -1,13 +1,13 @@
 package week10.stack;
 
 
-import week07.Task_LinkedList.LinkedListOwn;
+import week07.Task_LinkedList.CustomLinkedList;
 
 import java.util.List;
 
 public class StackOwn<E> implements IStack<E> {
 
-    List<E> list = new LinkedListOwn();
+    List<E> list = new CustomLinkedList();
 
     @Override
     public E push(E item) {

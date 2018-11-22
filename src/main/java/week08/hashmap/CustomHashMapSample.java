@@ -3,7 +3,7 @@ package week08.hashmap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashMapOwnTestDrive {
+public class CustomHashMapSample {
 
     public static void main(String[] args) {
         System.out.println("!HASHMAP ORIGIN!");
@@ -34,16 +34,9 @@ public class HashMapOwnTestDrive {
         System.out.println(booksOrigin);
         booksOrigin.clear();
         System.out.println(booksOrigin);
-
-
-        System.out.println();//spacebar
-
+        System.out.println();
         System.out.println("!HASHMAP OWN!");
-        Map<String, String> books = new HashMapOwn<>();
-/*        System.out.println("HashMap books is empty - is a " + books.isEmpty());
-        System.out.println("Number of HashMap books elements is " + books.size());
-        System.out.println(books);
-        System.out.println(books.get(null));*/
+        Map<String, String> books = new CustomHashMap<>();
         books.put("AaAaAa", "NEG");
         books.put("AaAaAa", "NEG");
         books.put("AaAaAa", "NEG1");

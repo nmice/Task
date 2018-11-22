@@ -1,27 +1,27 @@
 package week12.hashset;
 
-import week07.Task_LinkedList.LinkedListOwn;
-import week08.hashmap.HashMapOwn;
+import week07.Task_LinkedList.CustomLinkedList;
+import week08.hashmap.CustomHashMap;
 
 import java.util.*;
 
-public class HashSetOwn<E> implements Set<E> {
+public class CustomHashSet<E> implements Set<E> {
 
-    private HashMapOwn<E, Object> map;
+    private CustomHashMap<E, Object> map;
     private Object PRESENT = new Object();
 
-    public HashSetOwn() {
-        map = new HashMapOwn<>();
+    public CustomHashSet() {
+        map = new CustomHashMap<>();
     }
 
-    public HashSetOwn(Collection<? extends E> c) {
+    public CustomHashSet(Collection<? extends E> c) {
         int minCapacityForCollection = c.size() * 3 / 4 + 1;
-        map = minCapacityForCollection >= 17 ? new HashMapOwn<>(minCapacityForCollection) : new HashMapOwn<>(17);
+        map = minCapacityForCollection >= 17 ? new CustomHashMap<>(minCapacityForCollection) : new CustomHashMap<>(17);
         addAll(c);
     }
 
-    public HashSetOwn(int initialCapacity, float loadFactor) {
-        map = new HashMapOwn<>(initialCapacity, loadFactor);
+    public CustomHashSet(int initialCapacity, float loadFactor) {
+        map = new CustomHashMap<>(initialCapacity, loadFactor);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class HashSetOwn<E> implements Set<E> {
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        List listOfRetainElements = new LinkedListOwn();
+        List listOfRetainElements = new CustomLinkedList();
         int initSize = this.size();
         for (Object elem : c) {
             if (this.contains(elem)) {

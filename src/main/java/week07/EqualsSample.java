@@ -1,6 +1,6 @@
 package week07;
 
-public class EqualsTestDrive {
+public class EqualsSample {
     public static void main(String[] args) {
         Object o = "1";
         System.out.println(o.hashCode());

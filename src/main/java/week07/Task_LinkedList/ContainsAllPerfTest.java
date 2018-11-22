@@ -11,7 +11,7 @@ public class ContainsAllPerfTest {
     public static final int LIST_LENGTH = 200_000;
 
     public static void main(String[] args) {
-        List listOwn = fillListWithRandomIntegers(new LinkedListOwn());
+        List listOwn = fillListWithRandomIntegers(new CustomLinkedList());
         List list = new ArrayList() {
             {
                 addAll(listOwn);
@@ -25,6 +25,5 @@ public class ContainsAllPerfTest {
         IntStream.generate(() -> (int) ((Math.random() * Integer.MAX_VALUE))).limit(LIST_LENGTH).forEach(a -> list.add(a));
         return list;
     }
-
 
 }

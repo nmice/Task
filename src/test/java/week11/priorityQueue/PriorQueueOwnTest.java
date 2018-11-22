@@ -5,7 +5,6 @@ import org.junit.Test;
 import week10.quickSort.Book;
 
 import java.util.Comparator;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 import static org.junit.Assert.*;
@@ -24,7 +23,7 @@ public class PriorQueueOwnTest {
 
     @Test
     public void add() {
-        testStringPQO = new PriorQueueOwn<>();
+        testStringPQO = new PriorQueueCustom<>();
         String expected = "[]";
         assertTrue(expected.equals(testStringPQO.toString()));
         testStringPQO.add("come");
@@ -36,7 +35,7 @@ public class PriorQueueOwnTest {
 
     @Test
     public void offer() {
-        testStringPQO = new PriorQueueOwn<>();
+        testStringPQO = new PriorQueueCustom<>();
         String expected = "[]";
         assertTrue(expected.equals(testStringPQO.toString()));
         testStringPQO.offer("come");
@@ -48,13 +47,13 @@ public class PriorQueueOwnTest {
 
     @Before
     public void before(){
-        testStringPQO = new PriorQueueOwn<>();
+        testStringPQO = new PriorQueueCustom<>();
         testStringPQO.add("as");
         testStringPQO.add("come");
         testStringPQO.add("you");
         testStringPQO.add("are");
 
-        testBookPQO = new PriorQueueOwn<>();
+        testBookPQO = new PriorQueueCustom<>();
         Book book0 = new Book("Dostoevskiy", "Idiot");
         Book book1 = new Book("Gogol", "Nose");
         Book book2 = new Book("Ray Bradbury", "451 Fahrenheit");
@@ -65,7 +64,7 @@ public class PriorQueueOwnTest {
         testBookPQO.add(book3);
 
         Comparator<Book> bookComparator = new BookTitleComparator();
-        testBookWithComparatorPQO = new PriorQueueOwn<>(bookComparator);
+        testBookWithComparatorPQO = new PriorQueueCustom<>(bookComparator);
         testBookWithComparatorPQO.add(book0);
         testBookWithComparatorPQO.add(book1);
         testBookWithComparatorPQO.add(book2);
@@ -179,11 +178,11 @@ public class PriorQueueOwnTest {
 
     @Test
     public void comparator() {
-        PriorQueueOwn<Book> testBookPQO1 = new PriorQueueOwn<>();
+        PriorQueueCustom<Book> testBookPQO1 = new PriorQueueCustom<>();
         assertEquals(null, testBookPQO1.comparator());
 
         Comparator<Book> bookComparator = new BookTitleComparator();
-        PriorQueueOwn<Book> testBookWithComparatorPQO1 = new PriorQueueOwn<>(bookComparator);
+        PriorQueueCustom<Book> testBookWithComparatorPQO1 = new PriorQueueCustom<>(bookComparator);
         assertEquals(bookComparator, testBookWithComparatorPQO1.comparator());
     }
 }

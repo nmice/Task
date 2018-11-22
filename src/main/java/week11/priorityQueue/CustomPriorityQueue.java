@@ -1,13 +1,11 @@
 package week11.priorityQueue;
 
-import week07.Task_LinkedList.LinkedListOwn;
+import week07.Task_LinkedList.CustomLinkedList;
 
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
-public class PriorQueueOwn<E> extends LinkedListOwn<E> {
+public class CustomPriorityQueue<E> extends CustomLinkedList<E> {
 
     //Передаю ЛЮБОЙ объект E
     //Если тип объекта наследован от Comparable, используется наш стандартный компаратор, сводящий compare() к compareTo()
@@ -24,20 +22,20 @@ public class PriorQueueOwn<E> extends LinkedListOwn<E> {
     private Comparator<? super E> pqComparator = new PQComparator();
     private int comparatorCounter = 0;
 
-    public PriorQueueOwn() {
+    public CustomPriorityQueue() {
         this(DEFAULT_INITIAL_CAPACITY, null);
     }
 
-    public PriorQueueOwn(int initialCapacity) {
+    public CustomPriorityQueue(int initialCapacity) {
         this(initialCapacity, null);
     }
 
-    public PriorQueueOwn(Comparator<? super E> comparator) {
+    public CustomPriorityQueue(Comparator<? super E> comparator) {
         this(DEFAULT_INITIAL_CAPACITY, comparator);
     }
 
-    public PriorQueueOwn(int initialCapacity,
-                         Comparator<? super E> comparator) {
+    public CustomPriorityQueue(int initialCapacity,
+                               Comparator<? super E> comparator) {
         if (initialCapacity < 1) {
             throw new IllegalArgumentException();
         }

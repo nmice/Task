@@ -11,7 +11,7 @@ public class BinarySTreePerfTest {
 
     public static void main(String[] args) {
         Set<Integer> standart = new TreeSet<>();
-        Set<Integer> my = new BinarySearchTreeOwn<>();
+        Set<Integer> my = new CustomBinarySearchTree<>();
 
         List<Integer> listOfElementsInStandart = new LinkedList<>();
         List<Integer> listOfElementsInMy = new LinkedList<>();

@@ -3,11 +3,11 @@ package week07.Task_LinkedList;
 import java.util.*;
 
 /**
- * Implement your own LinkedListOwn (should implement List<E>), so that it would be testable with the unit
+ * Implement your own CustomLinkedList (should implement List<E>), so that it would be testable with the unit
  * and performance tests from the previous task.
  */
 
-public class LinkedListOwn<E> implements List<E>, Queue<E> {
+public class CustomLinkedList<E> implements List<E>, Queue<E> {
 
     private int size = 0;
     private Node<E> first;
@@ -366,7 +366,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 i++;
             }
         }
-        throw new UnsupportedOperationException("This element not live in this LinkedListOwn");
+        throw new UnsupportedOperationException("This element not live in this CustomLinkedList");
     }
 
     @Override
@@ -379,7 +379,7 @@ public class LinkedListOwn<E> implements List<E>, Queue<E> {
                 i--;
             }
         }
-        throw new UnsupportedOperationException("This element not live in this LinkedListOwn");
+        throw new UnsupportedOperationException("This element not live in this CustomLinkedList");
     }
 
     @Override
