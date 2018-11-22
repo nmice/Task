@@ -11,11 +11,6 @@ public class TaskG01_07_Merge_sorted_arrays {
         int[] array1 = {1, 2, 5};
         int[] array2 = {3, 4};
         System.out.println(Arrays.toString(mergeSortedArrays(array1, array2)));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{1, 2, 3}, new int[]{})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{}, new int[]{1, 2, 3})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{1, 2, 3}, new int[]{100, 101, 102})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{100, 101, 102}, new int[]{1, 2, 3})));
-//        System.out.println(Arrays.toString(mergeSortedArrays(new int[]{7, 8, 8}, new int[]{8, 10, 11})));
     }
 
     public static int[] mergeSortedArrays(int array1[], int array2[]) {

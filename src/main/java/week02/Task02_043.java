@@ -19,8 +19,6 @@ public class Task02_043 {
     }
 
     public static int divisible(int a, int b) {
-        //int c = (a % b)*(b % a) + 1;
-        //return c;
         return (a % b) * (b % a) + 1;
     }
 }

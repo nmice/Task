@@ -1,6 +1,6 @@
 package week03;
 
-public class Task14_666StaticNonStatic {
+public class Task14_032StaticNonStatic {
 
     public static class Cat{
         String name;

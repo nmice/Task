@@ -20,7 +20,6 @@ public class Task05_064 {
             peoples += inhabitants;
             areas += areaDistrict;
         }
-        //System.out.println(peoples + " " + areas);
         System.out.println("Population Density is: " + calcPopulationDensity(peoples, areas) + "(thousands people/km2)");
     }
 

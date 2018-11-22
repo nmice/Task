@@ -13,7 +13,7 @@ public class Task02_031Test {
         System.setOut(printStreamAdapter);
         String data = 123 + "\r\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Task02_031.main(new String[]{});
+        Task02_031.main();
         String result = printStreamAdapter.getOutputString();
         System.out.println(("a-b-c to a-c-b operation:132").equals(result) ? "OK" : "FAIL");
     }

@@ -1,5 +1,7 @@
 package week06.TaskG02_04_ArrayList;
 
+import static util.PerfTestUtil.measureTime;
+
 public class SystemArrayCopyPerfTest {
 
     public static final int ARRAY_LENGTH = 1_000_000_000;
@@ -28,11 +30,4 @@ public class SystemArrayCopyPerfTest {
         return array;
     }
 
-    public static void measureTime(String header, Runnable task) {
-        System.out.println(header);
-        long before = System.currentTimeMillis();
-        task.run();
-        long after = System.currentTimeMillis();
-        System.out.println(after - before);
-    }
 }

@@ -14,13 +14,12 @@ public class Task04_036 {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         int t= scanner.nextInt(); // input of traffic light time in minutes
-        //int t = (int) (random() * 100);
-        //System.out.println("t = " + t + "; Traffic light is " + timeToColor(t));
         System.out.println("t = " + t + "; Traffic light is " + (t % 5 < 3 ? "Green" : "Red"));
     }
 
-    /*public static String timeToColor(int t) {
+    //alternative solution
+    private static String timeToColor(int t) {
         String color;
         return color = t % 5 < 3 ? "Green" : "Red";
-    }*/
+    }
 }

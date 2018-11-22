@@ -4,7 +4,7 @@ package week03;
  * Display its first half on the screen, without using the loop statement.
  */
 
-        import java.util.Scanner;
+import java.util.Scanner;
 
 public class Task09_022 {
 

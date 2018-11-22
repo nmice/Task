@@ -22,7 +22,6 @@ public class Task04_015 {
 
     public static int calcAge(int month, int year) {
         Calendar calendar = Calendar.getInstance();
-        //int Date = calendar.get(Calendar.DAY_OF_MONTH);
         int Month = calendar.get(Calendar.MONTH);
         int Year = calendar.get(Calendar.YEAR);
         System.out.println("Now is " + Month + "." + Year);

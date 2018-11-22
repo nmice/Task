@@ -16,7 +16,6 @@ public class Task03_029 {
     public static void main(String... args) {
         Scanner scan = new Scanner(System.in);
         int x=scan.nextInt(), y=scan.nextInt(), z=scan.nextInt();
-        //int x = (int) (Math.random() * -100), y = (int) (Math.random() * 150), z = (int) (Math.random() * -100);//x and y is a number from 0 to 99
         System.out.println("x=" + x + " y=" + y + " z=" + z);
         exercA(x, y);
         exercB(x, y);

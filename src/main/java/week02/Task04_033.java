@@ -20,8 +20,7 @@ public class Task04_033 {
         System.out.println(chekEven(n));
     }
 
-    public static String chekEven(int n) {
-        String s = n % 2 == 0 ? "even" : "odd";
-        return s;
+    private static String chekEven(int n) {
+        return n % 2 == 0 ? "even" : "odd";
     }
 }

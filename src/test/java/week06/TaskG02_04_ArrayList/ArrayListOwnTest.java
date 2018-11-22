@@ -3,7 +3,6 @@ package week06.TaskG02_04_ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -13,7 +12,7 @@ public class ArrayListOwnTest {
 
     @Test
     public void add() {
-        testALO = new ArrayListOwn();
+        testALO = new CustomArrayList();
         String elem0 = ("Hi All");
         String elem1 = ("!");
         String elem2 = ("third element");
@@ -26,7 +25,7 @@ public class ArrayListOwnTest {
 
     @Before
     public void before() {
-        testALO = new ArrayListOwn();
+        testALO = new CustomArrayList();
         String elem0 = ("Hi All");
         String elem1 = ("!");
         String elem2 = ("third element");

@@ -1,4 +1,4 @@
-package week06.TaskG02_04_ArrayList;
+package week06;
 
 public class DefineMaxInt {
     public static void main(String[] args) {

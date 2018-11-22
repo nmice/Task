@@ -13,7 +13,6 @@ public class Task04_067 {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         int day = scanner.nextInt(); // input the day of the year number
-        //int day = (int) (random() * 365);
         System.out.println("Day of Year - " + day + ". Is " + calcDayOfWeek(day));
     }
 

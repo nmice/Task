@@ -4,7 +4,6 @@ package week01;
  */
 
 import util.PrintStreamAdapter;
-
 import java.io.ByteArrayInputStream;
 
 public class Task02_039Test {
@@ -13,7 +12,7 @@ public class Task02_039Test {
         System.setOut(printStreamAdapter);
         String data = 21 + " " + 0 + " " + 0 + " ";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Task02_039.main(new String[]{});
+        Task02_039.main();
         String result = printStreamAdapter.getOutputString();
         System.out.println(("degrees=270.0").equals(result) ? "OK" : "FAIL");
     }

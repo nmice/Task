@@ -11,4 +11,3 @@ public class Task12_063Test {
         TestHelper.checkLastString(Task12_063::main, "123", "AVERAGE NUMBER OF THE GROUP:");
     }
 }
-//The test did not work!!!

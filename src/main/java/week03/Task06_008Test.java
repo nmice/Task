@@ -11,4 +11,3 @@ public class Task06_008Test {
         TestHelper.checkLastString(Task06_008::main,"30","1 4 9 16 25");
     }
 }
-//The test did not work!!!

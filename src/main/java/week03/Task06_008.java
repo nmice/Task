@@ -4,7 +4,6 @@ package week03;
  * w\o square
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task06_008 {

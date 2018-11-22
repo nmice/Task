@@ -8,13 +8,13 @@ import java.util.function.Consumer;
  * It’s ok to implement the functionality partially. But SOMETHING SHOULD WORK
  */
 
-public class ArrayListOwn<E> implements List<E>, Iterable<E> {
+public class CustomArrayList<E> implements List<E>, Iterable<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
 
-    public ArrayListOwn() {this(DEFAULT_CAPACITY);}
+    public CustomArrayList() {this(DEFAULT_CAPACITY);}
 
-    private ArrayListOwn(int capacity) {
+    private CustomArrayList(int capacity) {
         array = new Object[capacity];
     }
 
@@ -119,9 +119,6 @@ public class ArrayListOwn<E> implements List<E>, Iterable<E> {
 
     public void removeElement(int index) {
         System.arraycopy(array, index + 1, array, index, currentIndex - index - 1);
-//        for (int i = index; i < currentIndex; i++) {//TODO System.arraycopy
-//            array[i] = array[i + 1];
-//        }
         array[currentIndex--] = null;
         if (currentIndex < array.length / 2 && array.length / 2 >= DEFAULT_CAPACITY) {
             Object[] newArray = new Object[array.length / 2];
@@ -143,7 +140,7 @@ public class ArrayListOwn<E> implements List<E>, Iterable<E> {
 
     public E get(int index) {
         if (index >= currentIndex) {
-            throw new IndexOutOfBoundsException("This element is not live in this ArrayListOwn");
+            throw new IndexOutOfBoundsException("This element is not live in this CustomArrayList");
         }
         return (E) array[index];
     }

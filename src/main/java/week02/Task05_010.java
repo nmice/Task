@@ -20,7 +20,7 @@ public class Task05_010 {
 
     public static void tableOfCourse(double course) {
         double value;
-            for (int i = 1; i < 21; i++) {
+        for (int i = 1; i < 21; i++) {
             value = course * i;
             BigDecimal bdvalue = new BigDecimal(value);
             bdvalue = bdvalue.setScale(2,RoundingMode.HALF_UP);

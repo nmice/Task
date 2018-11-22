@@ -6,14 +6,13 @@ import java.util.stream.IntStream;
 
 import static util.PerfTestUtil.measureTime;
 
-public class ArrayListOwnPerfTest {
+public class CustomArrayListPerfTest {
 
     public static final int ARRAY_LENGTH = 500_000;
 
     public static void main(String[] args) {
-
         measureTime("Insertion in the midth ArrayList", () -> fillListWithRandomIntegers(new ArrayList()));
-        measureTime("Insertion in the midth ArrayListOwn", () -> fillListWithRandomIntegers(new ArrayListOwn()));
+        measureTime("Insertion in the midth CustomArrayList", () -> fillListWithRandomIntegers(new CustomArrayList()));
     }
 
     private static void fillListWithRandomIntegers(List list) {

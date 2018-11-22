@@ -6,8 +6,6 @@ package week03.task13_012;
  * (if the month of arrival coincides with the month of today, it is considered that a full year has passed).
  */
 
-import util.CalcExperience;
-
 import java.util.ArrayList;
 
 import static week03.task13_012.EmployeeConstants.*;
@@ -42,66 +40,5 @@ public class Task13_012 {
                 System.out.println(employee);
             }
         }
-
-        /*if (CalcExperience.calcExp(employee1.data) >= 3) {
-            System.out.println(employee1.name);
-        }
-        if (CalcExperience.calcExp(employee2.data) >= 3) {
-            System.out.println(employee2.name);
-        }
-        if (CalcExperience.calcExp(employee3.data) >= 3) {
-            System.out.println(employee3.name);
-        }
-        if (CalcExperience.calcExp(employee4.data) >= 3) {
-            System.out.println(employee4.name);
-        }
-        if (CalcExperience.calcExp(employee5.data) >= 3) {
-            System.out.println(employee5.name);
-        }
-        if (CalcExperience.calcExp(employee6.data) >= 3) {
-            System.out.println(employee6.name);
-        }
-        if (CalcExperience.calcExp(employee7.data) >= 3) {
-            System.out.println(employee7.name);
-        }
-        if (CalcExperience.calcExp(employee8.data) >= 3) {
-            System.out.println(employee8.name);
-        }
-        if (CalcExperience.calcExp(employee9.data) >= 3) {
-            System.out.println(employee9.name);
-        }
-        if (CalcExperience.calcExp(employee10.data) >= 3) {
-            System.out.println(employee10.name);
-        }
-        if (CalcExperience.calcExp(employee11.data) >= 3) {
-            System.out.println(employee11.name);
-        }
-        if (CalcExperience.calcExp(employee12.data) >= 3) {
-            System.out.println(employee12.name);
-        }
-        if (CalcExperience.calcExp(employee13.data) >= 3) {
-            System.out.println(employee13.name);
-        }
-        if (CalcExperience.calcExp(employee14.data) >= 3) {
-            System.out.println(employee14.name);
-        }
-        if (CalcExperience.calcExp(employee15.data) >= 3) {
-            System.out.println(employee15.name);
-        }
-        if (CalcExperience.calcExp(employee16.data) >= 3) {
-            System.out.println(employee16.name);
-        }
-        if (CalcExperience.calcExp(employee17.data) >= 3) {
-            System.out.println(employee17.name);
-        }
-        if (CalcExperience.calcExp(employee18.data) >= 3) {
-            System.out.println(employee18.name);
-        }
-        if (CalcExperience.calcExp(employee19.data) >= 3) {
-            System.out.println(employee19.name);
-        }
-        if (CalcExperience.calcExp(employee20.data) >= 3) {
-            System.out.println(employee20.name);
-        }*/
     }
 }

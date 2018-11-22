@@ -3,7 +3,6 @@ package week03;
  * Create a program that prints the specified word starting with the last letter.
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task09_042 {

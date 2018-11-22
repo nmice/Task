@@ -35,15 +35,8 @@ public class Employee {
     }
 
     public int getExperience() {
-        //int month = this.data[0];
-        //int year = this.data[1];
-        //Calendar calendar = Calendar.getInstance();
-        //int Month = calendar.get(Calendar.MONTH);
-        //int Year = calendar.get(Calendar.YEAR);
-        //int experience = Month >= month ? Year - year : Year - year - 1;
         LocalDate today = LocalDate.now();
         Period period = date.until(today);
-        int experience = period.getYears();
-        return experience;
+        return period.getYears();
     }
 }

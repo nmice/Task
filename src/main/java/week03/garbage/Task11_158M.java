@@ -1,4 +1,4 @@
-package week03;
+package week03.garbage;
 /**
  * Remove from the array all the repeating elements, leaving their first occurrences,
  * that is, only the various elements must remain in the array.
