@@ -3,7 +3,7 @@ package week10.queue;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class QueueOwnTestDrive {
+public class QueueCustomTestDrive {
     public static void main(String[] args) {
         System.out.println("Queue test:");
         Queue<Integer> queue = new LinkedList<>();

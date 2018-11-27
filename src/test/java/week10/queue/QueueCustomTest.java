@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import static org.junit.Assert.*;
 
-public class QueueOwnTest {
+public class QueueCustomTest {
     private Queue<Integer> testQueueOwn = null;
 
     @Test

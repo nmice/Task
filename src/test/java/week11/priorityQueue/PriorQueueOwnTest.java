@@ -23,7 +23,7 @@ public class PriorQueueOwnTest {
 
     @Test
     public void add() {
-        testStringPQO = new PriorQueueCustom<>();
+        testStringPQO = new CustomPriorityQueue<>();
         String expected = "[]";
         assertTrue(expected.equals(testStringPQO.toString()));
         testStringPQO.add("come");
@@ -35,7 +35,7 @@ public class PriorQueueOwnTest {
 
     @Test
     public void offer() {
-        testStringPQO = new PriorQueueCustom<>();
+        testStringPQO = new CustomPriorityQueue<>();
         String expected = "[]";
         assertTrue(expected.equals(testStringPQO.toString()));
         testStringPQO.offer("come");
@@ -47,13 +47,13 @@ public class PriorQueueOwnTest {
 
     @Before
     public void before(){
-        testStringPQO = new PriorQueueCustom<>();
+        testStringPQO = new CustomPriorityQueue<>();
         testStringPQO.add("as");
         testStringPQO.add("come");
         testStringPQO.add("you");
         testStringPQO.add("are");
 
-        testBookPQO = new PriorQueueCustom<>();
+        testBookPQO = new CustomPriorityQueue<>();
         Book book0 = new Book("Dostoevskiy", "Idiot");
         Book book1 = new Book("Gogol", "Nose");
         Book book2 = new Book("Ray Bradbury", "451 Fahrenheit");
@@ -64,7 +64,7 @@ public class PriorQueueOwnTest {
         testBookPQO.add(book3);
 
         Comparator<Book> bookComparator = new BookTitleComparator();
-        testBookWithComparatorPQO = new PriorQueueCustom<>(bookComparator);
+        testBookWithComparatorPQO = new CustomPriorityQueue<>(bookComparator);
         testBookWithComparatorPQO.add(book0);
         testBookWithComparatorPQO.add(book1);
         testBookWithComparatorPQO.add(book2);
@@ -178,11 +178,11 @@ public class PriorQueueOwnTest {
 
     @Test
     public void comparator() {
-        PriorQueueCustom<Book> testBookPQO1 = new PriorQueueCustom<>();
+        CustomPriorityQueue<Book> testBookPQO1 = new CustomPriorityQueue<>();
         assertEquals(null, testBookPQO1.comparator());
 
         Comparator<Book> bookComparator = new BookTitleComparator();
-        PriorQueueCustom<Book> testBookWithComparatorPQO1 = new PriorQueueCustom<>(bookComparator);
+        CustomPriorityQueue<Book> testBookWithComparatorPQO1 = new CustomPriorityQueue<>(bookComparator);
         assertEquals(bookComparator, testBookWithComparatorPQO1.comparator());
     }
 }

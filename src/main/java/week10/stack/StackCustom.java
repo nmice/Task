@@ -5,7 +5,7 @@ import week07.Task_LinkedList.CustomLinkedList;
 
 import java.util.List;
 
-public class StackOwn<E> implements IStack<E> {
+public class StackCustom<E> implements IStack<E> {
 
     List<E> list = new CustomLinkedList();
 

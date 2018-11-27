@@ -3,11 +3,15 @@ package week19;
 public class Question3 {
 
     public Question3(){
-        System.out.println("new Q is born");
+        System.out.println("A3");
     }
 
     static{
-        System.out.println("Is a static constructor?");
+        System.out.println("A4");
+    }
+
+    {
+        System.out.println("A5");
     }
 
     public static void main(String[] args) {
@@ -20,3 +24,5 @@ public class Question3 {
         System.out.println(a2);
     }
 }
+
+

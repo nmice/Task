@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class BinarySearchTreeOwnTest {
+public class CustomBinarySearchTreeTest {
     private Set<String> testStringBSTO = null;
     private Set<Book> testBookBSTO = null;
     private Set<Book> testBookWithComparatorBSTO = null;
@@ -24,7 +24,7 @@ public class BinarySearchTreeOwnTest {
 
     @Test
     public void add() {
-        testStringBSTO = new BinarySearchTreeOwn<>();
+        testStringBSTO = new CustomBinarySearchTree<>();
         String expected = "[]";
         assertTrue(expected.equals(testStringBSTO.toString()));
         testStringBSTO.add("come");
@@ -37,13 +37,13 @@ public class BinarySearchTreeOwnTest {
 
     @Before
     public void before(){
-        testStringBSTO = new BinarySearchTreeOwn<>();
+        testStringBSTO = new CustomBinarySearchTree<>();
         testStringBSTO.add("as");
         testStringBSTO.add("come");
         testStringBSTO.add("you");
         testStringBSTO.add("are");
 
-        testBookBSTO = new BinarySearchTreeOwn<>();
+        testBookBSTO = new CustomBinarySearchTree<>();
         Book book0 = new Book("Dostoevskiy", "Idiot");
         Book book1 = new Book("Gogol", "Nose");
         Book book2 = new Book("Ray Bradbury", "451 Fahrenheit");
@@ -54,7 +54,7 @@ public class BinarySearchTreeOwnTest {
         testBookBSTO.add(book3);
 
         Comparator<Book> bookComparator = new BookTitleComparator();
-        testBookWithComparatorBSTO = new BinarySearchTreeOwn<>(bookComparator);
+        testBookWithComparatorBSTO = new CustomBinarySearchTree<>(bookComparator);
         testBookWithComparatorBSTO.add(book0);
         testBookWithComparatorBSTO.add(book1);
         testBookWithComparatorBSTO.add(book2);

@@ -5,15 +5,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class StackOwnTest {
+public class StackCustomTest {
 
-    private StackOwn<Integer> testSO = null;
-    private StackOwnStack<Integer> testSOS = null;
+    private StackCustom<Integer> testSO = null;
+    private StackCustomStack<Integer> testSOS = null;
 
     @Before
     public void before() {
-        testSO = new StackOwn<>();
-        testSOS = new StackOwnStack<>();
+        testSO = new StackCustom<>();
+        testSOS = new StackCustomStack<>();
     }
 
     @Test

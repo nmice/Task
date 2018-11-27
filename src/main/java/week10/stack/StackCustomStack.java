@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class StackOwnStack<E> implements IStack<E> {
+public class StackCustomStack<E> implements IStack<E> {
     Stack<E> stack = new Stack<>();
 
     @Override

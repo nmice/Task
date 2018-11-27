@@ -12,5 +12,6 @@ public class Question1 {
         Integer i5 = 10;
         Integer i6 = 9+1;
         System.out.println(i5 == i6);
+        int a = (Integer) null;
     }
 }

@@ -9,13 +9,13 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class HashSetOwnTest {
+public class CustomHashSetTest {
     private Set<String> testHSO = null;
     private List<String> testCollection = null;
 
     @Test
     public void add() {
-        testHSO = new HashSetOwn<>();
+        testHSO = new CustomHashSet<>();
         String expected = "[]";
         assertTrue(expected.equals(testHSO.toString()));
         testHSO.add("Russia");
@@ -27,7 +27,7 @@ public class HashSetOwnTest {
 
     @Test
     public void size() {
-        testHSO = new HashSetOwn<>();
+        testHSO = new CustomHashSet<>();
         assertEquals(0, testHSO.size());
         testHSO.add("Russia");
         assertEquals(1, testHSO.size());
@@ -35,7 +35,7 @@ public class HashSetOwnTest {
 
     @Test
     public void isEmpty() {
-        testHSO = new HashSetOwn<>();
+        testHSO = new CustomHashSet<>();
         assertEquals(true, testHSO.isEmpty());
         testHSO.add("Russia");
         assertEquals(false, testHSO.isEmpty());
@@ -43,7 +43,7 @@ public class HashSetOwnTest {
 
     @Before
     public void before() throws Exception {
-        testHSO = new HashSetOwn<>();
+        testHSO = new CustomHashSet<>();
         testHSO.add("Russia");
         testHSO.add("USA");
         testHSO.add("France");
