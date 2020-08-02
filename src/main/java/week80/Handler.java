@@ -37,7 +37,7 @@ public class Handler extends Thread {
     public void run() {
         try (InputStream input = this.socket.getInputStream(); OutputStream out = this.socket.getOutputStream()) {
             String url = this.getRequestUrl(input);
-            Path filePath = Paths.get(URI.create(this.dir.concat(url)));
+            Path filePath = Paths.get(this.dir, url);
             if (Files.exists(filePath) && !Files.isDirectory(filePath)) {
                 // file
                 String extension = this.getFileExtension(filePath);
